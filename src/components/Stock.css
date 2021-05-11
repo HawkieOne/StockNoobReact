@@ -11,11 +11,12 @@ body {
   margin-top: 2%;
   padding: 1%;
   border: 1px solid rgb(252, 242, 242);
-  color: aqua;
+  color: white;
   border-radius: 40px;
 }
 
 .item {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
