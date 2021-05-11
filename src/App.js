@@ -1,5 +1,6 @@
 import './App.css';
 import {Helmet} from "react-helmet";
+import Header from "./components/Header"
 
 function App() {
 
@@ -25,9 +26,12 @@ function App() {
         <title>StockNoob</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
+      <Header className="Header-component"/>
       <header className="App-header" onClick={api}>
+      
         Hello
       </header>
+      
     </div>
   );
 }

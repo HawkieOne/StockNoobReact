@@ -1,0 +1,32 @@
+.Header{
+    top: 0;
+    background-color: #383D53;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+    
+}
+
+.Header .right{
+    margin-right: 2%;
+    font-size: 1.5rem;
+}
+
+.Header .right .icon{
+    color: #F2D658;
+}
+
+.Header .left{
+    
+}
+
+.Header .left p{
+    color: #F2D658;
+    font-size: 1.5rem;
+}
+
+.Header .left{
+    margin-left: 2%;
+}
