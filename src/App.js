@@ -1,5 +1,6 @@
 import './App.css';
 import {Helmet} from "react-helmet";
+import StockList from './components/StockList';
 
 function App() {
 
@@ -25,9 +26,10 @@ function App() {
         <title>StockNoob</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <header className="App-header" onClick={api}>
+      {/* <header className="App-header" onClick={api}>
         Hello
-      </header>
+      </header> */}
+      <StockList/>
     </div>
   );
 }
