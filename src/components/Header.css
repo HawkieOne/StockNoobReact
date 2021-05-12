@@ -3,10 +3,11 @@
     background-color: #383D53;
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     height: 8vh;
-    
 }
 
 .Header .right{
@@ -16,17 +17,42 @@
 
 .Header .right .icon{
     color: #F2D658;
+    padding-right: 20px;
+    font-size: 33px;
 }
 
-.Header .left{
-    
+.Header .middle{
+    margin-right: 3%;
 }
 
-.Header .left p{
+.Header .middle p{
     color: #F2D658;
     font-size: 1.5rem;
 }
 
 .Header .left{
-    margin-left: 2%;
+    margin-left: 3%;
+}
+
+.Header .left .search{
+    background-color: #282b39;
+    border-color: #F2D658;
+    z-index: 1000 !important;
+    border-radius: 16px;
+    width: 180px;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    
+}
+
+.Header .left .search .searchIcon{
+    color: #F2D658;
+    margin-left: 5px;
+    font-size: 22px;
+}
+
+.Header .left .search p{
+    margin-left: 10px;
+    color: #F2D658;
 }
