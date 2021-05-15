@@ -30,6 +30,14 @@
     font-size: 1.5rem;
 }
 
+.Header .left .search .searcharea{
+    width: 140px;
+    border: none;
+    background-color: #282b39;
+    color: #F2D658;
+    height: 80%;
+}
+
 .Header .left{
     margin-left: 3%;
 }

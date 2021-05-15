@@ -20,15 +20,23 @@
 .Bottom .container .left{
     margin-top: 4rem;
     font-size: 22px;
+    color: #F2D658; 
+}
+
+.Bottom .container .left span{
+    font-size: 18px;
     color: #F2D658;
-    
 }
 
 .Bottom .container .middle{
     margin-top: 4rem;
     font-size: 22px;
-    color: #F2D658;
-    
+    color: #F2D658; 
+}
+
+.Bottom .container .middle span{
+    font-size: 18px;
+    color: #F2D658; 
 }
 
 .Bottom .container .right{

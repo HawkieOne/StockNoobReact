@@ -2,7 +2,7 @@ import React from 'react'
 import "./Footer.css";
 import {  faUser, faAddressBook} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import {faFacebookF, faGoogle, faTwitter, faInstagram} from "@fortawesome/free-brands-svg-icons";
 
 
 export default function Footer() {
@@ -12,21 +12,23 @@ export default function Footer() {
             <div className="left">
                 CONTACT
                 <hr className="seperator"/>
+                <span>
                 <FontAwesomeIcon className="mail" icon={faAddressBook} />
                 Stocknoob@stocks.com
+                </span>
             </div>
             <div className="middle">
                 ABOUT
                 <hr className="seperator"/>
+                <span>
                 Stocknoob is a fictional training 
                 <br/>
-                application designed as a learning tool
+                application designed as a learning tool</span>
             </div>
             <div className="right">
-                
-                <FontAwesomeIcon className="icon" icon={faUser} />
-                <FontAwesomeIcon className="icon" icon={faUser} />
-                <FontAwesomeIcon className="icon" icon={faUser} />
+                <FontAwesomeIcon className="icon" icon={faInstagram} />
+                <FontAwesomeIcon className="icon" icon={faTwitter} />
+                <FontAwesomeIcon className="icon" icon={faFacebookF} />
             </div>
             </div>
         </div>

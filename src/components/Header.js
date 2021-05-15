@@ -11,7 +11,7 @@ export default function Header() {
             <div className="left">
                 <div className="search">
                 <FontAwesomeIcon className="searchIcon" icon={faSearch} />
-                <p>Search...</p>
+                <input className="searcharea" type="text" placeholder="Search..."></input>
                 </div>
             </div>
             <div className="middle">
