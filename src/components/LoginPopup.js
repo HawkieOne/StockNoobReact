@@ -4,6 +4,27 @@ import {  faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function LoginPopup() {
+
+    const login = (event) => {    
+        var axios = require("axios").default;
+    
+        var options = {
+          method: 'POST',
+          url: 'http://localhost:3010/user/login',
+          // headers: {authorization: 'Bearer YOUR_ACCESS_TOKEN'} NOT USED HERE
+        };
+        
+        axios.request(options).then(function (response) {
+            //IF ACCEPTED REDIRECT SAVE TOKEN BACKEND AND SAVE AS LOGGED IN IN REACT
+            //IF NOT ACCEPTED SHOW WRONG PASSWORD
+          console.log(response.data);
+        }).catch(function (error) {
+            //IF NOT ACCEPTED SHOW WRONG PASSWORD
+          console.error(error);
+        });
+      };
+
+
     return (
         <div className="LoginPopup">
             <div className="Container">
@@ -12,7 +33,7 @@ export default function LoginPopup() {
                         <FontAwesomeIcon className="icon" icon={faUser} />
                     </div>
                     </div>
-                    <form className="form">
+                    <form className="form" onSubmit={this.login}>
                         
                         <div className="inputs">
                             <label><b>Username</b></label>
@@ -29,9 +50,6 @@ export default function LoginPopup() {
                             </div>
                         </div>
                     </form>
-
-               
-           
         </div>
     )
 }
