@@ -32,6 +32,7 @@ function App() {
       
         Hello
       </header>
+      <Footer className="Footer-component"/>
     </div>
   );
 }
