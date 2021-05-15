@@ -38,6 +38,11 @@
     height: 80%;
 }
 
+::placeholder {
+    color:#F2D658;
+    
+  }
+
 .Header .left{
     margin-left: 3%;
 }
