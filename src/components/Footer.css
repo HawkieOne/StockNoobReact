@@ -1,0 +1,51 @@
+.Bottom{
+    width: 100%;
+    height: 220px;
+    background-color: #383D53;
+    
+}
+
+.Bottom .container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+
+.Bottom .container .seperator{
+    border-color: #F2D658;
+    width: 10rem;
+}
+
+.Bottom .container .left{
+    margin-top: 4rem;
+    font-size: 22px;
+    color: #F2D658; 
+}
+
+.Bottom .container .left span{
+    font-size: 18px;
+    color: #F2D658;
+}
+
+.Bottom .container .middle{
+    margin-top: 4rem;
+    font-size: 22px;
+    color: #F2D658; 
+}
+
+.Bottom .container .middle span{
+    font-size: 18px;
+    color: #F2D658; 
+}
+
+.Bottom .container .right{
+    margin-top: 4rem;
+    
+}
+.Bottom .container .right .icon{
+    color: #F2D658;
+    padding-right: 50px;
+    font-size: 33px;
+    
+}
