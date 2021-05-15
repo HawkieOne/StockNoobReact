@@ -1,0 +1,154 @@
+
+.Login{
+    
+    width: 100%;
+    height: 100vh;
+   
+    background-color: #282B39;
+}
+
+.Login .toppen{
+    
+    height: 100px;
+}
+
+.Login .toppen .button{
+    background-color: #F2D658;
+    width: 110px;
+    height: 29px;
+    border-radius: 16px;
+    border: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.Login .mitten{
+    
+    display: flex;
+    justify-content: space-around;
+    
+    
+}
+
+.Login .mitten .vänster{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 45%;
+    height: 30rem;   
+    background-color: #F2D658; 
+}
+
+.Login .mitten .vänster .pic{
+    width: 80%;
+}
+
+.Login .mitten .vänster .pic2{
+    height: 200px;
+    width: 200px;
+}
+
+.Login .mitten .container{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: azure;
+    width: 35%;
+    height: 30rem;
+    flex-direction: column;
+    margin-right: 150px;
+    
+}
+
+.Login .mitten .container .höger{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20px;
+    font-size: 65px;
+    color: #F2D658;
+}
+
+.Login .mitten .container .höger span{
+    color: white;
+}
+
+
+/*        Modal        */
+
+
+.modal {
+    font-size: 12px;
+    background-color: #383D53;
+    border: none;
+  }
+  .modal > .header {
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    padding: 5px;
+    color: #F2D658;
+    margin-bottom: -20px;
+  }
+  .modal > .content {
+    width: 100%;
+    padding: 10px 5px;
+  }
+  .modal > .content .form{
+      display: flex;
+      justify-content: center;
+      color: black;
+      text-align: center;
+  }
+
+  .modal > .content .form label{
+      font-size: 20px;
+  }
+
+  .modal > .content .form input{
+      font-size: 16px;
+  }
+ 
+
+  .modal > .actions {
+    width: 100%;
+    padding: 10px 5px;
+    margin: auto;
+    text-align: center;
+  }
+  .modal > .actions .login{
+      color: #F2D658;
+      background-color: #282B39;
+      width: 120px;
+      border: none;
+      border-radius: 16px;
+      height: 30px;
+      font-size: 16px;
+      cursor: pointer;
+  }
+  .modal > .actions .cancel{
+    color: crimson;
+    background-color: #282B39;
+    width: 120px;
+    border: none;
+    border-radius: 16px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .modal > .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #282B39;
+    color: #F2D658;
+    border-radius: 18px;
+    border: none;
+  }

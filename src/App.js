@@ -2,6 +2,8 @@ import './App.css';
 import {Helmet} from "react-helmet";
 import Header from "./components/Header"
 import Footer from "./components/Footer"
+import Login from "./components/Login"
+import LoginPopup from "./components/LoginPopup"
 
 function App() {
 
@@ -28,10 +30,11 @@ function App() {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <Header className="Header-component"/>
-      <header className="App-header" onClick={api}>
+      {/* <header className="App-header" onClick={api}>
       
         Hello
-      </header>
+      </header> */}
+      <Login/>
       <Footer className="Footer-component"/>
     </div>
   );

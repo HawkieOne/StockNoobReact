@@ -1,0 +1,36 @@
+.LoginPopup{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-color: none;
+}
+
+.LoginPopup .Container{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.LoginPopup .Container  .imgIcon{
+    font-size: 35px;
+    height: 50px;
+    width: 50px;
+    border-radius: 40px;
+    background-color: black;
+}
+.LoginPopup .Container  .imgIcon .icon{
+    color: #F2D658;
+}
+
+.LoginPopup  .form{
+    margin-top: 10px;
+}
+
+.LoginPopup  .form .inputs .text{
+    color: black;
+    width: 400px;
+   
+}
+
