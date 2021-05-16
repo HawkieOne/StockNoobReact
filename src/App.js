@@ -65,18 +65,16 @@ function App() {
               user.LoginID = data.Login_ID;
               user.Username = data.Username;
               user.UserID = data.User_ID;
-              user.Mail = data.mail;
-              user.Money = data.money;
+              user.Mail = data.Mail;
+              user.Money = data.Money;
               user.Holdings = data.Holdings;
               user.Goal = data.Goal;
               user.GoalItem = data.GoalItem;
               user.SavingMonth = data.SavingMonth;
-              user.Token = data.Token;
-              
-              console.log(user);
-              console.log(user.Token);
+              user.Token = data.Token.access_token;              
+              console.log(user);  
             }).catch(error =>
-              console.log("ERROR: " + error)
+              console.log(error)
             )
   };
 
