@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Stock.css'
+import './StockItem.css'
 
 
 function StockItem(props) {

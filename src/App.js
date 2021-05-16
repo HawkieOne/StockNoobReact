@@ -1,6 +1,8 @@
 import './App.css';
 import {Helmet} from "react-helmet";
 import StockList from './components/StockList';
+// import TranscationItem from './components/TranscationItem';
+import TransactionList from './components/TransactionList';
 
 function App() {
 
@@ -29,7 +31,7 @@ function App() {
       {/* <header className="App-header" onClick={api}>
         Hello
       </header> */}
-      <StockList/>
+      <TransactionList/>
     </div>
   );
 }
