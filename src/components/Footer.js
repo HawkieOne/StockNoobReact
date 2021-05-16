@@ -1,8 +1,8 @@
 import React from 'react'
 import "./Footer.css";
-import {  faUser, faAddressBook} from "@fortawesome/free-solid-svg-icons";
+import {  faAddressBook} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faFacebookF, faGoogle, faTwitter, faInstagram} from "@fortawesome/free-brands-svg-icons";
+import {faFacebookF, faTwitter, faInstagram} from "@fortawesome/free-brands-svg-icons";
 
 
 export default function Footer() {

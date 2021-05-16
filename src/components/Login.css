@@ -2,7 +2,7 @@
 .Login{
     
     width: 100%;
-    height: 100vh;
+    height: 92vh;
    
     background-color: #282B39;
 }
@@ -38,7 +38,9 @@
     text-align: center;
     width: 45%;
     height: 30rem;   
-    background-color: #F2D658; 
+}
+.Login .mitten .vänster .picture{
+    border-radius: 2000px;
 }
 
 .Login .mitten .vänster .pic{
@@ -67,7 +69,7 @@
     margin-left: auto;
     margin-right: auto;
     height: 20px;
-    font-size: 65px;
+    font-size: 80px;
     color: #F2D658;
 }
 
@@ -111,6 +113,22 @@
       font-size: 16px;
   }
  
+  .modal > .content .form .login{
+    margin-top: 10px;
+    color: green;
+    background-color: #282B39;
+    width: 120px;
+    border: none;
+    border-radius: 16px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .modal > .content .form .login:hover{
+      background-color: green;
+      color: #282B39;
+  }
 
   .modal > .actions {
     width: 100%;
@@ -118,8 +136,8 @@
     margin: auto;
     text-align: center;
   }
-  .modal > .actions .login{
-      color: #F2D658;
+  .modal > .actions .register{
+      color: green;
       background-color: #282B39;
       width: 120px;
       border: none;
@@ -127,6 +145,11 @@
       height: 30px;
       font-size: 16px;
       cursor: pointer;
+  }
+
+  .modal > .actions .register:hover{
+      background-color: green;
+      color: #F2D658;
   }
   .modal > .actions .cancel{
     color: crimson;
@@ -137,6 +160,11 @@
     height: 30px;
     font-size: 16px;
     cursor: pointer;
+  }
+
+  .modal > .actions .cancel:hover{
+    background-color: crimson;
+    color: #F2D658;
   }
   .modal > .close {
     cursor: pointer;

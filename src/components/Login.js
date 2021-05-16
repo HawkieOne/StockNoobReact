@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Login.css";
-import {  faChartLine, faUser } from "@fortawesome/free-solid-svg-icons";
+import {  faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -8,7 +8,7 @@ import 'reactjs-popup/dist/index.css';
 export default function Login() {
 
     const login = (event) => {    
-        // console.log("TEST");
+        console.log("TEST");
         var axios = require("axios").default;
     
         var options = {
@@ -39,15 +39,17 @@ export default function Login() {
             <div className="header"> Log in </div>
             <div className="content">
                 <div className="form">
-                    <form>
+                    <form onSubmit={login()}>
                     <br/>
                     <label><b>Username</b></label>
                     <br/>
-                    <input className="text" type="text" ></input>
+                    <input className="text" type="text" required ></input>
                     <br/>
                     <label><b>Password</b></label>
                     <br/>
-                    <input  type="text" ></input>
+                    <input  type="text" required></input>
+                    <br/>
+                    <button className="login" type="submit">Log in</button>
                     </form>
                 </div>
             </div>
@@ -62,10 +64,10 @@ export default function Login() {
                     Cancel
                 </button>
                 <button
-                    className="button login"
+                    className="button register"
                     onClick={login}
                 >
-                    Log in
+                    Register
                 </button>
                 </div>
             </div>
@@ -74,7 +76,7 @@ export default function Login() {
             </div>
             <div className="mitten">
                 <div className="vänster"> 
-                Bilder här
+                <img className="picture" src="https://www.smartdatacollective.com/wp-content/uploads/2018/12/crypto-trading-vs-stock-trading.jpg"></img>
                 </div>
                 <div className="container">
                 <div className="höger">S<span>Noob</span> <FontAwesomeIcon className="icon" icon={faChartLine} /></div>
