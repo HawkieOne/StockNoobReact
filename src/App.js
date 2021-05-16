@@ -3,9 +3,26 @@ import {Helmet} from "react-helmet";
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Login from "./components/Login"
+<<<<<<< HEAD
 
+=======
+import LoginPopup from "./components/LoginPopup"
+import React, { useState } from 'react';
+>>>>>>> 54df8bf69866b4f3575da9bef1a6f205ab36c9ed
 
 function App() {
+  const [user, setUser] = useState({
+      LoginID: "",
+      Username: "",
+      UserID: "",
+      Mail: "",
+      Money: "",
+      Holdings: "",
+      Goal: "",
+      GoalItem: "",
+      SavingMonth: "",
+      Token: ","
+  });
 
   const api = (event) => {    
     const axios = require('axios');
@@ -35,14 +52,44 @@ function App() {
       });
   };
 
+  const login = (event) => {    
+    const axios = require('axios');
+    console.log("LOGIN");
+    axios.post('http://localhost:3010/user/login',
+              {
+                "Username": "hali0151",
+                "Password": "1234"  
+              }             
+            )
+            .then(response => {
+              console.log("RESPONSE: " + response.data)
+              console.log("DATA: " + response.data)
+              const data = response.data;
+
+              user.LoginID = data.Login_ID;
+              user.Username = data.Username;
+              user.UserID = data.User_ID;
+              user.Mail = data.Mail;
+              user.Money = data.Money;
+              user.Holdings = data.Holdings;
+              user.Goal = data.Goal;
+              user.GoalItem = data.GoalItem;
+              user.SavingMonth = data.SavingMonth;
+              user.Token = data.Token.access_token;              
+              console.log(user);  
+            }).catch(error =>
+              console.log(error)
+            )
+  };
+
 
   const test = (event) => {    
     var axios = require("axios").default;
-
+    console.log("API");
     var options = {
       method: 'GET',
       url: 'http://localhost:3010/api/private',
-      // headers: {authorization: 'Bearer YOUR_ACCESS_TOKEN'}
+      headers: { authorization: 'Bearer ' + user.Token}
     };
 
     axios.request(options).then(function (response) {
@@ -66,6 +113,8 @@ function App() {
         Hello
       </header> */}
       <Login/>
+      <p onClick={login}>Login</p>
+      <p onClick={test}>Test</p>
       <Footer className="Footer-component"/>
     </div>
   );
