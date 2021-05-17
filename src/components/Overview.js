@@ -1,9 +1,23 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import './overview.css'
+import history from './History';
 
 
-export default class Overview extends Component {
-    render() {
+export default function Overview() {
+    
+    const [user, setUser] = useState({
+        LoginID: "",
+        Username: "",
+        UserID: "",
+        Mail: "",
+        Money: "",
+        Holdings: "",
+        Goal: "",
+        GoalItem: "",
+        SavingMonth: "",
+        Token: ","
+    });
+
         return (
             <div className="grid-container">
 
@@ -47,7 +61,7 @@ export default class Overview extends Component {
                     <div className="left-container">
                         <div className="personalButtons">
                             <div className="leftButtons">
-                                <button className="leftholdingButton">
+                                <button className="leftholdingButton" >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="53.518" height="37.463" viewBox="0 0 47.402 33.885">
                                         <path id="Icon_awesome-chart-line" data-name="Icon awesome-chart-line" d="M45.921,32.737h-40V5.912A1.447,1.447,0,0,0,4.444,4.5H1.481A1.447,1.447,0,0,0,0,5.912V35.561a2.9,2.9,0,0,0,2.963,2.824H45.921A1.447,1.447,0,0,0,47.4,36.973V34.149A1.447,1.447,0,0,0,45.921,32.737ZM42.958,7.324H32.028a2.107,2.107,0,0,0-1.571,3.615l3,2.859-6.793,6.475L19.871,13.8a3.066,3.066,0,0,0-4.189,0L9.322,19.86a1.366,1.366,0,0,0,0,2l2.094,2a1.533,1.533,0,0,0,2.1,0l4.264-4.065,6.793,6.474a3.066,3.066,0,0,0,4.189,0l8.888-8.471,3,2.859a2.237,2.237,0,0,0,3.793-1.5V8.736A1.446,1.446,0,0,0,42.958,7.324Z" transform="translate(0 -4.5)" fill="#f2d658"/>
                                     </svg>
@@ -90,7 +104,7 @@ export default class Overview extends Component {
                                     <p className="text">Moderate Performing</p>            
                                 </div>
                                 <div className="procent">
-                                    <p className="greenText">+8%</p>
+                                    <p className="greenText">+10%</p>
                                 </div>
                             </div>
                         </button>
@@ -184,5 +198,5 @@ export default class Overview extends Component {
                
             </div>
         )
-    }
+    
 }
