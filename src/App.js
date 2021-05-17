@@ -8,7 +8,9 @@ import history from './components/History';
 
 import React, { useState } from 'react';
 import Overview from './components/Overview';
-import Stock from './components/Stock';
+import StockList from './components/StockList';
+import TransactionList from './components/TransactionList'
+
 
 
 function App() {
@@ -119,8 +121,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Login}/>
           <Route path="/overview" exact component={Overview}/>
-          {/*<Route path="/stocks" exact component={Stock}/>*/}
-          
+          <Route path="/stockList" exact component={StockList}/>
+          <Route path="/transactionList" exact component={TransactionList}/>
           
         </Switch>            
       </Router>  

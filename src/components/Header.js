@@ -1,5 +1,5 @@
 import React from 'react'
-import {  faUser, faClock, faQuestionCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {  faUser, faClock, faQuestionCircle, faSearch, faBell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
 
@@ -19,7 +19,7 @@ export default function Header() {
             </div>
             <div className="right">
                 <FontAwesomeIcon className="icon" icon={faQuestionCircle} />
-                <FontAwesomeIcon className="icon" icon={faClock} />
+                <FontAwesomeIcon className="icon" icon={faBell} />
                 <FontAwesomeIcon className="icon" icon={faUser} />
             </div>
         </div>
