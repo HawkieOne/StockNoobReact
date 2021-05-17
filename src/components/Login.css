@@ -8,12 +8,12 @@
     margin: 0;
 }
 
-.Login .toppen{
+.Login .top{
     
     height: 100px;
 }
 
-.Login .toppen .button{
+.Login .top .button{
     background-color: #F2D658;
     width: 110px;
     height: 29px;
@@ -25,7 +25,7 @@
     cursor: pointer;
 }
 
-.Login .mitten{
+.Login .middleContainer{
     
     display: flex;
     justify-content: space-around;
@@ -33,27 +33,27 @@
     
 }
 
-.Login .mitten .vänster{
+.Login .middleContainer .left{
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 45%;
     height: 30rem;   
 }
-.Login .mitten .vänster .picture{
+.Login .middleContainer .left .picture{
     border-radius: 2000px;
 }
 
-.Login .mitten .vänster .pic{
+.Login .middleContainer .left .pic{
     width: 80%;
 }
 
-.Login .mitten .vänster .pic2{
+.Login .middleContainer .left .pic2{
     height: 200px;
     width: 200px;
 }
 
-.Login .mitten .container{
+.Login .middleContainer .container{
     display: flex;
     text-align: center;
     justify-content: center;
@@ -65,7 +65,7 @@
     
 }
 
-.Login .mitten .container .höger{
+.Login .middleContainer .container .höger{
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -74,48 +74,67 @@
     color: #F2D658;
 }
 
-.Login .mitten .container .höger span{
+.Login .middleContainer .container .höger span{
     color: white;
 }
 
 
 /*        Modal        */
 
+.popup-content {
+    outline: solid blue;
+    padding: 50px;
+    margin: 0;
+}
+.popup-overlay {
+    outline: none;
+}
 
-.modal {
-    font-size: 12px;
+.modal-content {
     background-color: #383D53;
-    border: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+.modal {
+    background-color: #383D53;
   }
   .modal > .header {
     width: 100%;
-    font-size: 25px;
+    font-size: 1.75rem;
     text-align: center;
-    padding: 5px;
+    padding: 1%;
     color: #F2D658;
     margin-bottom: -20px;
   }
+  .divider {
+      border-color: #F2D658;
+      margin: 4% 2% 0 2%;
+  }
   .modal > .content {
     width: 100%;
-    padding: 10px 5px;
+    padding: 1% 0.5%;
   }
-  .modal > .content .form{
+  .form{
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: center;   
+      align-items: center;   
       color: black;
-      text-align: center;
   }
 
   .modal > .content .form label{
-      font-size: 20px;
+      font-size: 1.25rem;
+      margin: 1%;
   }
 
   .modal > .content .form input{
-      font-size: 16px;
+      font-size: 1rem;
+      border-radius: 5px;
   }
  
   .modal > .content .form .login{
-    margin-top: 10px;
+    margin-top: 4%;
     color: green;
     background-color: #282B39;
     width: 120px;
@@ -127,33 +146,26 @@
   }
 
   .modal > .content .form .login:hover{
-      background-color: green;
-      color: #282B39;
+      border: 1px green solid;
+      /* color: #282B39; */
+  }
+
+  .register {
+      text-align: center;
+      color: #F2D658;
+  }
+  .register:hover {
+      text-decoration: underline;
+      cursor: pointer;
   }
 
   .modal > .actions {
     width: 100%;
-    
     padding: 10px 5px;
     margin: auto;
     text-align: center;
   }
-  .modal > .actions .register{
-      color: green;
-      background-color: #282B39;
-      width: 120px;
-      border: none;
-      border-radius: 16px;
-      height: 30px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-left: 2.5px;
-  }
 
-  .modal > .actions .register:hover{
-      background-color: green;
-      color: #F2D658;
-  }
   .modal > .actions .cancel{
     color: crimson;
     background-color: #282B39;
