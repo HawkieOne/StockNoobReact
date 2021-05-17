@@ -11,23 +11,28 @@
 }
 
 .Header .right{
+    display: flex;
+    align-items: center;
     margin-right: 2%;
     font-size: 1.5rem;
 }
 
 .Header .right .icon{
     color: #F2D658;
-    padding-right: 20px;
+    margin: 10px;
     font-size: 33px;
 }
 
 .Header .middle{
-    margin-right: 3%;
+    display: flex;
+    text-align: center;
+    margin-left: 37px;
+    margin-top: 10px;
 }
 
 .Header .middle p{
     color: #F2D658;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
 }
 
 .Header .left .search .searcharea{
