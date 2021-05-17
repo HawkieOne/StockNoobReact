@@ -1,29 +1,7 @@
 
 /* ----------------------------- OVERVIEW -------------------------- */
 
-/*
-.upperButtons {
-  
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "b1 b2 b3 b4";
-  grid-area: upperButtons;
-}
 
-.b1 
-{ 
-  grid-area: b1; 
-  
-}
-
-.b2 { grid-area: b2; }
-
-.b3 { grid-area: b3; }
-
-.b4 { grid-area: b4; } */
 
 .grid-container {
     display: grid;
@@ -33,12 +11,13 @@
     grid-template-areas:
       "top top"
       "left right";
-      width: 70%;
-     height: 100vh;
+      width: 100%;
+      height: 100vh;
 
      overflow: hidden;
-      align-items: center;
-      justify-items: center;
+     align-items: center;
+     justify-items: center;
+      background-color: #282B39;
   }
 
   .top-container{
@@ -87,6 +66,7 @@
 
   .t2{
       grid-area: heading;
+      color: #F2D658;
   }
 
   .personalButtons-left{

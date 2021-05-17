@@ -104,7 +104,7 @@ export default function Overview() {
                                     <p className="text">Moderate Performing</p>            
                                 </div>
                                 <div className="procent">
-                                    <p className="greenText">+8%</p>
+                                    <p className="greenText">+10%</p>
                                 </div>
                             </div>
                         </button>
