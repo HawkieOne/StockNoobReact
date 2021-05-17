@@ -1,10 +1,29 @@
 import './App.css';
 import {Helmet} from "react-helmet";
-import StockList from './components/StockList';
-// import TranscationItem from './components/TranscationItem';
-import TransactionList from './components/TransactionList';
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import Login from "./components/Login"
+import { Route, Router, Switch } from 'react-router-dom';
+import history from './components/History';
+
+import React, { useState } from 'react';
+import Overview from './components/Overview';
+import Stock from './components/Stock';
+
 
 function App() {
+  const [user, setUser] = useState({
+      LoginID: "",
+      Username: "",
+      UserID: "",
+      Mail: "",
+      Money: "",
+      Holdings: "",
+      Goal: "",
+      GoalItem: "",
+      SavingMonth: "",
+      Token: ","
+  });
 
   const api = (event) => {    
     const axios = require('axios');
@@ -15,11 +34,73 @@ function App() {
     axios.get('http://api.marketstack.com/v1/tickers', {params})
       .then(response => {
         const apiResponse = response.data;
-        console.log(apiResponse); 
+        console.log(apiResponse);
+        apiResponse.data.map((stock, index) =>                     
+            axios.post('https://localhost:44388/api/stock/addStock',
+              {
+                "Stock_Name": stock.name,
+                "Stock_Shortening": stock.symbol  
+              }             
+            )
+            .then(
+              console.log(stock.name + " added")
+            ).catch(error =>
+              console.log(stock.name + " was not added")
+            )
+         );
       }).catch(error => {
         console.log(error);
       });
   };
+
+  const login = (event) => {    
+    const axios = require('axios');
+    console.log("LOGIN");
+    axios.post('http://localhost:3010/user/login',
+              {
+                "Username": "hali0151",
+                "Password": "1234"  
+              }             
+            )
+            .then(response => {
+              console.log("RESPONSE: " + response.data)
+              console.log("DATA: " + response.data)
+              const data = response.data;
+
+              user.LoginID = data.Login_ID;
+              user.Username = data.Username;
+              user.UserID = data.User_ID;
+              user.Mail = data.Mail;
+              user.Money = data.Money;
+              user.Holdings = data.Holdings;
+              user.Goal = data.Goal;
+              user.GoalItem = data.GoalItem;
+              user.SavingMonth = data.SavingMonth;
+              user.Token = data.Token.access_token;              
+              console.log(user);  
+            }).catch(error =>
+              console.log(error)
+            )
+
+  };
+
+
+  const test = (event) => {    
+    var axios = require("axios").default;
+    console.log("API");
+    var options = {
+      method: 'GET',
+      url: 'http://localhost:3010/api/private',
+      headers: { authorization: 'Bearer ' + user.Token}
+    };
+
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
+  };
+
 
   return (
     <div className="App">
@@ -28,10 +109,24 @@ function App() {
         <title>StockNoob</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
+      <Header className="Header-component"/>
       {/* <header className="App-header" onClick={api}>
+      
         Hello
       </header> */}
-      <TransactionList/>
+     
+      <Router history={history}>
+        <Switch>
+          <Route path="/" exact component={Login}/>
+          <Route path="/overview" exact component={Overview}/>
+          {/*<Route path="/stocks" exact component={Stock}/>*/}
+          
+          
+        </Switch>            
+      </Router>  
+      <p onClick={login}>Login</p>
+      <p onClick={test}>Test</p>
+      <Footer className="Footer-component"/>
     </div>
   );
 }
