@@ -8,7 +8,7 @@ import 'reactjs-popup/dist/index.css';
 
 
 export default function Login() {
-    const [user, setUser] = useState({
+    var [user, setUser] = useState({
         LoginID: "",
         Username: "",
         UserID: "",
@@ -21,9 +21,11 @@ export default function Login() {
         Token: ","
     });
 
-   var [LoginDetails, setLoginDetails] = useState({
-        Username: "",
-        Password:""
+   var [Username, setUsername] = useState({
+        Username: ""
+    });
+    var [Password, setPassword] = useState({
+        Password: ""
     });
 
     
@@ -31,21 +33,20 @@ export default function Login() {
 
     const login = (event) => {
         event.preventDefault(); 
-        console.log(LoginDetails.Username); 
-        console.log(LoginDetails.Password);   
+        // console.log(Username);
+        // console.log(Password);       
         const axios = require('axios');
         console.log("LOGIN");
         axios.post('http://localhost:3010/user/login',
                   {
-                    "Username": "hali0151",
-                    "Password": "1234"  
+                    "Username": Username.Username,
+                    "Password": Password.Password  
                   }             
                 )
                 .then(response => {
-                  console.log("RESPONSE: " + response.data)
-                  console.log("DATA: " + response.data)
+                //   console.log(response.data)             
                   const data = response.data;
-                  setUser={
+                  setUser({
                     LoginID : data.Login_ID,
                     Username : data.Username,
                     UserID : data.User_ID,
@@ -55,13 +56,26 @@ export default function Login() {
                     Goal : data.Goal,
                     GoalItem : data.GoalItem,
                     SavingMonth : data.SavingMonth,
-                    Token : data.Token.access_token}
+                    Token : data.Token.access_token})
                                
                   console.log(user);  
                 }).catch(error =>
                   console.log(error)
                 )
       };
+
+
+      const handeLogin = (event) => {
+        if ([event.target.name] == "Username") {
+            console.log("USERNAME SET");
+            setUsername({[event.target.name]: event.target.value})
+        } else {
+            console.log("PASSWORD SET");
+            setPassword({[event.target.name]: event.target.value})
+        }        
+      };
+
+
 
       
 
@@ -81,11 +95,11 @@ export default function Login() {
                     <br/>
                     <label><b>Username</b></label>
                     <br/>
-                    <input className="text" type="text" required onChange={ (event) => setLoginDetails({Username: event.target.value})} ></input>
+                    <input  type="text" required onChange={handeLogin} name="Username"></input>
                     <br/>
                     <label><b>Password</b></label>
                     <br/>
-                    <input  type="text" required onChange={ (event) => setLoginDetails({Password: event.target.value})}></input>
+                    <input  type="password" required onChange={handeLogin} name="Password"></input>
                     <br/>
                     <button className="login" type="submit" >Log in</button>
                     </form>
