@@ -28,6 +28,10 @@
     color: #F2D658;
 }
 
+.Bottom .container .left .mail{
+    margin-right: 8px;
+}
+
 .Bottom .container .middle{
     margin-top: 4rem;
     font-size: 22px;
