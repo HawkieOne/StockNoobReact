@@ -3,9 +3,12 @@ import {Helmet} from "react-helmet";
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Login from "./components/Login"
-
+import { Route, Router, Switch } from 'react-router-dom';
+import history from './components/History';
 
 import React, { useState } from 'react';
+import Overview from './components/Overview';
+import Stock from './components/Stock';
 
 
 function App() {
@@ -78,6 +81,7 @@ function App() {
             }).catch(error =>
               console.log(error)
             )
+
   };
 
 
@@ -110,7 +114,16 @@ function App() {
       
         Hello
       </header> */}
-      <Login/>
+     
+      <Router history={history}>
+        <Switch>
+          <Route path="/" exact component={Login}/>
+          <Route path="/overview" exact component={Overview}/>
+          {/*<Route path="/stocks" exact component={Stock}/>*/}
+          
+          
+        </Switch>            
+      </Router>  
       <p onClick={login}>Login</p>
       <p onClick={test}>Test</p>
       <Footer className="Footer-component"/>
