@@ -7,7 +7,7 @@
 
 .Bottom .container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
    
 }
@@ -45,7 +45,7 @@
 }
 .Bottom .container .right .icon{
     color: #F2D658;
-    padding-right: 50px;
+    margin: 25px;
     font-size: 33px;
     
 }
