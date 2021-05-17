@@ -8,7 +8,7 @@ import history from './components/History';
 
 import React, { useState } from 'react';
 import Overview from './components/Overview';
-import Stock from './components/Stock';
+
 
 
 function App() {
@@ -120,7 +120,6 @@ function App() {
           <Route path="/" exact component={Login}/>
           <Route path="/overview" exact component={Overview}/>
           {/*<Route path="/stocks" exact component={Stock}/>*/}
-          
           
         </Switch>            
       </Router>  

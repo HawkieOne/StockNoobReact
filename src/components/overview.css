@@ -152,6 +152,11 @@
     color: green;
     margin-left: 5px;
   }
+
+  .redText{
+    color: red;
+    margin-left: 5px;
+  }
   
   .text {
     color: white;
