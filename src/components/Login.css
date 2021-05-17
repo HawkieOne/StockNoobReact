@@ -5,6 +5,7 @@
     height: 92vh;
    
     background-color: #282B39;
+    margin: 0;
 }
 
 .Login .toppen{
@@ -132,6 +133,7 @@
 
   .modal > .actions {
     width: 100%;
+    
     padding: 10px 5px;
     margin: auto;
     text-align: center;
@@ -145,6 +147,7 @@
       height: 30px;
       font-size: 16px;
       cursor: pointer;
+      margin-left: 2.5px;
   }
 
   .modal > .actions .register:hover{
@@ -160,6 +163,7 @@
     height: 30px;
     font-size: 16px;
     cursor: pointer;
+    margin-right: 2.5px;
   }
 
   .modal > .actions .cancel:hover{

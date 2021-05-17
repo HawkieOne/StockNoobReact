@@ -7,8 +7,9 @@ import 'reactjs-popup/dist/index.css';
 
 
 
+
 export default function Login() {
-    const [user, setUser] = useState({
+    var [user, setUser] = useState({
         LoginID: "",
         Username: "",
         UserID: "",
@@ -21,39 +22,65 @@ export default function Login() {
         Token: ","
     });
 
+   var [Username, setUsername] = useState({
+        Username: ""
+    });
+    var [Password, setPassword] = useState({
+        Password: ""
+    });
+
+    
+
 
     const login = (event) => {
-        event.preventDefault();    
+        event.preventDefault(); 
+        // console.log(Username);
+        // console.log(Password);       
         const axios = require('axios');
         console.log("LOGIN");
         axios.post('http://localhost:3010/user/login',
                   {
-                    "Username": "hali0151",
-                    "Password": "1234"  
+                    "Username": Username.Username,
+                    "Password": Password.Password  
                   }             
                 )
                 .then(response => {
-                  console.log("RESPONSE: " + response.data)
-                  console.log("DATA: " + response.data)
+                //   console.log(response.data)             
                   const data = response.data;
-    
-                  user.LoginID = data.Login_ID;
-                  user.Username = data.Username;
-                  user.UserID = data.User_ID;
-                  user.Mail = data.Mail;
-                  user.Money = data.Money;
-                  user.Holdings = data.Holdings;
-                  user.Goal = data.Goal;
-                  user.GoalItem = data.GoalItem;
-                  user.SavingMonth = data.SavingMonth;
-                  user.Token = data.Token.access_token;              
+                  setUser({
+                    LoginID : data.Login_ID,
+                    Username : data.Username,
+                    UserID : data.User_ID,
+                    Mail : data.Mail,
+                    Money : data.Money,
+                    Holdings : data.Holdings,
+                    Goal : data.Goal,
+                    GoalItem : data.GoalItem,
+                    SavingMonth : data.SavingMonth,
+                    Token : data.Token.access_token})
+                               
                   console.log(user);  
                 }).catch(error =>
                   console.log(error)
                 )
       };
 
-    return (
+
+      const handeLogin = (event) => {
+        if ([event.target.name] == "Username") {
+            console.log("USERNAME SET");
+            setUsername({[event.target.name]: event.target.value})
+        } else {
+            console.log("PASSWORD SET");
+            setPassword({[event.target.name]: event.target.value})
+        }        
+      };
+
+
+
+      
+
+    return (  
         <div className="Login">
             <div className="toppen">
             <Popup  className="popup" trigger={<button className="button"> Log in </button>} modal nested>
@@ -69,11 +96,11 @@ export default function Login() {
                     <br/>
                     <label><b>Username</b></label>
                     <br/>
-                    <input className="text" type="text" required ></input>
+                    <input  type="text" required onChange={handeLogin} name="Username"></input>
                     <br/>
                     <label><b>Password</b></label>
                     <br/>
-                    <input  type="text" required></input>
+                    <input  type="password" required onChange={handeLogin} name="Password"></input>
                     <br/>
                     <button className="login" type="submit" >Log in</button>
                     </form>
