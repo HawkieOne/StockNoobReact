@@ -21,9 +21,18 @@ export default function Login() {
         Token: ","
     });
 
+   var [LoginDetails, setLoginDetails] = useState({
+        Username: "",
+        Password:""
+    });
+
+    
+
 
     const login = (event) => {
-        event.preventDefault();    
+        event.preventDefault(); 
+        console.log(LoginDetails.Username); 
+        console.log(LoginDetails.Password);   
         const axios = require('axios');
         console.log("LOGIN");
         axios.post('http://localhost:3010/user/login',
@@ -36,22 +45,25 @@ export default function Login() {
                   console.log("RESPONSE: " + response.data)
                   console.log("DATA: " + response.data)
                   const data = response.data;
-    
-                  user.LoginID = data.Login_ID;
-                  user.Username = data.Username;
-                  user.UserID = data.User_ID;
-                  user.Mail = data.Mail;
-                  user.Money = data.Money;
-                  user.Holdings = data.Holdings;
-                  user.Goal = data.Goal;
-                  user.GoalItem = data.GoalItem;
-                  user.SavingMonth = data.SavingMonth;
-                  user.Token = data.Token.access_token;              
+                  setUser={
+                    LoginID : data.Login_ID,
+                    Username : data.Username,
+                    UserID : data.User_ID,
+                    Mail : data.Mail,
+                    Money : data.Money,
+                    Holdings : data.Holdings,
+                    Goal : data.Goal,
+                    GoalItem : data.GoalItem,
+                    SavingMonth : data.SavingMonth,
+                    Token : data.Token.access_token}
+                               
                   console.log(user);  
                 }).catch(error =>
                   console.log(error)
                 )
       };
+
+      
 
     return (
         <div className="Login">
@@ -69,11 +81,11 @@ export default function Login() {
                     <br/>
                     <label><b>Username</b></label>
                     <br/>
-                    <input className="text" type="text" required ></input>
+                    <input className="text" type="text" required onChange={ (event) => setLoginDetails({Username: event.target.value})} ></input>
                     <br/>
                     <label><b>Password</b></label>
                     <br/>
-                    <input  type="text" required></input>
+                    <input  type="text" required onChange={ (event) => setLoginDetails({Password: event.target.value})}></input>
                     <br/>
                     <button className="login" type="submit" >Log in</button>
                     </form>
