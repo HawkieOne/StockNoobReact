@@ -2,7 +2,7 @@ import './App.css';
 import {Helmet} from "react-helmet";
 import Header from "./components/Header"
 import Footer from "./components/Footer"
-import Login from "./components/Login"
+import Main from "./components/Main"
 import { Route, Router, Switch } from 'react-router-dom';
 import history from './components/History';
 
@@ -119,7 +119,7 @@ function App() {
      
       <Router history={history}>
         <Switch>
-          <Route path="/" exact component={Login}/>
+          <Route path="/" exact component={Main}/>
           <Route path="/overview" exact component={Overview}/>
           <Route path="/stockList" exact component={StockList}/>
           <Route path="/transactionList" exact component={TransactionList}/>
