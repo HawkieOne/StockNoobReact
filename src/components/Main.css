@@ -78,3 +78,7 @@
 .Login .middleContainer .container  span{
     color: white;
 }
+
+.line-chart {
+    margin: 2%;
+}
