@@ -49,7 +49,9 @@ export default function Main() {
                 />
                 </div>
                 <div className="container">
-                <div className="right">S<span>Noob</span> <FontAwesomeIcon className="icon" icon={faChartLine} /></div>
+                <div className="right">
+                    S<span>Noob</span> <FontAwesomeIcon className="icon" icon={faChartLine} />
+                    </div>
                 </div>
             </div>
             
