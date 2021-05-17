@@ -2,6 +2,8 @@ import React from 'react'
 import {  faUser, faClock, faQuestionCircle, faSearch, faBell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
+import LoginPopup from "./LoginPopup"
+
 
 
 export default function Header() {
@@ -21,6 +23,7 @@ export default function Header() {
                 <FontAwesomeIcon className="icon" icon={faQuestionCircle} />
                 <FontAwesomeIcon className="icon" icon={faBell} />
                 <FontAwesomeIcon className="icon" icon={faUser} />
+                <LoginPopup/>
             </div>
         </div>
     )
