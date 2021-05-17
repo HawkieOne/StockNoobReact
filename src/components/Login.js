@@ -1,30 +1,56 @@
-import React from 'react'
+import React, { useState } from 'react';
 import "./Login.css";
 import {  faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-export default function Login() {
 
-    const login = (event) => {    
-        console.log("TEST");
-        var axios = require("axios").default;
+
+export default function Login() {
+    const [user, setUser] = useState({
+        LoginID: "",
+        Username: "",
+        UserID: "",
+        Mail: "",
+        Money: "",
+        Holdings: "",
+        Goal: "",
+        GoalItem: "",
+        SavingMonth: "",
+        Token: ","
+    });
+
+
+    const login = (event) => {
+        event.preventDefault();    
+        const axios = require('axios');
+        console.log("LOGIN");
+        axios.post('http://localhost:3010/user/login',
+                  {
+                    "Username": "hali0151",
+                    "Password": "1234"  
+                  }             
+                )
+                .then(response => {
+                  console.log("RESPONSE: " + response.data)
+                  console.log("DATA: " + response.data)
+                  const data = response.data;
     
-        var options = {
-          method: 'POST',
-          url: 'http://localhost:3010/user/login',
-          // headers: {authorization: 'Bearer YOUR_ACCESS_TOKEN'} NOT USED HERE
-        };
-        
-        axios.request(options).then(function (response) {
-            //IF ACCEPTED REDIRECT SAVE TOKEN BACKEND AND SAVE AS LOGGED IN IN REACT
-            //IF NOT ACCEPTED SHOW WRONG PASSWORD
-          console.log("SUCCESS: " + response.data);
-        }).catch(function (error) {
-            //IF NOT ACCEPTED SHOW WRONG PASSWORD    
-          console.error("ERROR: " + error);
-        });
+                  user.LoginID = data.Login_ID;
+                  user.Username = data.Username;
+                  user.UserID = data.User_ID;
+                  user.Mail = data.Mail;
+                  user.Money = data.Money;
+                  user.Holdings = data.Holdings;
+                  user.Goal = data.Goal;
+                  user.GoalItem = data.GoalItem;
+                  user.SavingMonth = data.SavingMonth;
+                  user.Token = data.Token.access_token;              
+                  console.log(user);  
+                }).catch(error =>
+                  console.log(error)
+                )
       };
 
     return (
@@ -39,7 +65,7 @@ export default function Login() {
             <div className="header"> Log in </div>
             <div className="content">
                 <div className="form">
-                    <form onSubmit={login()}>
+                    <form onSubmit={login}>
                     <br/>
                     <label><b>Username</b></label>
                     <br/>
@@ -49,7 +75,7 @@ export default function Login() {
                     <br/>
                     <input  type="text" required></input>
                     <br/>
-                    <button className="login" type="submit">Log in</button>
+                    <button className="login" type="submit" >Log in</button>
                     </form>
                 </div>
             </div>
@@ -65,7 +91,7 @@ export default function Login() {
                 </button>
                 <button
                     className="button register"
-                    onClick={login}
+                    
                 >
                     Register
                 </button>
@@ -76,7 +102,9 @@ export default function Login() {
             </div>
             <div className="mitten">
                 <div className="vänster"> 
-                <img className="picture" src="https://www.smartdatacollective.com/wp-content/uploads/2018/12/crypto-trading-vs-stock-trading.jpg"></img>
+                <img className="picture" src="https://www.smartdatacollective.com/wp-content/uploads/2018/12/crypto-trading-vs-stock-trading.jpg"
+                alt=""
+                ></img>
                 </div>
                 <div className="container">
                 <div className="höger">S<span>Noob</span> <FontAwesomeIcon className="icon" icon={faChartLine} /></div>

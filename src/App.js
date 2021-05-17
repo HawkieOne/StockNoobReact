@@ -3,12 +3,10 @@ import {Helmet} from "react-helmet";
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Login from "./components/Login"
-<<<<<<< HEAD
 
-=======
-import LoginPopup from "./components/LoginPopup"
+
 import React, { useState } from 'react';
->>>>>>> 54df8bf69866b4f3575da9bef1a6f205ab36c9ed
+
 
 function App() {
   const [user, setUser] = useState({
