@@ -66,15 +66,17 @@
 
   .t2{
       grid-area: heading;
-      color: #F2D658;
+      color: #FFFFFF;
   }
 
   .personalButtons-left{
     grid-area: left;
     width: 100%;
+    padding-left: 10px;
   }
   .personalButtons-right{
     grid-area: right;
+    padding-left: 10px;
   }
   
 
@@ -103,18 +105,16 @@
     grid-area: procent;
 }
 
-
-
-
-
   .graphButtons{
     border-radius: 15px;
     margin: 25px;
-    background-color: #282B39;
+    background-color: #383D53;
   
-    border-color: #F2D658;
-    padding: 60px;
+    border: none;
+    width: 320px;
+    height: 320px;
   }
+  
 
   .leftholdingButton{
       width: 80%;
@@ -139,9 +139,9 @@
   .holdingButton{
       border-radius: 15px;
       margin: 5px;
-      background-color: #282B39;
+      background-color: #383D53;
     
-      border-color: #F2D658;
+      border: none;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -161,3 +161,4 @@
   .text {
     color: white;
   }
+  

@@ -10,6 +10,7 @@ import {ReactComponent as MSFT} from './Logos/MSFT.svg'
 import {ReactComponent as News} from './Logos/News.svg'
 import {ReactComponent as Holdings} from './Logos/Holdings.svg'
 import {ReactComponent as Transaction} from './Logos/Transaction.svg'
+import {Line} from 'react-chartjs-2'
 
 
 export default function Overview() {
@@ -34,22 +35,86 @@ export default function Overview() {
                    
                         <div className="b1">
                             <button className="graphButtons">
-                                <TSLA width="144.771" height="157.205"/>
+                                <Line
+                                    data={{
+                                        labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
+                                        datasets: [{
+                                            label: 'OMX30',
+                                            data: [2389, 2319, 2343, 2412, 2410, 2376, 2342],
+                                            backgroundColor: 'rgba(242, 214, 88, 0.2)',
+                                            borderColor: 'rgba(242, 214, 88, 1)',
+                                            borderWidth: 1,
+                                            fill: true,
+                                            pointRadius: 0,
+                                        }]
+                                        
+                                    }}
+                                    width={144}
+                                    height={144}
+                                />
                             </button>
                         </div>
                         <div className="b2">
                             <button className="graphButtons">  
-                                <TSLA width="144.771" height="157.205"/>
+                                <Line
+                                    data={{
+                                        labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
+                                        datasets: [{
+                                            label: 'TSLA',
+                                            data: [530, 580, 550, 540, 510, 580, 620],
+                                            backgroundColor: 'rgba(242, 214, 88, 0.2)',
+                                            borderColor: 'rgba(242, 214, 88, 1)',
+                                            borderWidth: 1,
+                                            fill: true,
+                                            pointRadius: 0,
+                                        }]
+                                        
+                                    }}
+                                    width={144}
+                                    height={144}
+                                />
                             </button>
                         </div>
                         <div className="b3">
                             <button className="graphButtons">
-                                <TSLA width="144.771" height="157.205"/>
+                                <Line
+                                    data={{
+                                        labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
+                                        datasets: [{
+                                            label: 'AMZN',
+                                            data: [3230, 3300, 3350, 3400, 3300, 3420, 3500],
+                                            backgroundColor: 'rgba(242, 214, 88, 0.2)',
+                                            borderColor: 'rgba(242, 214, 88, 1)',
+                                            borderWidth: 1,
+                                            fill: true,
+                                            pointRadius: 0,
+                                        }]
+                                        
+                                    }}
+                                    width={144}
+                                    height={144}
+                                />
                             </button>
                         </div>
                         <div className="b4">
                             <button className="graphButtons">
-                                <TSLA width="144.771" height="157.205"/>
+                                <Line
+                                    data={{
+                                        labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
+                                        datasets: [{
+                                            label: 'FB',
+                                            data: [324, 300, 295, 280, 270, 245, 220],
+                                            backgroundColor: 'rgba(242, 214, 88, 0.2)',
+                                            borderColor: 'rgba(242, 214, 88, 1)',
+                                            borderWidth: 1,
+                                            fill: true,
+                                            pointRadius: 0,
+                                        }]
+                                        
+                                    }}
+                                    width={144}
+                                    height={144}
+                                />
                             </button>
                         </div>
                  
