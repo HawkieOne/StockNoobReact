@@ -1,9 +1,22 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import './overview.css'
 
 
-export default class Overview extends Component {
-    render() {
+export default function Overview() {
+    
+    const [user, setUser] = useState({
+        LoginID: "",
+        Username: "",
+        UserID: "",
+        Mail: "",
+        Money: "",
+        Holdings: "",
+        Goal: "",
+        GoalItem: "",
+        SavingMonth: "",
+        Token: ","
+    });
+    
         return (
             <div className="grid-container">
 
@@ -184,5 +197,5 @@ export default class Overview extends Component {
                
             </div>
         )
-    }
+    
 }
