@@ -71,41 +71,27 @@ export default function LoginPopup() {
     return (
         <Popup
         className="popup"
-        trigger={<button className="button"> Open Modal </button>}
+        trigger={<button className="login-button">Logga in</button>}
         modal
         nested
-      >
+      >        
         {close => (
                 <div className="modal">
                 <button className="close" onClick={close}>
                 &times;
                 </button>
                 <div className="header"> Log in </div>
-                <hr className="divider"/>
-                <div className="content">
-                    <form className="form" onSubmit={login}>                    
-                        <label>Username</label>
-                        <input  type="text" required onChange={handeLogin} name="Username"></input>        
-                        <label>Password</label>                    
-                        <input  type="password" required onChange={handeLogin} name="Password"></input>                     
-                        <button className="login" type="submit" >Log in</button>
-                    </form>
-                    <p className="register">Register</p>
-                </div>
-                {/* <div className="actions">
-                    <button
-                            className="button cancel"
-                            onClick={() => {
-                            console.log('modal closed');
-                            close();
-                            }}
-                        >
-                            Cancel
-                    </button>
-                    <button className="button register">
-                        Register
-                    </button>
-                </div> */}
+                    <hr className="divider"/>
+                    <div className="content">
+                        <form className="form" onSubmit={login}>                    
+                            <label>Username</label>
+                            <input  type="text" required onChange={handeLogin} name="Username"></input>        
+                            <label>Password</label>                    
+                            <input  type="password" required onChange={handeLogin} name="Password"></input>                     
+                            <button className="login" type="submit" >Log in</button>
+                        </form>
+                        <p className="register">Register</p>
+                    </div>          
                 </div>
                 )}
       </Popup>
