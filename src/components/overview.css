@@ -1,0 +1,178 @@
+
+/* ----------------------------- OVERVIEW -------------------------- */
+
+/*
+.upperButtons {
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "b1 b2 b3 b4";
+  grid-area: upperButtons;
+}
+
+.b1 
+{ 
+  grid-area: b1; 
+  
+}
+
+.b2 { grid-area: b2; }
+
+.b3 { grid-area: b3; }
+
+.b4 { grid-area: b4; } */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50vh 50vh;
+    gap: 0px 0px;
+    grid-template-areas:
+      "top top"
+      "left right";
+      width: 70%;
+     height: 100vh;
+
+     overflow: hidden;
+      align-items: center;
+      justify-items: center;
+  }
+
+  .top-container{
+      grid-area: top;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-content: center;
+      justify-content: center;
+  }
+
+
+  .left-container{
+      grid-area: left;
+      display: grid;
+      align-items: flex-start;
+      justify-items: left;
+      width: 90%;
+     
+  }
+
+  .personalButtons{
+      width: 100%;
+    
+  }
+
+  .leftButtons{
+      width: 100%;
+      
+  }
+
+  .right-container{
+      grid-area: right;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 5fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "heading heading"
+        "left right";
+        width: 90%;
+       
+       
+      
+  }
+
+  .t2{
+      grid-area: heading;
+  }
+
+  .personalButtons-left{
+    grid-area: left;
+    width: 100%;
+  }
+  .personalButtons-right{
+    grid-area: right;
+  }
+  
+
+  
+.specificButton{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr ;
+    gap: 0px 0px;
+    grid-template-areas:
+      "svg description procent";
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.svgIcon{
+    grid-area: svg;
+}
+
+.specificDescription{
+    grid-area: description;
+}
+
+.procent{
+    grid-area: procent;
+}
+
+
+
+
+
+  .graphButtons{
+    border-radius: 15px;
+    margin: 25px;
+    background-color: #282B39;
+  
+    border-color: #F2D658;
+    padding: 60px;
+  }
+
+  .leftholdingButton{
+      width: 80%;
+      border-radius: 15px;
+      margin: 5px;
+      background-color: #383D53;
+      border-color: #F2D658;
+        border: none;
+        display: flex;
+        flex-direction: row;
+        
+        align-items: center;
+        margin-top: 2em;
+        margin-bottom: 2em;
+  }
+  
+.leftholdingButton svg {
+    margin: 1em;
+
+}
+
+  .holdingButton{
+      border-radius: 15px;
+      margin: 5px;
+      background-color: #282B39;
+    
+      border-color: #F2D658;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+  }
+  
+  .greenText{
+    color: green;
+    margin-left: 5px;
+  }
+  
+  .text {
+    color: white;
+  }
