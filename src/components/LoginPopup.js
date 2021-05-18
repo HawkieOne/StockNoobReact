@@ -75,25 +75,25 @@ export default function LoginPopup() {
         modal
         nested
       >        
-        {close => (
-                <div className="modal">
-                <button className="close" onClick={close}>
+        {close => (         
+            <div className="box">
+                <button className="closeModal" onClick={close}>
                 &times;
                 </button>
-                <div className="header"> Log in </div>
-                    <hr className="divider"/>
-                    <div className="content">
-                        <form className="form" onSubmit={login}>                    
-                            <label>Username</label>
-                            <input  type="text" required onChange={handeLogin} name="Username"></input>        
-                            <label>Password</label>                    
-                            <input  type="password" required onChange={handeLogin} name="Password"></input>                     
-                            <button className="login" type="submit" >Log in</button>
-                        </form>
-                        <p className="register">Register</p>
-                    </div>          
-                </div>
-                )}
+                <h5 className="header">Log in</h5>
+                <hr className="divider"/>
+                <div className="content">
+                    <form className="form" onSubmit={login}>                    
+                        <label>Username</label>
+                        <input  type="text" required onChange={handeLogin} name="Username"></input>        
+                        <label>Password</label>                    
+                        <input  type="password" required onChange={handeLogin} name="Password"></input>                     
+                        <button className="login" type="submit" >Log in</button>
+                    </form>
+                    <p className="register">Register</p>
+                </div>          
+            </div>
+        )}
       </Popup>
     )
 }
