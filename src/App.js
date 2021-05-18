@@ -94,7 +94,7 @@ function App() {
     console.log("API");
     var options = {
       method: 'GET',
-      url: 'http://localhost:3010/api/private',
+      url: 'http://localhost:3010/stock/userstock/3',
       headers: { authorization: 'Bearer ' + user.Token}
     };
 
