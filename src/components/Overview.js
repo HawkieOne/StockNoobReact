@@ -28,6 +28,27 @@ export default function Overview() {
         Token: ","
     });
 
+
+    const pushTransaction = (event) => {
+        const path = "/transactionList";
+            history.push({
+            pathname: path
+        })     
+    };
+
+    const pushNewsfeed = (event) => {
+        const path = "/news";
+            history.push({
+            pathname: path
+        })     
+    };
+
+    const pushHoldings = (event) => {
+        const path = "/stockList";
+            history.push({
+            pathname: path
+        })     
+    };
         return (
             <div className="grid-container">
 
@@ -131,19 +152,19 @@ export default function Overview() {
                     <div className="left-container">
                         <div className="personalButtons">
                             <div className="leftButtons">
-                                <button className="leftholdingButton" >
-                                    <Holdings/>
-                                    <h4 className="text">Holdings</h4>
+                                <button className="leftholdingButton" onClick={pushHoldings}>
+                                    <Holdings onClick={pushHoldings} />
+                                    <h4 className="text" onClick={pushHoldings}>Holdings</h4>
                                     
                                 </button>
-                                <button className="leftholdingButton">
-                                    <Transaction/>
-                                    <h4 className="text">Transactions</h4>
+                                <button className="leftholdingButton" onClick={pushTransaction} >
+                                    <Transaction onClick={pushTransaction} />
+                                    <h4 className="text" onClick={pushTransaction} >Transactions</h4>
                                     
                                 </button>
-                                <button className="leftholdingButton">
-                                    <News/>
-                                    <h4 className="text">Newsfeed</h4>
+                                <button className="leftholdingButton" onClick={pushNewsfeed}>
+                                    <News onClick={pushNewsfeed}/>
+                                    <h4 className="text" onClick={pushNewsfeed}>Newsfeed</h4>
                                 </button>
                             </div>
                         </div>
@@ -241,13 +262,6 @@ export default function Overview() {
                         </button>
                     </div>
                     </div>
-                   
-
-
-          
-                    
-                   
-               
             </div>
         )
     
