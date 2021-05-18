@@ -9,6 +9,8 @@
     text-align: center;
     height: 8vh;
     color: #F2D658;
+    position: sticky;
+    z-index: 999;
 }
 
 .Header .right{
