@@ -35,7 +35,7 @@
       display: grid;
       align-items: flex-start;
       justify-items: left;
-      width: 90%;
+      width: 60%;
      
   }
 
@@ -58,7 +58,8 @@
       grid-template-areas:
         "heading heading"
         "left right";
-        width: 90%;
+        width: 100%;
+        margin-right: 15%;
        
        
       
