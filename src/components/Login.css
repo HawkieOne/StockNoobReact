@@ -1,11 +1,13 @@
 .login-button {
-    background-color: #383D53;
+    background-color: #282b39;
     color: #F2D658;
     border-radius: 10px;
     font-size: 1.25rem;
     cursor: pointer;
-    border: 1px solid #282b39;
-    padding: 0% 10%;
+    border: none;
+    width: 100px;
+    /*border: 1px solid #282b39;*/
+    /*padding: 0% 10%;*/
 }
 
 /*        Modal        */
