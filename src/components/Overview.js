@@ -44,6 +44,8 @@ export default function Overview() {
                                             backgroundColor: 'rgba(242, 214, 88, 0.2)',
                                             borderColor: 'rgba(242, 214, 88, 1)',
                                             borderWidth: 1,
+                                            tension: 0,
+                                            borderCapStyle: "round",
                                             fill: true,
                                             pointRadius: 0,
                                         }]
@@ -65,6 +67,8 @@ export default function Overview() {
                                             backgroundColor: 'rgba(242, 214, 88, 0.2)',
                                             borderColor: 'rgba(242, 214, 88, 1)',
                                             borderWidth: 1,
+                                            tension: 0,
+                                            borderCapStyle: "round",
                                             fill: true,
                                             pointRadius: 0,
                                         }]
@@ -86,6 +90,8 @@ export default function Overview() {
                                             backgroundColor: 'rgba(242, 214, 88, 0.2)',
                                             borderColor: 'rgba(242, 214, 88, 1)',
                                             borderWidth: 1,
+                                            tension: 0,
+                                            borderCapStyle: "round",
                                             fill: true,
                                             pointRadius: 0,
                                         }]
@@ -107,6 +113,8 @@ export default function Overview() {
                                             backgroundColor: 'rgba(242, 214, 88, 0.2)',
                                             borderColor: 'rgba(242, 214, 88, 1)',
                                             borderWidth: 1,
+                                            tension: 0,
+                                            borderCapStyle: "round",
                                             fill: true,
                                             pointRadius: 0,
                                         }]
@@ -150,6 +158,7 @@ export default function Overview() {
                     <div className="personalButtons-left">
                     <button className="holdingButton" id="left1">
                     <div className="specificButton">
+                        
                                 <AMZN width="49.438" height="54.637" fill="#fff"/>
       
                                 <div className="specificDescription">
