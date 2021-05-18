@@ -24,7 +24,8 @@ function App() {
       Goal: "",
       GoalItem: "",
       SavingMonth: "",
-      Token: ","
+      Token: "",
+      loggedIn: false
   });
 
   const api = (event) => {    
@@ -78,7 +79,8 @@ function App() {
               user.Goal = data.Goal;
               user.GoalItem = data.GoalItem;
               user.SavingMonth = data.SavingMonth;
-              user.Token = data.Token.access_token;              
+              user.Token = data.Token.access_token; 
+              user.loggedIn = true;             
               console.log(user);  
             }).catch(error =>
               console.log(error)
@@ -111,7 +113,7 @@ function App() {
         <title>StockNoob</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <Header className="Header-component"/>
+      <Header className="Header-component" user={user}/>
       {/* <header className="App-header" onClick={api}>
       
         Hello

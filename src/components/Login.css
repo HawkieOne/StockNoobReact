@@ -4,121 +4,92 @@
     border-radius: 10px;
     font-size: 1.25rem;
     cursor: pointer;
+    border: 1px solid #282b39;
+    padding: 0% 10%;
 }
+
 /*        Modal        */
 
-.popup-content {
-    /* outline: solid blue; */
-    padding: 50px;
-    margin: 0;
-}
-.popup-overlay {
-    outline: none;
-}
-
-.modal-content {
-    background-color: #383D53;
-    margin: 0;
-    padding: 0;
-    outline: none;
-}
-.modal {
-    background-color: #383D53;
-  }
-  .modal > .header {
-    width: 100%;
-    font-size: 1.75rem;
-    text-align: center;
-    padding: 1%;
-    color: #F2D658;
-    margin-bottom: -20px;
-  }
-  .divider {
-      border-color: #F2D658;
-      margin: 4% 2% 0 2%;
-  }
-  .modal > .content {
-    width: 100%;
-    padding: 1% 0.5%;
-  }
-  .form{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;   
-      align-items: center;   
-      color: black;
-  }
-
-  .modal > .content .form label{
-      font-size: 1.25rem;
-      margin: 1%;
-  }
-
-  .modal > .content .form input{
-      font-size: 1rem;
-      border-radius: 5px;
-  }
- 
-  .modal > .content .form .login{
-    margin-top: 4%;
-    color: green;
+.box {
     background-color: #282B39;
-    width: 120px;
-    border: none;
-    border-radius: 16px;
-    height: 30px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+}
 
-  .modal > .content .form .login:hover{
-      border: 1px green solid;
-      /* color: #282B39; */
-  }
+.header {
+width: 100%;
+font-size: 1.75rem;
+text-align: center;
+padding: 1%;
+color: #F2D658;
+margin-bottom: -20px;
+}
 
-  .register {
-      text-align: center;
-      color: #F2D658;
-  }
-  .register:hover {
-      text-decoration: underline;
-      cursor: pointer;
-  }
+.divider {
+    border-color: #F2D658;
+    margin: 4% 2% 0 2%;
+}
 
-  .modal > .actions {
-    width: 100%;
-    padding: 10px 5px;
-    margin: auto;
-    text-align: center;
-  }
+.content {
+width: 100%;
+padding: 1% 0.5%;
+}
 
-  .modal > .actions .cancel{
-    color: crimson;
-    background-color: #282B39;
-    width: 120px;
-    border: none;
-    border-radius: 16px;
-    height: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-right: 2.5px;
-  }
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+    align-items: center;   
+    color: black;
+}
 
-  .modal > .actions .cancel:hover{
-    background-color: crimson;
+label{
+    font-size: 1.25rem;
+    margin: 1%;
     color: #F2D658;
-  }
-  .modal > .close {
+}
+
+input{
+    font-size: 1rem;
+    border-radius: 5px;  
+}
+
+.login{
+margin-top: 4%;
+color: green;
+background-color: #383D53;
+width: 120px;
+border: none;
+border-radius: 16px;
+height: 30px;
+font-size: 16px;
+cursor: pointer;
+margin-bottom: 1%;
+}
+
+.login:hover{
+    border: 1px green solid;
+    /* color: #282B39; */
+}
+
+.register {
+    text-align: center;
+    color: #F2D658;
+}
+.register:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.closeModal {
     cursor: pointer;
     position: absolute;
     display: block;
-    padding: 2px 5px;
+    padding: 5px 5px;
     line-height: 20px;
     right: -10px;
-    top: -10px;
+    top: -5%;
     font-size: 24px;
     background: #282B39;
     color: #F2D658;
-    border-radius: 18px;
+    border-radius: 25%;
     border: none;
-  }
+}

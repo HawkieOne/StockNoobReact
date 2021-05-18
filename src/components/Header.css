@@ -8,34 +8,32 @@
     align-items: center;
     text-align: center;
     height: 8vh;
+    color: #F2D658;
 }
 
 .Header .right{
+    display: flex;
+    align-items: center;
     margin-right: 2%;
     font-size: 1.5rem;
 }
 
 .Header .right .icon{
-    color: #F2D658;
-    padding-right: 20px;
-    font-size: 33px;
+    margin: 10px;
+    font-size: 1.75rem;
 }
 
 .Header .middle{
-    margin-right: 3%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-right: 8%;
+    font-size: 2rem;
 }
 
-.Header .middle p{
-    color: #F2D658;
-    font-size: 1.5rem;
-}
-
-.Header .left .search .searcharea{
-    width: 140px;
-    border: none;
-    background-color: #282b39;
-    color: #F2D658;
-    height: 80%;
+.Header .middle span{
+    margin-right: 10%;
+    color: white;
 }
 
 ::placeholder {
@@ -49,23 +47,22 @@
 
 .Header .left .search{
     background-color: #282b39;
-    border-color: #F2D658;
     z-index: 1000 !important;
-    border-radius: 16px;
+    border-radius: 10px;
     width: 180px;
     height: 2rem;
     display: flex;
     align-items: center;
-    
 }
 
 .Header .left .search .searchIcon{
-    color: #F2D658;
-    margin-left: 5px;
+    margin: 1% 5%;
     font-size: 22px;
 }
 
-.Header .left .search p{
-    margin-left: 10px;
-    color: #F2D658;
+.Header .left .search .searcharea{
+    width: 140px;
+    border: none;
+    background-color: #282b39;
+    height: 80%;
 }
