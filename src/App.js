@@ -35,7 +35,7 @@ function App() {
   const api = (event) => {    
     const axios = require('axios');
     const params = {
-      access_key: 'da50ae70b9dd9a40022f6cc5ef93f4e5'
+      access_key: '42afa58ed9a8332cd53fb1a45d75b29b'
     }
 
     axios.get('http://api.marketstack.com/v1/tickers', {params})
@@ -136,8 +136,6 @@ function App() {
           
         </Switch>            
       </Router>  
-      <p onClick={login}>Login</p>
-      <p onClick={test}>Test</p>
       <Footer className="Footer-component"/>
     </div>
   );

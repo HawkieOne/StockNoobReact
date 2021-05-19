@@ -37,7 +37,7 @@ export default function Main() {
         let label = "";
         const axios = require('axios');
         const params = {
-          access_key: 'da50ae70b9dd9a40022f6cc5ef93f4e5'
+          access_key: '42afa58ed9a8332cd53fb1a45d75b29b'
         }
         console.log(stockSymbol);
         axios.get(`http://api.marketstack.com/v1/tickers/${stockSymbol}/intraday`, {params})

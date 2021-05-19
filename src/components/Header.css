@@ -33,6 +33,15 @@
   font-size: 2rem;
 }
 
+.Header .middle {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-right: 5%;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
 .Header .middle span {
   margin-right: 10%;
   color: white;
