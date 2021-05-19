@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import Overview from './components/Overview';
 import StockList from './components/StockList';
 import TransactionList from './components/TransactionList'
+import Guide from './components/Guide';
 
 
 
@@ -125,7 +126,7 @@ function App() {
           <Route path="/overview" exact component={Overview}/>
           <Route path="/stockList" exact component={StockList}/>
           <Route path="/transactionList" exact component={TransactionList}/>
-          
+          <Route path="/guide" exact component = {Guide}/>
         </Switch>            
       </Router>  
       <p onClick={login}>Login</p>
