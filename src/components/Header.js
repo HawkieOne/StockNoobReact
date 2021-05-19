@@ -3,6 +3,7 @@ import {  faUser, faClock, faQuestionCircle, faSearch, faBell, faChartLine } fro
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
 import LoginPopup from "./LoginPopup"
+import history from './History';
 
 
 
@@ -20,6 +21,13 @@ export default function Header(prop) {
         }        
       };
 
+      const toHome = () => {    
+        const path = "/";      
+        history.push({
+            pathname: path
+        })  
+      };
+
     return (
         <div className="Header">
             <div className="left">
@@ -28,7 +36,7 @@ export default function Header(prop) {
                     <input className="searcharea" type="text" placeholder="Search..."></input>
                 </div>
             </div>
-            <div className="middle">
+            <div className="middle" onClick={toHome}>
                 {/* <p>Stocknoob</p> */}
                 S<span>Noob</span> <FontAwesomeIcon className="icon" icon={faChartLine} />         
             </div>
