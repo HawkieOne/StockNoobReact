@@ -131,8 +131,6 @@ function App() {
           <Route path="/NewsDetails" exact component={NewsDetails}/>
         </Switch>            
       </Router>  
-      <p onClick={login}>Login</p>
-      <p onClick={test}>Test</p>
       <Footer className="Footer-component"/>
     </div>
   );
