@@ -13,6 +13,7 @@ import TransactionList from './components/TransactionList'
 import Guide from './components/Guide';
 import News from './components/NewsFeed'
 import NewsDetails from './components/NewsDetails'
+import Search from './components/Search';
 
 
 
@@ -131,6 +132,8 @@ function App() {
           <Route path="/guide" exact component = {Guide}/>
           <Route path="/news" exact component={News}/>
           <Route path="/NewsDetails" exact component={NewsDetails}/>
+          <Route path="/search" exact component={Search}/>
+          
         </Switch>            
       </Router>  
       <p onClick={login}>Login</p>

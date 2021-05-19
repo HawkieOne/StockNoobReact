@@ -3,18 +3,22 @@ import {  faUser, faClock, faQuestionCircle, faSearch, faBell, faChartLine } fro
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
 import LoginPopup from "./LoginPopup"
+import Guide from './Guide';
+
 
 
 
 export default function Header(prop) {
+
     
     const showIcons = () => {
         if (prop.user.loggedIn) {
             console.log(prop.user.loggedIn)
-            return <>
-                    <FontAwesomeIcon className="icon" icon={faQuestionCircle} />
-                    <FontAwesomeIcon className="icon" icon={faBell} />
-                    <FontAwesomeIcon className="icon" icon={faUser} /></>
+            return <> 
+                        <FontAwesomeIcon className="icon" icon={faQuestionCircle} onClick={Guide}/>
+                        <FontAwesomeIcon className="icon" icon={faBell}/>
+                        <FontAwesomeIcon className="icon" icon={faUser}/>
+                    </>
         } else {
             return <LoginPopup/>;
         }        
@@ -24,7 +28,7 @@ export default function Header(prop) {
         <div className="Header">
             <div className="left">
                 <div className="search">
-                    <FontAwesomeIcon className="searchIcon" icon={faSearch} />
+                    <FontAwesomeIcon className="searchIcon" icon={faSearch}  />
                     <input className="searcharea" type="text" placeholder="Search..."></input>
                 </div>
             </div>

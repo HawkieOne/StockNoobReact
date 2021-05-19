@@ -1,70 +1,70 @@
-.Header{
-    top: 0;
-    background-color: #383D53;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    height: 8vh;
-    color: #F2D658;
-    position: sticky;
-    z-index: 999;
+.Header {
+  top: 0;
+  background-color: #383d53;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 8vh;
+  color: #f2d658;
+  position: sticky;
+  z-index: 999;
 }
 
-.Header .right{
-    display: flex;
-    align-items: center;
-    margin-right: 2%;
-    font-size: 1.5rem;
+.Header .right {
+  display: flex;
+  align-items: center;
+  margin-right: 2%;
+  font-size: 1.5rem;
 }
 
-.Header .right .icon{
-    margin: 10px;
-    font-size: 1.75rem;
+.Header .right .icon {
+  margin: 10px;
+  font-size: 1.75rem;
 }
 
-.Header .middle{
-    display: flex;
-    text-align: center;
-    align-items: center;
-    margin-right: 5%;
-    font-size: 2rem;
+.Header .middle {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-right: 5%;
+  font-size: 2rem;
 }
 
-.Header .middle span{
-    margin-right: 10%;
-    color: white;
+.Header .middle span {
+  margin-right: 10%;
+  color: white;
 }
 
 ::placeholder {
-    color:#F2D658;
-    
-  }
-
-.Header .left{
-    margin-left: 3%;
+  color: #f2d658;
 }
 
-.Header .left .search{
-    background-color: #282b39;
-    z-index: 1000 !important;
-    border-radius: 10px;
-    width: 180px;
-    height: 2rem;
-    display: flex;
-    align-items: center;
+.Header .left {
+  margin-left: 3%;
 }
 
-.Header .left .search .searchIcon{
-    margin: 1% 5%;
-    font-size: 22px;
+.Header .left .search {
+  background-color: #282b39;
+  z-index: 1000 !important;
+  border-radius: 10px;
+  width: 180px;
+  height: 2rem;
+  display: flex;
+  align-items: center;
 }
 
-.Header .left .search .searcharea{
-    width: 140px;
-    border: none;
-    background-color: #282b39;
-    height: 80%;
+.Header .left .search .searchIcon {
+  margin: 1% 5%;
+  font-size: 22px;
+}
+
+.Header .left .search .searcharea {
+  width: 140px;
+  border: none;
+  background-color: #282b39;
+  color: #f2d658;
+  height: 80%;
 }
