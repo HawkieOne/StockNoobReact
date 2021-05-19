@@ -96,7 +96,7 @@ export default function Overview() {
           console.error(error);
           return "MSFT";
         });
-      });
+    },  []);
         return (
             <div className="grid-container">
                 
@@ -231,7 +231,11 @@ export default function Overview() {
                                 <AMZN width="49.438" height="54.637" fill="#fff"/>
       
                                 <div className="specificDescription">
-                                    <h6 className="text">{stocks[0].Stock_Name}, {stocks[0].Stock_Shortening}</h6>
+                                        {stocks.length > 1 ? (
+                                            <h6 className="text">{stocks[0].Stock_Name}, {stocks[0].Stock_Shortening}</h6>
+                                        ) : (
+                                            <h6 className="text">NO STOCK</h6>
+                                        )}
                                     <p className="text">Top Performing</p>            
                                 </div>
                                 <div className="procent">
@@ -244,7 +248,12 @@ export default function Overview() {
                                 <GOOG width="49.438" height="54.637" fill="#fff"/>
                                     
                                 <div className="specificDescription">
-                                    <h6 className="text">{stocks[1].Stock_Name}, {stocks[1].Stock_Shortening}</h6>
+                                        {stocks.length > 1 ? (
+                                            <h6 className="text">{stocks[1].Stock_Name}, {stocks[1].Stock_Shortening}</h6>
+                                        ) : (
+                                            <h6 className="text">NO STOCK</h6>
+                                        )}
+                                    
                                     <p className="text">Top Performing</p>            
                                 </div>
                                 <div className="procent">
@@ -257,7 +266,11 @@ export default function Overview() {
                                 <TSLA/>
                                     
                                 <div className="specificDescription">
-                                    <h6 className="text">{stocks[2].Stock_Name}, {stocks[2].Stock_Shortening} </h6>
+                                        {stocks.length > 1 ? (
+                                            <h6 className="text">{stocks[2].Stock_Name}, {stocks[2].Stock_Shortening}</h6>
+                                        ) : (
+                                            <h6 className="text">NO STOCK</h6>
+                                        )}
                                     <p className="text">Moderate Performing</p>            
                                 </div>
                                 <div className="procent">
@@ -274,7 +287,11 @@ export default function Overview() {
                                 <FB width="49.438" height="54.637" fill="#fff"/>
                                     
                                 <div className="specificDescription">
-                                    <h6 className="text">{stocks[3].Stock_Name}, {stocks[3].Stock_Shortening}</h6>
+                                        {stocks.length > 1 ? (
+                                            <h6 className="text">{stocks[3].Stock_Name}, {stocks[3].Stock_Shortening}</h6>
+                                        ) : (
+                                            <h6 className="text">NO STOCK</h6>
+                                        )}
                                     <p className="text">Underperforming</p>            
                                 </div>
                                 <div className="procent">
@@ -287,7 +304,11 @@ export default function Overview() {
                                 <AAPL width="49.438" height="54.637" fill="#fff"/>
                                     
                                 <div className="specificDescription">
-                                    <h6 className="text">{stocks[4].Stock_Name}, {stocks[4].Stock_Shortening} </h6>
+                                        {stocks.length > 1 ? (
+                                            <h6 className="text">{stocks[4].Stock_Name}, {stocks[4].Stock_Shortening}</h6>
+                                        ) : (
+                                            <h6 className="text">NO STOCK</h6>
+                                        )}
                                     <p className="text">Underperforming</p>            
                                 </div>
                                 <div className="procent">
@@ -300,7 +321,11 @@ export default function Overview() {
                                 <MSFT width="49.438" height="54.637" fill="#fff"/>
                                     
                                 <div className="specificDescription">
-                                    <h6 className="text">{stocks[5].Stock_Name}, {stocks[5].Stock_Shortening}</h6>
+                                        {stocks.length > 1 ? (
+                                            <h6 className="text">{stocks[5].Stock_Name}, {stocks[5].Stock_Shortening}</h6>
+                                        ) : (
+                                            <h6 className="text">NO STOCK</h6>
+                                        )}
                                     <p className="text">Underperforming</p>            
                                 </div>
                                 <div className="procent">
