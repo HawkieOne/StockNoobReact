@@ -11,6 +11,8 @@ import Overview from './components/Overview';
 import StockList from './components/StockList';
 import TransactionList from './components/TransactionList'
 import Guide from './components/Guide';
+import News from './components/NewsFeed'
+import NewsDetails from './components/NewsDetails'
 
 
 
@@ -95,7 +97,7 @@ function App() {
     console.log("API");
     var options = {
       method: 'GET',
-      url: 'http://localhost:3010/api/private',
+      url: 'http://localhost:3010/stock/userstock/3',
       headers: { authorization: 'Bearer ' + user.Token}
     };
 
@@ -127,6 +129,8 @@ function App() {
           <Route path="/stockList" exact component={StockList}/>
           <Route path="/transactionList" exact component={TransactionList}/>
           <Route path="/guide" exact component = {Guide}/>
+          <Route path="/news" exact component={News}/>
+          <Route path="/NewsDetails" exact component={NewsDetails}/>
         </Switch>            
       </Router>  
       <p onClick={login}>Login</p>
