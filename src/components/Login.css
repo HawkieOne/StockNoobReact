@@ -13,8 +13,11 @@
 
 /*        Modal        */
 
+.popup {
+    border-radius: 25%;
+}
 .box {
-    background-color: #282B39;
+    background-color: #282B39;    
 }
 
 .header {
@@ -86,13 +89,13 @@ margin-bottom: 1%;
     cursor: pointer;
     position: absolute;
     display: block;
-    padding: 5px 5px;
-    line-height: 20px;
-    right: -10px;
-    top: -5%;
-    font-size: 24px;
+    padding: 2%;
+    line-height: 50%;
+    right: -3%;
+    top: -3%;
+    font-size: 1.5rem;
     background: #282B39;
-    color: #F2D658;
+    color: crimson;
     border-radius: 25%;
-    border: none;
+    border: crimson solid 1px;
 }
