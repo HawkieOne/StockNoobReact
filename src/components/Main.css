@@ -1,84 +1,13 @@
 
 .Login{
-    
-    width: 100%;
-    height: 92vh;
-   
     background-color: #282B39;
+}
+
+.list {
+    list-style-type: none;
     margin: 0;
+    padding: 0;
 }
-
-.Login .top{
-    
-    height: 100px;
-}
-
-.Login .top .button{
-    background-color: #F2D658;
-    width: 110px;
-    height: 29px;
-    border-radius: 16px;
-    border: none;
-    float: right;
-    margin-right: 70px;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-.Login .middleContainer{
-    
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    
-}
-
-.Login .middleContainer .left{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 45%;
-    height: 30rem;   
-}
-.Login .middleContainer .left .picture{
-    border-radius: 2000px;
-}
-
-.Login .middleContainer .left .pic{
-    width: 80%;
-}
-
-.Login .middleContainer .left .pic2{
-    height: 200px;
-    width: 200px;
-}
-
-.Login .middleContainer .container{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    color: azure;
-    width: 35%;
-    height: 30rem;
-    flex-direction: column;
-    margin-right: 150px;
-    
-}
-
-.Login .middleContainer .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    height: 20px;
-    font-size: 80px;
-    color: #F2D658;
-}
-
-.Login .middleContainer .container  span{
-    color: white;
-}
-
 .line-chart {
     margin: 2%;
 }

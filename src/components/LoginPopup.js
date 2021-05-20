@@ -46,7 +46,7 @@ export default function LoginPopup() {
         console.log(Password);       
         const axios = require('axios');
         console.log("LOGIN");
-        axios.post('https://stocknoob.azurewebsites.net//user/login',
+        axios.post('https://stocknoob20210520102100.azurewebsites.net/user/login',
                   {
                     "Username": Username.Username,
                     "Password": Password.Password  
