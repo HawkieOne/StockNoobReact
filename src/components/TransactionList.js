@@ -22,22 +22,22 @@ function TransactionList() {
                         <div className="filterBy">
                             <p>Filter: </p>
                             <label class="container">Buy
-                                <input type="radio" name="radio"/>
+                                <input type="radio" name="radioBuy"/>
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">Sell
-                                <input type="radio" name="radio"/>
+                                <input type="radio" name="radioSell"/>
                                 <span class="checkmark"></span>
                             </label>
                         </div>
                         <div className="sortedBy">
                             <p>Sort: </p>
                             <label class="container">Newest
-                                <input type="radio" name="radio"/>
+                                <input type="radio" name="radioNew"/>
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">Oldest
-                                <input type="radio" name="radio"/>
+                                <input type="radio" name="radioOld"/>
                                 <span class="checkmark"></span>
                             </label>
                         </div>

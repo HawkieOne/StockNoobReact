@@ -10,7 +10,15 @@ import React, { useState } from 'react';
 import Overview from './components/Overview';
 import StockList from './components/StockList';
 import TransactionList from './components/TransactionList'
+<<<<<<< HEAD
 import Explore from './components/Explore'
+=======
+import Guide from './components/Guide';
+import News from './components/NewsFeed'
+import NewsDetails from './components/NewsDetails'
+import Search from './components/Search';
+
+>>>>>>> c6d02f0306aa92c1f0be488772e5f82a3baac446
 
 
 function App() {
@@ -31,7 +39,7 @@ function App() {
   const api = (event) => {    
     const axios = require('axios');
     const params = {
-      access_key: 'da50ae70b9dd9a40022f6cc5ef93f4e5'
+      access_key: '42afa58ed9a8332cd53fb1a45d75b29b'
     }
 
     axios.get('http://api.marketstack.com/v1/tickers', {params})
@@ -125,11 +133,17 @@ function App() {
           <Route path="/overview" exact component={Overview}/>
           <Route path="/stockList" exact component={StockList}/>
           <Route path="/transactionList" exact component={TransactionList}/>
+<<<<<<< HEAD
           <Route path="/explore" exact component={Explore}/>
+=======
+          <Route path="/guide" exact component = {Guide}/>
+          <Route path="/news" exact component={News}/>
+          <Route path="/NewsDetails" exact component={NewsDetails}/>
+          <Route path="/search" exact component={Search}/>
+          
+>>>>>>> c6d02f0306aa92c1f0be488772e5f82a3baac446
         </Switch>            
       </Router>  
-      <p onClick={login}>Login</p>
-      <p onClick={test}>Test</p>
       <Footer className="Footer-component"/>
     </div>
   );

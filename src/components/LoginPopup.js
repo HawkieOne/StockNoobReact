@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Popup from 'reactjs-popup';
 import "./Login.css";
+import history from './History';
 
 export default function LoginPopup() {
+
+    const ref = useRef();
+    const closeModal = () => ref.current.close();
+    const [open, setOpen] = useState(false);
+
 
     var [user, setUser] = useState({
         LoginID: "",
@@ -24,13 +30,23 @@ export default function LoginPopup() {
         Password: ""
     });
 
+    const toOverview = () => {    
+        const path = "/Overview";
+            history.push({
+            pathname: path,
+            // state: { 
+            //     article: prop.article
+            // }
+        })  
+      };
+
     const login = (event) => {
         event.preventDefault(); 
-        // console.log(Username);
-        // console.log(Password);       
+        console.log(Username);
+        console.log(Password);       
         const axios = require('axios');
         console.log("LOGIN");
-        axios.post('http://localhost:3010/user/login',
+        axios.post('https://stocknoob20210520102100.azurewebsites.net/user/login',
                   {
                     "Username": Username.Username,
                     "Password": Password.Password  
@@ -51,14 +67,16 @@ export default function LoginPopup() {
                     SavingMonth : data.SavingMonth,
                     Token : data.Token.access_token})
                                
-                  console.log(user);  
+                  console.log(user);                    
+                  toOverview();
+                //   closeModal();                 
                 }).catch(error =>
                   console.log(error)
                 )
       };
 
 
-      const handeLogin = (event) => {
+      const handleLogin = (event) => {
         if ([event.target.name] == "Username") {
             console.log("USERNAME SET");
             setUsername({[event.target.name]: event.target.value})
@@ -71,24 +89,28 @@ export default function LoginPopup() {
     return (
         <Popup
         className="popup"
-        trigger={<button className="login-button">Logga in</button>}
+        trigger={<button className="login-button">Logga in</button>} 
         modal
         nested
+        contentStyle={{ padding: '0px', border: 'none' }}
       >        
         {close => (         
             <div className="box">
                 <button className="closeModal" onClick={close}>
                 &times;
                 </button>
-                <h5 className="header">Log in</h5>
+                <div className="d-flex justify-content-end">
+                    <h5 className="header">Log in</h5>
+                    {/* <button className="close text-danger pr-1 pt-1" onClick={close}>&times;</button> */}
+                </div>                
                 <hr className="divider"/>
                 <div className="content">
                     <form className="form" onSubmit={login}>                    
                         <label>Username</label>
-                        <input  type="text" required onChange={handeLogin} name="Username"></input>        
+                        <input  type="text" required onChange={handleLogin} name="Username"></input>        
                         <label>Password</label>                    
-                        <input  type="password" required onChange={handeLogin} name="Password"></input>                     
-                        <button className="login" type="submit" >Log in</button>
+                        <input  type="password" required onChange={handleLogin} name="Password"></input>                     
+                        <button className="login" type="submit">Log in</button>
                     </form>
                     <p className="register">Register</p>
                 </div>          
