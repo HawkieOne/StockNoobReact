@@ -18,7 +18,7 @@ export default function Explore() {
     var [growth, setGrowth] = useState(Number);
     var [timespan, setTimespan] = useState(Number);
     var [period, setPeriod] = useState("/Day");
-    var [buyInput, setBuyInput] = useState({amount: Number});
+    var [buyInput, setBuyInput] = useState(Number);
     var [buyPrice, setBuyPrice] = useState(Number);
     let days = ["","15:00","", "17:00","","19:00", "","21:00","" ,"23:00"]
     let weeks = ["","","","","Mon","","","","", "Tue","","","","", "Wed","","","","", "Thu","","","","", "Fri"]
@@ -185,14 +185,13 @@ export default function Explore() {
         });
     }
 
-    var handleBuy = (e) =>{
-       e.preventDefault();
+    const handleBuy = (e) => {
        setBuyInput(e.target.value);
-       var kostnad = buyState.HS_Price * buyInput.amount
-       setBuyPrice({kostnad})
-       console.log(buyInput)
-       console.log(buyPrice)
-
+       var kostnad = buyState.HS_Price * buyInput
+    //    console.log( buyState.HS_Price + " " + buyInput + " " + kostnad);
+       setBuyPrice(kostnad)
+    //    console.log(buyInput)
+    //    console.log(buyPrice)
     }
 
        useEffect(() => {
@@ -372,10 +371,10 @@ export default function Explore() {
                                         
                                         <div className="input">
                                             <p>Current cash: {cashState.Money}</p>
-                                            <p>Price: {buyState.HS_Price * buyInput.amount}</p>
+                                            <p>Price: {buyState.HS_Price * buyInput}</p>
                                             <form onSubmit={buyStock}>
-                                            <label>Ammount</label>
-                                            <input  type="number" required name="Amount" placeholder="nr of stocks" value={buyInput} onChange={e => handleBuy }></input> 
+                                            <label>Amount</label>
+                                            <input  type="number" required name="Amount" placeholder="nr of stocks" value={buyInput} onChange={handleBuy}></input> 
                                             <button className="btn-purchase" type="submit">Continue</button>  
                                             </form> 
                                         </div>
@@ -405,7 +404,7 @@ export default function Explore() {
                                             <p>Stocks to sell: {stocks}</p>
                                             <p>Price: {buyState.HS_Price * buyState.HS_Amount}</p>
                                             <form onSubmit={sellStock}>
-                                            <label>Ammount</label>
+                                            <label>Amount</label>
                                             <input  type="text" required name="Username" placeholder="nr of stocks"></input>  
                                             <button className="btn-purchase" type="submit">Continue</button>  
                                             </form> 
