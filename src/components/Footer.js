@@ -10,24 +10,26 @@ export default function Footer() {
         <div className="footer row">
             <div className="col">
                     <h5>CONTACT</h5>
-                    <hr className="seperator"/>
+                    <hr className="seperator w-75"/>
                     <span>
-                    <FontAwesomeIcon className="mail" icon={faAddressBook} />
-                    Stocknoob@stocks.com
+                    <FontAwesomeIcon className="mail fa-lg" icon={faAddressBook} />
+                    stocknoob@stocks.com
                     </span>
                 </div>
-                <div className="col">                    
+                <div className="col font-weight-light">                    
                     <h5>ABOUT</h5>
-                    <hr className="seperator"/>
-                    <span>
-                    Stocknoob is a fictional training 
-                    <br/>
-                    application designed as a learning tool</span>
+                    <hr className="seperator w-75"/>
+                    Stocknoob is a fictional stock training                 
+                    application
                 </div>
-                <div className="col row">
-                    <FontAwesomeIcon className="icon col" icon={faInstagram} />
-                    <FontAwesomeIcon className="icon col" icon={faTwitter} />
-                    <FontAwesomeIcon className="icon col" icon={faFacebookF} />
+                <div className="col">
+                    <h5>Social</h5>
+                    <hr className="seperator w-75"/>
+                    <div className="d-flex justify-content-center">
+                        <FontAwesomeIcon className="icon mr-5 fa-lg" icon={faInstagram} />
+                        <FontAwesomeIcon className="icon fa-lg" icon={faTwitter} />
+                        <FontAwesomeIcon className="icon ml-5 fa-lg" icon={faFacebookF} />
+                    </div>
                 </div>
         </div>
     )

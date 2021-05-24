@@ -2,52 +2,14 @@
     width: 100%;
     background-color: #383D53;
     color: #F2D658; 
+    padding: 1%;
 }
 
-/* .Bottom .container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.Bottom .container .seperator{
+.seperator{
     border-color: #F2D658;
-    width: 10rem;
 }
 
-.Bottom .container .left{
-    margin-top: 2rem;
-    font-size: 22px;
-    color: #F2D658; 
+.mail {
+    margin-right: 2%;
 }
-
-.Bottom .container .left span{
-    font-size: 18px;
-    color: #F2D658;
-}
-
-.Bottom .container .left .mail{
-    margin-right: 8px;
-}
-
-.Bottom .container .middle{
-    margin-top: 4rem;
-    font-size: 22px;
-    color: #F2D658; 
-}
-
-.Bottom .container .middle span{
-    font-size: 18px;
-    color: #F2D658; 
-}
-
-.Bottom .container .right{
-    margin-top: 4rem;
-    
-}
-.Bottom .container .right .icon{
-    color: #F2D658;
-    margin: 25px;
-    font-size: 33px;
-    
-} */
