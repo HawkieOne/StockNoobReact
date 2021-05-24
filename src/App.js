@@ -10,15 +10,12 @@ import React, { useState } from 'react';
 import Overview from './components/Overview';
 import StockList from './components/StockList';
 import TransactionList from './components/TransactionList'
-<<<<<<< HEAD
 import Explore from './components/Explore'
-=======
 import Guide from './components/Guide';
 import News from './components/NewsFeed'
 import NewsDetails from './components/NewsDetails'
 import Search from './components/Search';
 
->>>>>>> c6d02f0306aa92c1f0be488772e5f82a3baac446
 
 
 function App() {
@@ -133,15 +130,12 @@ function App() {
           <Route path="/overview" exact component={Overview}/>
           <Route path="/stockList" exact component={StockList}/>
           <Route path="/transactionList" exact component={TransactionList}/>
-<<<<<<< HEAD
           <Route path="/explore" exact component={Explore}/>
-=======
           <Route path="/guide" exact component = {Guide}/>
           <Route path="/news" exact component={News}/>
           <Route path="/NewsDetails" exact component={NewsDetails}/>
           <Route path="/search" exact component={Search}/>
           
->>>>>>> c6d02f0306aa92c1f0be488772e5f82a3baac446
         </Switch>            
       </Router>  
       <Footer className="Footer-component"/>
