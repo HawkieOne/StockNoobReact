@@ -1,15 +1,13 @@
-.Bottom{
+.footer{
     width: 100%;
-    height: 220px;
     background-color: #383D53;
-    
+    color: #F2D658; 
 }
 
-.Bottom .container{
+/* .Bottom .container{
     display: flex;
     justify-content: space-between;
     align-items: center;
-   
 }
 
 .Bottom .container .seperator{
@@ -18,7 +16,7 @@
 }
 
 .Bottom .container .left{
-    margin-top: 4rem;
+    margin-top: 2rem;
     font-size: 22px;
     color: #F2D658; 
 }
@@ -52,4 +50,4 @@
     margin: 25px;
     font-size: 33px;
     
-}
+} */
