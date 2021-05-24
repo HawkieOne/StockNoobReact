@@ -112,13 +112,13 @@ function App() {
 
 
   return (
-    <div className="App d-flex flex-column">
+    <div className="App d-flex flex-column justify-items-between bg-dark">
       <Helmet>
         <meta charSet="utf-8" />
         <title>StockNoob</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <Header className="Header-component" user={user}/>
+      <Header className="header" user={user}/>
       {/* <header className="App-header" onClick={api}>
       
         Hello
@@ -138,7 +138,8 @@ function App() {
           
         </Switch>            
       </Router>  
-      <Footer className="Footer-component"/>
+
+      <Footer className="mt-5"/>
     </div>
   );
 }
