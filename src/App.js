@@ -112,7 +112,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App d-flex flex-column">
       <Helmet>
         <meta charSet="utf-8" />
         <title>StockNoob</title>
