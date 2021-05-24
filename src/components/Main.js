@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import "./Main.css";
 import 'reactjs-popup/dist/index.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 import {Line} from 'react-chartjs-2'
 import { faChartArea, faNewspaper, faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "../images/Stock.png"
+import News from './News'
 
 
 
@@ -11,6 +15,7 @@ export default function Main() {
 
     const [stockGraph, setStockGraph] = useState();
     const [title, setTitle] = useState();
+    const [articles, setArticles] = useState([]);
 
     const getRandomStock = () => { 
         const axios = require('axios');
@@ -96,31 +101,78 @@ export default function Main() {
           });
       };
 
-      // const graph = (event) => {    
-      //   var data = {
-      //       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      //       datasets: [{
-      //           label: 'TSLA',
-      //           data: [8, 9, 7, 9, 12, 14, 19],
-      //           backgroundColor: [
-      //               'rgba(255, 159, 64, 0.2)'
-      //           ],
-      //           borderColor: [
-      //               'rgba(255, 159, 64, 1)'
-      //           ],
-      //           borderWidth: 1,
-      //           fill: false,
-      //           pointRadius: 0,
-      //       }]            
-      //   };
-      //   console.log("GRAPH");
-      //   console.log(data);
-      //   return data;
-      // };
+      const graph = (event) => {    
+        var data = {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+                label: 'TSLA',
+                data: [8, 9, 7, 9, 12, 14, 19],
+                backgroundColor: [
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1,
+                fill: false,
+                pointRadius: 0,
+            }]            
+        };
+        console.log("GRAPH");
+        console.log(data);
+        return data;
+      };
 
-    useEffect(() => {   
-      // getRandomStock();
-    }, []);
+      const getNews = () => {    
+        var axios = require("axios").default;
+
+        var options = {
+            method: 'POST',
+            url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/news/v2/list',
+            params: {region: 'US', snippetCount: '28'},
+            headers: {
+              'content-type': 'text/plain',
+              'x-rapidapi-key': '5b6d31f8cfmsh5598169723208c2p1be828jsn0b38fac79ee6',
+              'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
+            },
+            data: 'Pass in the value of uuids field returned right in this endpoint to load the next page, or leave empty to load first page'
+          };
+
+          let data = [];
+          
+          axios.request(options).then(function (response) {
+              console.log(response.data);
+              response.data.data.main.stream.map((item, index) => {      
+                let article = {
+                    id: item.content.id,
+                    title: item.content.title,
+                    provider: item.content.provider.displayName,
+                    date: item.content.pubDate,
+                    thumbnail: ""  
+                } 
+               if (item.content.thumbnail !== null) {
+                 article.thumbnail = item.content.thumbnail.resolutions[0].url;
+               }  
+                data.push(article);        
+              });  
+            //   console.log(data);
+              setArticles(data);          
+              console.log(articles);
+          }).catch(function (error) {
+              console.error(error);
+          });
+      };
+
+      const showNews = () => {    
+        for (let i = 0; i < 3; i++) {
+          let article = articles[i];
+          return <News key={i} article={article}></News>
+        }  
+      };
+
+    // useEffect(() => {   
+    //     getNews();
+    //   }, []);
 
     const strengths = [
     {
@@ -139,60 +191,105 @@ export default function Main() {
     const stocks = [
       {
         // graph: getRandomStock(),
+        gr: graph,
         title: "Test"
       },
       {
         // graph: getRandomStock(),
+        gr: graph,
         title: "HEJ"
       },
       {
         // graph: getRandomStock(),
+        gr: graph,
         title: "Ye"
       }];
 
     return (  
         <div className="Login">   
-          <h3 className="text-light pt-4"><span className="yellow">StockNoob</span> - an application for simulating the stock market</h3>
-          <div className="d-flex justify-content-center">
-            <hr className="divider m-2"/>
-          </div>
-          <div className="w-100 row text-light my-4 text-lg p-3">   
-            {strengths.map((strength) => (
-              <div className="col d-flex flex-column align-items-center">        
-                <FontAwesomeIcon className="icon fa-5x mb-3 yellow" icon={strength.icon} />
-                <h5>{strength.text}</h5>
+
+          <section className="">
+            <h2 className="text-light my-5"><span className="yellow">StockNoob</span> - an application for simulating the stock market</h2>          
+            
+            <div className="w-100 d-flex justify-content-center text-light">   
+              <div className="d-flex flex-column align-items-center w-25 mx-5">
+                <h5 className="yellow">Learn about stocks</h5>
+                <p className="text-left">
+                  Many people are no familiar with hot the stock market works and is therfore afraid of trying it out.
+                  This app is for those people. The aim of this app is to give people the courage to try the real stock market.
+                  All of the stock rates in this app are real but none of the money are. So feel free to buy whatever stock you want
+                  but remember that the real stock market is not as forgiving as this app.
+                </p>
+                <button className="register-btn">Register</button>
+                <p className="second-login">Redan kund? Logga in</p>
               </div>
-            ))}
-          </div> 
+              <img src={Image} className="mx-5"></img>
+            </div> 
+
+            <div className="d-flex justify-content-center">
+              <hr className="divider my-5"/>
+            </div>
+          </section>
+
+          <section className="">
+           <h2 className="text-light mb-3">Why to use StockNoob?</h2>
+
+            <div className="w-100 row text-light my-4 text-lg p-3">   
+              {strengths.map((strength) => (
+                <div className="col d-flex flex-column align-items-center">        
+                  <FontAwesomeIcon className="icon fa-5x mb-3 yellow" icon={strength.icon} />
+                  <h5>{strength.text}</h5>
+                </div>
+              ))}
+            </div> 
+          </section>
 
           {/* <div className="d-flex justify-content-center">
             <hr className="divider m-2"/>
           </div> */}
 
-          <h3 className="text-light">Today's stocks</h3>
           <div className="d-flex justify-content-center">
-            <hr className="divider m-2"/>
+            <hr className="divider my-4"/>
           </div>
-          <div className="row m-3 text-light">
-            {stocks.map((stock) => (
+
+          <section className="">
+            <h2 className="text-light">Today's stocks</h2>
+
+            {/* <div className="d-flex justify-content-around m-3 text-light">
+              {stocks.map((stock) => (
+                <div className="">
+                  <h6>{stock.title}</h6>
+                  <Line className="line-chart" data={stock.gr}/>
+                </div> 
+              ))}           
+            </div>    */}
+
+            <div className="d-flex justify-content-around my-5 mx-3 text-light">
               <div className="col">
-                <h6>{stock.title}</h6>
-                <Line className="line-chart" data={stock.graph}/>
-               </div> 
-            ))}
-            {/* <div className="col">
+                <h6>{title}</h6>
+                <Line className="line-chart" data={graph}/>
+              </div> 
+              <div className="col">
               <h6>{title}</h6>
-              <Line className="line-chart" data={stockGraph}/>
+                <Line className="line-chart" data={graph}/>
+              </div> 
+              <div className="col">
+                <h6>{title}</h6>
+                <Line className="line-chart" data={graph}/>
+              </div> 
             </div> 
-            <div className="col">
-            <h6>{title}</h6>
-              <Line className="line-chart" data={stockGraph}/>
-            </div> 
-            <div className="col">
-              <h6>{title}</h6>
-              <Line className="line-chart" data={stockGraph}/>
-            </div>  */}
-          </div>                                 
+          </section>
+
+          <div className="d-flex justify-content-center">
+            <hr className="divider my-4"/>
+          </div>          
+
+          <h2 className="text-light">News</h2>        
+          <div className="d-flex">          
+          {/* <Carousel>
+            {showNews()}  
+          </Carousel> */}
+          </div>                       
         </div>
     )
 }

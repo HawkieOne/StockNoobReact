@@ -17,6 +17,30 @@
 }
 
 .divider {
-    width: 60%;
+    width: 80%;
     border-color: #f2d658;
+}
+
+.register-btn {
+    background-color: #f2d658;
+    color: #282B39;
+    border: none;
+    padding: 3% 20%;
+    border-radius: 25px;
+    margin-top: 5%;
+}
+
+.register-btn:hover {
+    text-decoration: none;
+    background-color: #D1AD10;
+}
+
+.second-login {
+    color: #f2d658;
+    margin: 2% 0;;
+}
+
+.second-login:hover {
+    color: #D1AD10;
+    cursor: pointer;
 }
