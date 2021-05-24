@@ -1,81 +1,209 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Explore.css";
+import Popup from 'reactjs-popup';
 
 import {Line} from 'react-chartjs-2'
 import {  faArrowAltCircleUp, faMoneyBill, faMoneyCheck, faClock, faArrowDown, faArrowUp} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faFacebookF, faTwitter, faInstagram} from "@fortawesome/free-brands-svg-icons";
+import axios from 'axios';
 
 export default function Explore() {
+
+    const [stockGraph, setStockGraph] = useState();
+    var [price, setPrice] = useState(Number);
+    var [latest, setLatest] = useState(Number);
+    var [low, setLow] = useState(Number);
+    var [high, setHigh] = useState(Number);
+    var [growth, setGrowth] = useState(Number);
+    var [timespan, setTimespan] = useState(Number);
+    var [period, setPeriod] = useState("/Day");
+    let days = ["","15:00","", "17:00","","19:00", "","21:00","" ,"23:00"]
+    let weeks = ["","","","","Mon","","","","", "Tue","","","","", "Wed","","","","", "Thu","","","","", "Fri"]
+    let Months = ["","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+                        "","","","","","","","","","","","","","","","","","","","","","","","",""
+                    ,"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+                    "","","","","","","","","","","","","","","","", ""]
+    let daysData = [342, 343, 345, 339, 340, 341, 339, 340, 339, 342]                
+    var [xAxis, setXAxis] = useState(days);
+    var [stockSymbol, setStockSymbol] = useState("AMZN");
+    var [money, setMoney] = useState(4000);
+    var [holdings, setHoldings] = useState(5000);
+    var [stocks, setStocks] = useState(10);
+
+    const getApiData = () => { 
+        
+        let labels = [];
+        let data = [];   
+        let label = "";
+        const axios = require('axios');
+        const params = {
+          access_key: '42afa58ed9a8332cd53fb1a45d75b29b'
+        }
+        console.log(stockSymbol);
+        axios.get(`http://api.marketstack.com/v1/tickers/${stockSymbol}/intraday`, {params})
+          .then(response => {
+            const apiResponse = response.data;
+            console.log(apiResponse);
+            var count = 0;         
+            for(let i = 0; i < timespan; i++) {
+                let dataAPI = apiResponse.data.intraday[i];
+                label = dataAPI.symbol;
+                labels.push(dataAPI.date);
+                data.push(parseInt(dataAPI.open));
+
+                count = count +1;
+            } 
+            console.log(count);
+            console.log(timespan)
+            setGrowth(((data[timespan -1]) - 400)/data[timespan -1])
+            setPrice(data[timespan -1]);
+            setLatest(data[timespan -1]);
+            setHigh(Math.max(...data));
+            setLow(Math.min(...data));
+
+                
+            setStockGraph({
+                labels: xAxis,
+                datasets: [
+                  {
+                    label: label + period,
+                    data: data,
+                    backgroundColor: ["rgba(75, 192, 192, 0.6)"],
+                    backgroundColor: [
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1,
+                    fill: false,
+                    pointRadius: 0,
+                  }
+                ]
+                
+              });                                          
+          }).catch(error => {
+            console.log(error);
+          });
+      };
+
+      const Day = () => {
+        setTimespan(10);
+        setPeriod("/Day");
+        setXAxis(days);
+        getApiData();
+      }
+      const Week = () => {
+        setTimespan(25);
+        setPeriod("/Week");
+        setXAxis(weeks);
+        getApiData();
+        
+      }
+      const Month = () => {
+        setTimespan(100);
+        setPeriod("/Month");
+        setXAxis(Months);
+        getApiData();
+      }
+      
+      const changeSymbol = (event) =>{
+        setStockSymbol("TSLA");
+        getApiData();
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      }
+
+      //Funktion för att sälja aktier, ska uppdatera databasen
+      const sellStock = (e) =>{
+          e.preventDefault();
+          console.log("sale");
+          if(holdings >= (buyState.HS_Price * buyState.HS_Amount))
+          {
+        setMoney(money + (buyState.HS_Price * buyState.HS_Amount));
+        setHoldings(holdings - (buyState.HS_Price * buyState.HS_Amount));
+          }
+          else{
+              console.info("not enough in holdings");
+          }
+      }
+
+      const buyState = {
+          HS_User_ID: 4,
+          HS_Stock_ID: 188,
+          HS_Price: 342,
+          HS_Amount: 10,
+          Stock_Name: "",
+          Stock_Shortening: ""
+      }
+      var cashState = {
+          Login_ID: 4,
+          Username: "malu",
+          Password: "1234",
+          User_ID: 4,
+          User_Login_ID: 4,
+          Mail: "malu@mail.se",
+          Money: 4000,
+          Holdings: 5000,
+          Goal: 10000,
+          GoalItem: 10000,
+          SavingMonth: 100,
+          Token: ""
+      }
+      //Funktion för att köpa aktier, ska uppdatera databasen
+      const buyStock = (e) =>{
+        e.preventDefault();
+        console.log("buying");
+        /* if(money >= (buyState.HS_Price * buyState.HS_Amount))
+        {
+        setMoney(money - (buyState.HS_Price * buyState.HS_Amount));
+        setHoldings(holdings + (buyState.HS_Price * buyState.HS_Amount));
+        }
+        else{
+            console.info("not enouch cash");
+        } */
+        const axios = require('axios');
+        var buy = {
+            method: 'POST',
+            //params: buyState,
+            url: 'https://stocknoob.azurewebsites.net/stock/buy',
+            data: buyState,
+            headers: { authorization: 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlwRW5tajh6MkE3MDFESTVJVVMwRiJ9.eyJpc3MiOiJodHRwczovL2Rldi1wcGJvbHh0eS5ldS5hdXRoMC5jb20vIiwic3ViIjoiTXpJWFNqQVpsWGhXbW9XUmM2RmE4N0NtWXdadUxJeTlAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vcXVpY2tzdGFydHMvYXBpIiwiaWF0IjoxNjIxODU2NzU1LCJleHAiOjE2MjE5NDMxNTUsImF6cCI6Ik16SVhTakFabFhoV21vV1JjNkZhODdDbVl3WnVMSXk5IiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.a3U6rp2OeetV2R2aPid4tw9fKCPZv2rwGpQkG_WGM-dMKrhHKtLZ7ejg-UjdO11a8XG-pB9UxiXeEX2gde3POpiDaq-4WCwkQsUIk3EsgDBhpmmOHDPMlgmH0SUlllwUDhcRFRhVkGnLWZ9iYVQH_Z4f01EvZNTb_v_EXypGiP-3wtaChwgC8B88YLYnPfkSqaQ6il6Q6occpmXFOnHtQhviv9-qkxk41BFHUphWpb5N19tw1UvRAAdQIO9NmyVEw5EZNByxRHydWXIavO9sBpUwmTKd_KfarS-CZR8b1u5Pk-joau0l-Sg8941etgWNovLlEC7dnWk_AY4c4u1Xuw'}
+        }
+        
+        axios.request(buy).then(function(response){
+            console.log(response)
+            
+            
+        });
+    }
+
+       useEffect(() => {
+        getApiData();
+      }, []); 
     return (
         <div className="explore">
             <div className="container">
                 <div className="top">
-                    <h1>TSLA</h1>
+                    <h1>{stockSymbol}</h1>
+                    User: {cashState.Username} , Current:{money} , Holdings:{holdings}
                 </div>
                 <div className="mid">
                     <div className="mid-left">
                         <p>About the stock</p>
-                        <Line className="line-chart"
-                        data={{
-                            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                            datasets: [{
-                                label: 'TSLA',
-                                data: [8, 9, 7, 9, 12, 14, 19],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1,
-                                fill: false,
-                                pointRadius: 0,
-                            }, {
-                                label: 'PYPL',
-                                data: [10, 12, 8, 6, 13, 15, 18],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1,
-                                fill: false,
-                                pointRadius: 0,
-                            }]
-                            
-                        }}
-                        
+                        <Line className="line-chart"                
+                        data={stockGraph}  
+                        width={400}
+                        height={200}             
                         />
                         <div className="mid-left-bottom">
-                            <button>10 Day</button>
-                            <button>1 Day</button>
-                            <button>1 Week</button>
+                            <button onClick={Day}>Day</button>
+                            <button onClick={Week}>Week</button>
+                            <button onClick={Month}>Month</button>
                         </div>
                     </div>
                     <div className="mid-mid">
-                        <p>About the company</p>
+                        <p>Tips and tricks</p>
                         <div className="mid-mid-container">
                         <div className="tips">
                             <p>Tips 1</p>
@@ -98,7 +226,7 @@ export default function Explore() {
                                     Growth/D
                                 </div>
                                 <div className="info-right-bottom money">
-                                    4.4%
+                                    {growth.toFixed(2) * 1}%
                                 </div>
                             </div>
 
@@ -113,7 +241,7 @@ export default function Explore() {
                                     Buy
                                 </div>
                                 <div className="info-right-bottom">
-                                    22.5 USD
+                                    {price} USD
                                 </div>
                             </div>
 
@@ -128,7 +256,7 @@ export default function Explore() {
                                     Sell
                                 </div>
                                 <div className="info-right-bottom">
-                                    22.5 USD
+                                    {latest} USD
                                 </div>
                             </div>
 
@@ -143,7 +271,7 @@ export default function Explore() {
                                     Latest
                                 </div>
                                 <div className="info-right-bottom">
-                                    22.5 USD
+                                    {latest} USD
                                 </div>
                             </div>
 
@@ -158,7 +286,7 @@ export default function Explore() {
                                     High
                                 </div>
                                 <div className="info-right-bottom">
-                                    32.2 USD
+                                    {high} USD
                                 </div>
                             </div>
 
@@ -173,14 +301,74 @@ export default function Explore() {
                                     Low
                                 </div>
                                 <div className="info-right-bottom">
-                                    21.2 USD
+                                    {low} USD
                                 </div>
                             </div>
 
                         </div>
                         <div className="actions">
-                            <button className="buy"> Buy </button>
-                            <button className="sell"> Sell </button>
+                            
+                            <Popup
+                            className="popup"
+                            trigger={<button className="buy">Buy</button>}
+                            position="top"
+                            closeOnDocumentClick
+                            contentStyle={{ padding: '0px', border: 'none' }}
+                            arrow={false}
+                            
+                            >        
+                            {close => (         
+                                <div className="box">
+                                    <button className="closeModal" onClick={close}>
+                                    &times;
+                                    </button>
+                                    <h5 className="header">Purchase</h5>
+                                    <div className="buy-details">
+                                        
+                                        <div className="input">
+                                            <p>Current cash: {money}</p>
+                                            <p>Price: {buyState.HS_Price * buyState.HS_Amount}</p>
+                                            <form onSubmit={buyStock}>
+                                            <label>Ammount</label>
+                                            <input  type="text" required name="Username" placeholder="nr of stocks"></input> 
+                                            <button className="btn-purchase" type="submit">Continue</button>  
+                                            </form> 
+                                        </div>
+                                    </div>  
+                                </div>
+                            )}
+                        </Popup>
+       
+                        <Popup
+                            className="popup"
+                            trigger={<button className="sell">Sell</button>}
+                            position="top"
+                            closeOnDocumentClick
+                            contentStyle={{ padding: '0px', border: 'none' }}
+                            arrow={false}
+                            
+                            >        
+                            {close => (         
+                                <div className="box">
+                                    <button className="closeModal" onClick={close}>
+                                    &times;
+                                    </button>
+                                    <h5 className="header">Sell</h5>
+                                    <div class="buy-details">
+                                        
+                                        <div className="input">
+                                            <p>Stocks to sell: {stocks}</p>
+                                            <p>Price: {buyState.HS_Price * buyState.HS_Amount}</p>
+                                            <form onSubmit={sellStock}>
+                                            <label>Ammount</label>
+                                            <input  type="text" required name="Username" placeholder="nr of stocks"></input>  
+                                            <button className="btn-purchase" type="submit">Continue</button>  
+                                            </form> 
+                                        </div>
+                                    </div>  
+                                </div>
+                            )}
+                        </Popup>
                         </div>
                     </div>
                 </div>
@@ -200,7 +388,7 @@ export default function Explore() {
                                             +4,4% Today
                                         </div>
                                         <div className="stocks-actions">
-                                            <button className="go">Go to</button>
+                                            <button className="go" onClick={changeSymbol}>Go to</button>
                                         </div>
                                     </div>
                                     <div className="stocks">
@@ -214,7 +402,7 @@ export default function Explore() {
                                             -2,3% Today
                                         </div>
                                         <div className="stocks-actions">
-                                            <button className="go">Go to</button>
+                                            <button className="go" onClick={changeSymbol}>Go to</button>
                                         </div>
                                     </div>
                                     <div className="stocks">
@@ -228,7 +416,7 @@ export default function Explore() {
                                             +8% Today
                                         </div>
                                         <div className="stocks-actions">
-                                            <button className="go">Go to</button>
+                                            <button className="go" onClick={changeSymbol}>Go to</button>
                                         </div>
                                     </div>
                                 </div>
