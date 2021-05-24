@@ -11,3 +11,12 @@
 .line-chart {
     margin: 2%;
 }
+
+.yellow {
+    color: #f2d658;
+}
+
+.divider {
+    width: 60%;
+    border-color: #f2d658;
+}
