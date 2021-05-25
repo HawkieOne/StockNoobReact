@@ -8,10 +8,10 @@ function StockItem(props) {
         <>
             <div>
                 <div className="w-75 stockItem">
-                    <div className="item">
-                        <p>{props.name} ({props.symbol})</p>
-                        <p>Day:{props.day}%</p>
-                        <p>Year: {props.year}%</p>
+                    <div className="item row align-items-center">
+                        <p className="col-8 text-left">{props.name} ({props.symbol})</p>
+                        <p className="col">Day:{props.day}%</p>
+                        <p className="col">Year: {props.year}%</p>
                     </div>
                 </div>
             </div>

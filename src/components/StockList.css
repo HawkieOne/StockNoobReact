@@ -1,0 +1,12 @@
+/**/
+.yellow {
+    color: #f2d658;
+  }
+
+  .backArrow {
+    position: absolute;
+    left: 15%;
+    bottom: 10%;
+    cursor: pointer;
+  } 
+  

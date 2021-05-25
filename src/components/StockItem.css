@@ -15,6 +15,11 @@ body {
   border-radius: 40px;
 }
 
+.stockItem:hover {
+  cursor: pointer;
+  border-color: #f2d658;
+}
+
 .item {
   display: flex;
   flex-direction: row;
