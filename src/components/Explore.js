@@ -155,14 +155,14 @@ export default function Explore() {
         });
       }
 
-      const buyState = {
+      var [buyState, setBuyState] = useEffect({
           HS_User_ID: 4,
           HS_Stock_ID: 188,
           HS_Price: 342,
           HS_Amount: 10,
           Stock_Name: "",
           Stock_Shortening: ""
-      }
+      });
      
       //Funktion för att köpa aktier, ska uppdatera databasen
       const buyStock = (e) =>{
@@ -190,6 +190,14 @@ export default function Explore() {
        var kostnad = buyState.HS_Price * buyInput
     //    console.log( buyState.HS_Price + " " + buyInput + " " + kostnad);
        setBuyPrice(kostnad)
+       setBuyState({
+        HS_User_ID: 4,
+        HS_Stock_ID: 188,
+        HS_Price: price,
+        HS_Amount: buyInput,
+        Stock_Name: "",
+        Stock_Shortening: stockSymbol
+        });
     //    console.log(buyInput)
     //    console.log(buyPrice)
     }
@@ -402,10 +410,10 @@ export default function Explore() {
                                         
                                         <div className="input">
                                             <p>Stocks to sell: {stocks}</p>
-                                            <p>Price: {buyState.HS_Price * buyState.HS_Amount}</p>
+                                            <p>Price: {buyState.HS_Price * buyInput}</p>
                                             <form onSubmit={sellStock}>
                                             <label>Amount</label>
-                                            <input  type="text" required name="Username" placeholder="nr of stocks"></input>  
+                                            <input  type="number" required name="Amount" placeholder="nr of stocks" value={buyInput} onChange={handleBuy}></input>  
                                             <button className="btn-purchase" type="submit">Continue</button>  
                                             </form> 
                                         </div>
