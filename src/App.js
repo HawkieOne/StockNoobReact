@@ -16,6 +16,7 @@ import News from './components/NewsFeed'
 import NewsDetails from './components/NewsDetails'
 import Search from './components/Search';
 import Login from './components/Login';
+import Register from './components/Register';
 
 
 
@@ -137,6 +138,7 @@ function App() {
           <Route path="/NewsDetails" exact component={NewsDetails}/>
           <Route path="/search" exact component={Search}/>
           <Route path="/login" exact component={Login}/>
+          <Route path="/register" exact component={Register}/>
           
         </Switch>            
       </Router>  

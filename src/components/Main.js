@@ -8,6 +8,7 @@ import { faChartArea, faNewspaper, faCoins } from "@fortawesome/free-solid-svg-i
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "../images/Stock.png"
 import News from './News'
+import history from './History'
 
 
 
@@ -204,7 +205,19 @@ export default function Main() {
         gr: graph,
         title: "Ye"
       }];
+      const toLogin = () => {    
+        const path = "/login";
+            history.push({
+            pathname: path,
+        })  
+      };
 
+      const toRegister = () => {    
+        const path = "/register";
+            history.push({
+            pathname: path,
+        })  
+      };
     return (  
         <div className="Login">   
 
@@ -220,8 +233,8 @@ export default function Main() {
                   All of the stock rates in this app are real but none of the money are. So feel free to buy whatever stock you want
                   but remember that the real stock market is not as forgiving as this app.
                 </p>
-                <button className="register-btn">Register</button>
-                <p className="second-login">Already have an account? Log in</p>
+                <button className="register-btn" onClick={toRegister}>Register</button>
+                <p className="second-login" onClick={toLogin}>Already have an account? Log in</p>
               </div>
               <img src={Image} className="mx-5"></img>
             </div> 
