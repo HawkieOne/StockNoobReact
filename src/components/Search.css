@@ -1,0 +1,23 @@
+.searched {
+  margin: auto;
+  margin-top: 2%;
+  padding: 1%;
+  border: 1px solid rgb(252, 242, 242);
+  color: white;
+  border-radius: 40px;
+}
+
+.searchedItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.btn-goTo {
+  width: 14%;
+  border: none;
+  background-color: #21242f;
+  color: #f2d658;
+  border-radius: 10px;
+}
