@@ -48,6 +48,15 @@ export default function Explore() {
         Token: ""
     });
 
+    var [buyState, setBuyState] = useState({
+        HS_User_ID: 4,
+        HS_Stock_ID: 188,
+        HS_Price: 342,
+        HS_Amount: 10,
+        Stock_Name: "",
+        Stock_Shortening: ""
+    });
+
     const getApiData = () => { 
         
         let labels = [];
@@ -155,14 +164,7 @@ export default function Explore() {
         });
       }
 
-      const buyState = {
-          HS_User_ID: 4,
-          HS_Stock_ID: 188,
-          HS_Price: 342,
-          HS_Amount: 10,
-          Stock_Name: "",
-          Stock_Shortening: ""
-      }
+      
      
       //Funktion för att köpa aktier, ska uppdatera databasen
       const buyStock = (e) =>{
@@ -190,6 +192,14 @@ export default function Explore() {
        var kostnad = buyState.HS_Price * buyInput
     //    console.log( buyState.HS_Price + " " + buyInput + " " + kostnad);
        setBuyPrice(kostnad)
+       setBuyState({
+        HS_User_ID: 4,
+        HS_Stock_ID: 188,
+        HS_Price: price,
+        HS_Amount: buyInput,
+        Stock_Name: "",
+        Stock_Shortening: stockSymbol
+        });
     //    console.log(buyInput)
     //    console.log(buyPrice)
     }
@@ -251,11 +261,11 @@ export default function Explore() {
                         <div className="mid-mid-container">
                         <div className="tips">
                             <p>Tips 1</p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            Having a hard time timing the market? Try dollar-cost averaging. Dollar-cost averaging (DCA) is an investment strategy in which an investor divides up the total amount to be invested across periodic purchases of a target asset in an effort to reduce the impact of volatility on the overall purchase. The purchases occur regardless of the asset's price and at regular intervals. In effect, this strategy removes much of the detailed work of attempting to time the market in order to make purchases of equities at the best prices. Remember that time in the market beats timing the market.
                         </div>
                         <div className="tips2">
                             <p>Tips 2</p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            Are you panicing when a stock drops a few percent? If you have done your research about the company and nothing of the fundamentals have changed then why worry? Being invested in the stock market is a psycological game where you as an investor gets tested every now and then. Keep in mind that if the fundamentals of the company is still good and you still panic you probably have too much money invested. Then it can be good to diverse your money between more different type of industries to minimalize the risk of losing money when one industry drops.
                         </div>
                         </div>
                     </div>
@@ -402,10 +412,10 @@ export default function Explore() {
                                         
                                         <div className="input">
                                             <p>Stocks to sell: {stocks}</p>
-                                            <p>Price: {buyState.HS_Price * buyState.HS_Amount}</p>
+                                            <p>Price: {buyState.HS_Price * buyInput}</p>
                                             <form onSubmit={sellStock}>
                                             <label>Amount</label>
-                                            <input  type="text" required name="Username" placeholder="nr of stocks"></input>  
+                                            <input  type="number" required name="Amount" placeholder="nr of stocks" value={buyInput} onChange={handleBuy}></input>  
                                             <button className="btn-purchase" type="submit">Continue</button>  
                                             </form> 
                                         </div>
