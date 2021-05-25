@@ -80,6 +80,13 @@ export default function Login() {
         })  
       };
 
+      const toRegister = () => {    
+        const path = "/register";
+            history.push({
+            pathname: path,
+        })  
+      };
+
     return (
         <div>
                   
@@ -101,7 +108,7 @@ export default function Login() {
                         <input  type="password" required onChange={handleLogin} name="Password"></input>                     
                         <button className="login" type="submit">Log in</button>
                     </form>
-                    <p className="register">Register</p>
+                    <p className="register" onClick={toRegister}>Register</p>
                 </div>          
             </div>
        
