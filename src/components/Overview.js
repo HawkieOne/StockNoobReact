@@ -16,7 +16,7 @@ import {ReactComponent as Transaction} from './Logos/Transaction.svg'
 import {Line} from 'react-chartjs-2'
 import axios from 'axios';
 
-export default function Overview() {
+export default function Overview(prop) {
     
     const [user, setUser] = useState({
         LoginID: "",
@@ -58,29 +58,9 @@ export default function Overview() {
         })     
     };
    
-    const setHoldingsButtons = () => {
-        for (let i = 0; i < 6; i++) {
-            return <button className="holdingButton" id="left1">                
-                        <div className="specificButton" >     
-                            <NFLX width="49.438" height="54.637" fill="#fff"/>
-                                <div className="specificDescription">
-                                        {stocks.length > 0 ? (
-                                            <h6 className="text">{stocks[0].Stock_Name}, {stocks[0].Stock_Shortening}</h6>
-                                        ) : (
-                                            <h6 className="text">NO STOCK</h6>
-                                        )}
-                                    <p className="text">Top Performing</p>            
-                                </div>
-                                <div className="procent">
-                                    <p className="greenText">+15%</p>
-                                </div>
-                            </div>
-                    </button>
-        }
-    }
     const logotype = (symbol) => {
-            console.log("Logotype")
-            console.log(symbol);      
+            // console.log("Logotype")
+            // console.log(symbol);      
             switch (symbol) {
                 case 'AMZN':
                     return <AMZN width="20" height="20" fill="#fff"/>;
@@ -108,8 +88,11 @@ export default function Overview() {
         }
 
     useEffect(() => {
-        const axios = require('axios');
-        console.log("EFFECTS");
+
+        console.log("OVERVIEW");
+        const {user} = prop.location.state;
+        console.log(user);
+        const axios = require('axios');       
         var options = {
           method: 'GET',
           url: 'https://stocknoob.azurewebsites.net/stock/userstock/3',
@@ -135,7 +118,7 @@ export default function Overview() {
           })        
         //   console.log(stocksArray);         
           setStocks(stocksArray)
-          console.log(stocks)  
+        //   console.log(stocks)  
         }).catch(function (error) {
           console.error(error);
         });

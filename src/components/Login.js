@@ -3,6 +3,14 @@ import history from './History'
 
 export default function Login() {
 
+  var [user, setUser] = useState({});
+
+  var [Username, setUsername] = useState({
+       Username: ""
+   });
+   var [Password, setPassword] = useState({
+       Password: ""
+   });
 
     const handleLogin = (event) => {
         if ([event.target.name] == "Username") {
@@ -26,57 +34,24 @@ export default function Login() {
                     "Password": Password.Password  
                   }             
                 )
-                .then(response => {
-                //   console.log(response.data)             
+                .then(response => {                   
                   const data = response.data;
-                  setUser({
-                    LoginID : data.Login_ID,
-                    Username : data.Username,
-                    UserID : data.User_ID,
-                    Mail : data.Mail,
-                    Money : data.Money,
-                    Holdings : data.Holdings,
-                    Goal : data.Goal,
-                    GoalItem : data.GoalItem,
-                    SavingMonth : data.SavingMonth,
-                    Token : data.Token.access_token})
-                               
+                  console.log(data);
+                  setUser(data)                               
                   console.log(user);                    
-                  toOverview();
-                //   closeModal();                 
+                  // toOverview();                            
                 }).catch(error =>
                   console.log(error)
                 )
-      };
-
-      
-    var [user, setUser] = useState({
-        LoginID: "",
-        Username: "",
-        UserID: "",
-        Mail: "",
-        Money: "",
-        Holdings: "",
-        Goal: "",
-        GoalItem: "",
-        SavingMonth: "",
-        Token: ","
-    });
-
-   var [Username, setUsername] = useState({
-        Username: ""
-    });
-    var [Password, setPassword] = useState({
-        Password: ""
-    });
+      };  
 
     const toOverview = () => {    
         const path = "/Overview";
             history.push({
             pathname: path,
-            // state: { 
-            //     article: prop.article
-            // }
+            state: { 
+                user: user
+            }
         })  
       };
 
