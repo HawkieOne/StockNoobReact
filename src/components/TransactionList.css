@@ -1,4 +1,21 @@
 /**/
+.yellow {
+  color: #f2d658;
+}
+
+.backArrow {
+  position: absolute;
+  left: 15%;
+  bottom: 10%;
+  cursor: pointer;
+} 
+
+input[type="radio"] {
+  -ms-transform: scale(0.5); /* IE 9 */
+  -webkit-transform: scale(0.5); /* Chrome, Safari, Opera */
+  transform: scale(0.5);
+}
+
 .meny {
   display: flex;
   flex-direction: row;

@@ -6,7 +6,11 @@ body {
   border-color: #f2d658;
 }
 
-.transc_Item {
+.yellow {
+  color: #f2d658;
+}
+
+.trscItem {
   margin: auto;
   margin-top: 2%;
   padding: 1%;
@@ -14,7 +18,10 @@ body {
   color: white;
   border-radius: 40px;
 }
-
+.trscItem:hover {
+  cursor: pointer;
+  border-color: #f2d658;
+}
 .Tr_item {
   display: flex;
   flex-direction: row;
