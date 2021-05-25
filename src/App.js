@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import Overview from './components/Overview';
 import StockList from './components/StockList';
 import TransactionList from './components/TransactionList'
+import Explore from './components/Explore'
 import Guide from './components/Guide';
 import News from './components/NewsFeed'
 import NewsDetails from './components/NewsDetails'
@@ -111,13 +112,13 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App d-flex flex-column justify-items-between bg-dark">
       <Helmet>
         <meta charSet="utf-8" />
         <title>StockNoob</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <Header className="Header-component" user={user}/>
+      <Header className="header" user={user}/>
       {/* <header className="App-header" onClick={api}>
       
         Hello
@@ -129,6 +130,7 @@ function App() {
           <Route path="/overview" exact component={Overview}/>
           <Route path="/stockList" exact component={StockList}/>
           <Route path="/transactionList" exact component={TransactionList}/>
+          <Route path="/explore" exact component={Explore}/>
           <Route path="/guide" exact component = {Guide}/>
           <Route path="/news" exact component={News}/>
           <Route path="/NewsDetails" exact component={NewsDetails}/>
@@ -136,7 +138,8 @@ function App() {
           
         </Switch>            
       </Router>  
-      <Footer className="Footer-component"/>
+
+      <Footer className="mt-5"/>
     </div>
   );
 }

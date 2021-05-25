@@ -3,7 +3,23 @@
     color: #F2D658;
     margin-bottom: 2%;
 }
+.explore .container .top{
+    color: #F2D658;
+}
 
+.explore .container .topInfo{
+    background-color: #383D53;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    width: 60%;
+    margin-left: 21%;
+    border-radius: 10px;
+    margin-top: -2%;
+}
+.explore .container  .topInfo span{
+    font-size: 15px;
+}
 
 .explore .container .mid{
     display: flex;
@@ -18,11 +34,14 @@
     flex-direction: column;
     justify-content: center;
     
-    width: 45%;
-    margin-left: -10%;
+    width: 55%;
+    margin-left: -14%;
     
 }
-
+.explore .container .mid .mid-left .mid-left-bottom{
+    
+    float: right;
+}
 .explore .container .mid .mid-left .mid-left-bottom button{
     width: 20%;
     border: none;
@@ -75,7 +94,7 @@
     width: 20%;
     margin-right: -10%;
     height: 75vh;
-    margin-top: 2%;
+    margin-top: -2%;
 }
 .explore .container .mid .mid-right .info{
     display: flex;
@@ -167,3 +186,43 @@
     border-radius: 13px;
 }
 
+
+
+
+
+
+
+.buy-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.buy-details .input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8%;
+    color: #F2D658;
+}
+.buy-details .input form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    color: #F2D658;
+    
+}
+
+.buy-details .input input::placeholder{
+    color: #21242F;
+}
+
+.buy-details .input .btn-purchase{
+    margin-top: 3%;
+    border: none;
+    background-color: #383D53;
+    color: #F2D658;
+    border-radius: 10px;
+    margin-bottom: 5%;
+}
