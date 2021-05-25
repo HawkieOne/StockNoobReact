@@ -33,7 +33,7 @@ function Guide() {
                     </div>
 
                     <div className="container">
-                        <div className="w-50 part">
+                        <div className="part">
                             <h4>Tips</h4>
                             <p>Having a hard time timing the market? Try dollar-cost averaging. Dollar-cost averaging (DCA) is an investment strategy in which an investor divides up the total amount to be invested across periodic purchases of a target asset in an effort to reduce the impact of volatility on the overall purchase. The purchases occur regardless of the asset's price and at regular intervals. In effect, this strategy removes much of the detailed work of attempting to time the market in order to make purchases of equities at the best prices. Remember that time in the market beats timing the market.</p>
                         </div>

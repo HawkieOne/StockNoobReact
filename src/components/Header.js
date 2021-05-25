@@ -50,14 +50,16 @@ export default function Header(prop) {
         <div className="Header">
             <div className="left">
                 <div className="search">
-                    <FontAwesomeIcon className="searchIcon" icon={faSearch}  />
-                    <input className="searcharea" type="submit" placeholder="Search..." onChange={(event)=> {setSearchVal(event.target.value)}}
-                    onSubmit={toSearch}></input>
+                    <FontAwesomeIcon className="searchIcon" icon={faSearch}/>
+                    <form onSubmit={toSearch}>
+                        <input className="searcharea" type="text" placeholder="Search..." onChange={(event)=> {setSearchVal(event.target.value)}}
+                        ></input>
+                    </form>
+                    
                 </div>
             </div>
             <div className="middle" onClick={toHome}>
-                {/* <p>Stocknoob</p> */}
-                S<span>Noob</span> <FontAwesomeIcon className="icon" icon={faChartLine} />         
+                <span>Noob</span> <FontAwesomeIcon className="icon" icon={faChartLine}/>         
             </div>
             <div className="right">
                 {showIcons()}                        

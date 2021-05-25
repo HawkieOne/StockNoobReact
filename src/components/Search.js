@@ -39,10 +39,11 @@ export default function Search(prop) {
         searchValue: ""  
       });
 
-    useEffect(() => {
-        const {searchValue} = prop.location.state;
-        setSearchVal(searchValue);
-    }, []);
+    // useEffect(() => {
+    //     const {searchValue} = prop.location.state;
+    //     console.log(searchValue);
+    //     setSearchVal(searchValue);
+    // }, []);
 
     return (
         <>

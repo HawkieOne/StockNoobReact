@@ -1,8 +1,16 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import history from './History'
 
 export default function Login() {
 
+  var [user, setUser] = useState(null);
+
+  var [Username, setUsername] = useState({
+       Username: ""
+   });
+   var [Password, setPassword] = useState({
+       Password: ""
+   });
 
     const handleLogin = (event) => {
         if ([event.target.name] == "Username") {
@@ -14,7 +22,7 @@ export default function Login() {
         }        
       };
 
-      const login = (event) => {
+      const login = async (event) => {
         event.preventDefault(); 
         console.log(Username);
         console.log(Password);       
@@ -26,9 +34,10 @@ export default function Login() {
                     "Password": Password.Password  
                   }             
                 )
-                .then(response => {
-                //   console.log(response.data)             
+                .then(response => {                   
                   const data = response.data;
+                  console.log(data);
+                  // setUser(data);
                   setUser({
                     LoginID : data.Login_ID,
                     Username : data.Username,
@@ -39,44 +48,27 @@ export default function Login() {
                     Goal : data.Goal,
                     GoalItem : data.GoalItem,
                     SavingMonth : data.SavingMonth,
-                    Token : data.Token.access_token})
-                               
-                  console.log(user);                    
-                  toOverview();
-                //   closeModal();                 
-                }).catch(error =>
+                    Token : data.Token.access_token});                                                                       
+                })
+                .catch(error =>
                   console.log(error)
                 )
-      };
+      };  
 
-      
-    var [user, setUser] = useState({
-        LoginID: "",
-        Username: "",
-        UserID: "",
-        Mail: "",
-        Money: "",
-        Holdings: "",
-        Goal: "",
-        GoalItem: "",
-        SavingMonth: "",
-        Token: ","
-    });
-
-   var [Username, setUsername] = useState({
-        Username: ""
-    });
-    var [Password, setPassword] = useState({
-        Password: ""
-    });
+      useEffect(() => {
+        if(user !== null) {
+          console.log(user);                    
+          toOverview(); 
+        }     
+      }, [user]);
 
     const toOverview = () => {    
         const path = "/Overview";
             history.push({
             pathname: path,
-            // state: { 
-            //     article: prop.article
-            // }
+            state: { 
+                user: user
+            }
         })  
       };
 

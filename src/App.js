@@ -114,7 +114,7 @@ function App() {
 
 
   return (
-    <div className="App d-flex flex-column justify-items-between bg-dark">
+    <div className="App d-flex flex-column justify-items-between bgdark">
       <Helmet>
         <meta charSet="utf-8" />
         <title>StockNoob</title>
