@@ -1,9 +1,16 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import TranscationItem from  './TranscationItem';
 import './TransactionList.css'
 
 
-function TransactionList() {
+export default function TransactionList(prop) {
+
+    useEffect(() => {
+        const {user} = prop.location.state;
+        console.log("TRANSACTIONS");
+        console.log(user);
+        // setSearchVal(search);
+    }, []);
 
     const transactions = [
         {shares: "12", name: "Facebook", date:"2021-03-19"},
@@ -51,5 +58,3 @@ function TransactionList() {
         </> 
     )
 }
-
-export default TransactionList

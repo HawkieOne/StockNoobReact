@@ -3,6 +3,12 @@ import './Search.css'
 
 export default function Search(prop) {
 
+    useEffect(() => {
+        const {search} = prop.location.state;
+        console.log(search);
+        setSearchVal(search);
+    }, []);
+    
     const [stocks, setStocks] = useState([]);
     const [individualStock, setIndividualStock] = useState({
         stock_ID: Number,
@@ -35,15 +41,7 @@ export default function Search(prop) {
         console.log(stocks);
     }
 
-    const [searchVal, setSearchVal] = useState({
-        searchValue: ""  
-      });
-
-    // useEffect(() => {
-    //     const {searchValue} = prop.location.state;
-    //     console.log(searchValue);
-    //     setSearchVal(searchValue);
-    // }, []);
+    const [searchVal, setSearchVal] = useState();  
 
     return (
         <>

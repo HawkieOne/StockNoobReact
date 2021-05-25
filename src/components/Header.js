@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import {  faUser, faClock, faQuestionCircle, faSearch, faBell, faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
@@ -12,6 +12,8 @@ import history from './History';
 export default function Header(prop) {
 
     
+    const [search, setSearch] = useState(null);
+
     const showIcons = () => {
         if (prop.user.loggedIn) {
             console.log(prop.user.loggedIn)
@@ -30,30 +32,39 @@ export default function Header(prop) {
         history.push({
             pathname: path
         })  
-      };
-
-      const [searchVal, setSearchVal] = useState({
-        searchValue: ""  
-      });
+      };     
 
       const toSearch = () => {    
-        const path = "/search";      
+        const path = "/search";   
+        console.log(search);   
         history.push({
             pathname: path,
             state: {
-                searchValue: searchVal.searchValue
+                searchValue: search
             }
         })  
       };
 
+      const setState = (event) => {    
+        setSearch(event.target.value)
+      };
+
+    //   useEffect(() => {
+    //     console.log(searchValue);   
+    //   }, [searchValue]);
+      
     return (
         <div className="Header">
             <div className="left">
                 <div className="search">
                     <FontAwesomeIcon className="searchIcon" icon={faSearch}/>
                     <form onSubmit={toSearch}>
-                        <input className="searcharea" type="text" placeholder="Search..." onChange={(event)=> {setSearchVal(event.target.value)}}
-                        ></input>
+                        <input 
+                            className="searcharea" 
+                            type="text" 
+                            placeholder="Search..." 
+                            onChange={setState}>
+                        </input>
                     </form>
                     
                 </div>

@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import StockItem from '../components/StockItem.js';
 
-function StockList() {
+export default function StockList(prop) {
     
+    useEffect(() => {
+        const {user} = prop.location.state;
+        console.log("TRANSACTIONS");
+        console.log(user);
+        // setSearchVal(search);
+    }, []);
 
     const stocks = [
         {name:"Facebook", symbol:"FCB", day:"2.3", year:"5.5"},
@@ -23,5 +29,3 @@ function StockList() {
         </> 
     )
 }
-
-export default StockList

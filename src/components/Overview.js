@@ -21,30 +21,35 @@ export default function Overview(prop) {
     var [userOverview, setUserOverview] = useState(null);
     const [stocks, setStocks] = useState([]);
 
-    const apiRequest = (event) => {
-        
-        
-    }
+    const pushHoldings = (event) => {
+        const path = "/stockList";
+            history.push({
+            pathname: path,
+            state: { 
+                user: userOverview
+            }
+        })     
+    };
+    
     const pushTransaction = (event) => {
         const path = "/transactionList";
             history.push({
-            pathname: path
+            pathname: path,
+            state: { 
+                user: userOverview
+            }
         })     
     };
 
     const pushNewsfeed = (event) => {
         const path = "/news";
             history.push({
-            pathname: path
+            pathname: path,
+            state: { 
+                user: userOverview
+            }
         })     
-    };
-
-    const pushHoldings = (event) => {
-        const path = "/stockList";
-            history.push({
-            pathname: path
-        })     
-    };
+    };   
    
     const logotype = (symbol) => {
             // console.log("Logotype")
