@@ -221,7 +221,7 @@ export default function Main() {
                   but remember that the real stock market is not as forgiving as this app.
                 </p>
                 <button className="register-btn">Register</button>
-                <p className="second-login">Redan kund? Logga in</p>
+                <p className="second-login">Already have an account? Log in</p>
               </div>
               <img src={Image} className="mx-5"></img>
             </div> 

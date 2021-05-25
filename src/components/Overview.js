@@ -16,21 +16,9 @@ import {ReactComponent as Transaction} from './Logos/Transaction.svg'
 import {Line} from 'react-chartjs-2'
 import axios from 'axios';
 
-export default function Overview() {
+export default function Overview(prop) {
     
-    const [user, setUser] = useState({
-        LoginID: "",
-        Username: "",
-        UserID: "",
-        Mail: "",
-        Money: "",
-        Holdings: "",
-        Goal: "",
-        GoalItem: "",
-        SavingMonth: "",
-        Token: ",",
-        haveStocks: []
-    });
+    var [userOverview, setUserOverview] = useState(null);
     const [stocks, setStocks] = useState([]);
 
     const apiRequest = (event) => {
@@ -58,38 +46,43 @@ export default function Overview() {
         })     
     };
    
-    const logotype = (arrayIndex) => {
-        {(function() {
-            switch (stocks[arrayIndex].Stock_Shortening) {
-            
-            case 'AMZN':
-                return <AMZN width="49.438" height="54.637" fill="#fff"/>;
-            case 'MSFT':
-                return <MSFT width="49.438" height="54.637" fill="#fff"/>;
-            case 'NKE':
-                return <NKE width="49.438" height="54.637"/>;    
-            case 'AAPL':
-                return <AAPL width="49.438" height="54.637" fill="#fff"/>;
-            case 'FB':
-                return <FB width="49.438" height="54.637" fill="#fff"/>; 
-            case 'NVDA':
-                return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
-            case 'TSLA':
-                return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
-            case 'GOOG':
-                return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
-            case 'NFLX':
-                return <NFLX width="49.438" height="54.637" fill="#fff"/>;
-            case 'News':
-                return <News width="49.438" height="54.637" fill="#fff"/>;
-            default:
-                return null;
+    const logotype = (symbol) => {
+            // console.log("Logotype")
+            // console.log(symbol);      
+            switch (symbol) {
+                case 'AMZN':
+                    return <AMZN width="20" height="20" fill="#fff"/>;
+                case 'MSFT':             
+                    return <MSFT width="20" height="20" fill="#fff"/>;
+                case 'NKE':
+                    return <NKE width="20" height="20"/>;    
+                case 'AAPL':
+                    return <AAPL width="20" height="20" fill="#fff"/>;
+                case 'FB':
+                    return <FB width="20" height="20" fill="#fff"/>; 
+                case 'NVDA':
+                    return <NVDA width="20" height="20" fill="#fff"/>; 
+                case 'TSLA':
+                    return <TSLA width="20" height="20" fill="#fff"/>; 
+                case 'GOOG':
+                    return <GOOG width="20" height="20" fill="#fff"/>; 
+                case 'NFLX':
+                    return <NFLX width="20" height="20" fill="#fff"/>;
+                case 'News':
+                    return <News width="20" height="20" fill="#fff"/>;
+                default:
+                    return null;
             }
-        })()}
-    } 
+        }
 
     useEffect(() => {
-        const axios = require('axios');
+
+        console.log("OVERVIEW");
+        const {user} = prop.location.state;
+        console.log(user);
+        setUserOverview(user);    
+        console.log(userOverview);    
+        const axios = require('axios');       
         var options = {
           method: 'GET',
           url: 'https://stocknoob.azurewebsites.net/stock/userstock/3',
@@ -110,381 +103,127 @@ export default function Overview() {
                 Stock_Name: item.Stock_Name,
                 Stock_Shortening: item.Stock_Shortening,
             }
-            console.log(stock);
+            // console.log(stock);
             stocksArray.push(stock);
-        
-          })
-        
-       
+          })        
+        //   console.log(stocksArray);         
           setStocks(stocksArray)
-          console.log(stocks[0])
-          console.log(stocks[0].Stock_Shortening)
-          
-                
+        //   console.log(stocks)  
         }).catch(function (error) {
           console.error(error);
-          return "MSFT";
         });
     },  []);
+
+    const graphs = [{
+        labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
+        datasets: [{
+            label: 'OMX30',
+            data: [2389, 2319, 2343, 2412, 2410, 2376, 2342],
+            backgroundColor: 'rgba(242, 214, 88, 0.2)',
+            borderColor: 'rgba(242, 214, 88, 1)',
+            borderWidth: 1,
+            tension: 0,
+            borderCapStyle: "round",
+            fill: true,
+            pointRadius: 0,
+        }]}, {
+            labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
+            datasets: [{
+                label: 'TSLA',
+                data: [530, 580, 550, 540, 510, 580, 620],
+                backgroundColor: 'rgba(242, 214, 88, 0.2)',
+                borderColor: 'rgba(242, 214, 88, 1)',
+                borderWidth: 1,
+                tension: 0,
+                borderCapStyle: "round",
+                fill: true,
+                pointRadius: 0,
+            }]
+            
+        }, {
+            labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
+            datasets: [{
+                label: 'AMZN',
+                data: [3230, 3300, 3350, 3400, 3300, 3420, 3500],
+                backgroundColor: 'rgba(242, 214, 88, 0.2)',
+                borderColor: 'rgba(242, 214, 88, 1)',
+                borderWidth: 1,
+                tension: 0,
+                borderCapStyle: "round",
+                fill: true,
+                pointRadius: 0,
+            }]
+            
+        }, {
+            labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
+            datasets: [{
+                label: 'FB',
+                data: [324, 300, 295, 280, 270, 245, 220],
+                backgroundColor: 'rgba(242, 214, 88, 0.2)',
+                borderColor: 'rgba(242, 214, 88, 1)',
+                borderWidth: 1,
+                tension: 0,
+                borderCapStyle: "round",
+                fill: true,
+                pointRadius: 0,
+            }]
+            
+        }]
+
         return (
-            <div className="grid-container">
-                
-                <div className="top-container">
-                   
+            <div className="d-flex flex-column mt-4">    
+                <h2 className="text-center yellow">Welcome!</h2>            
+                <div className="d-flex justify-content-around">                      
+                    {graphs.map((graph) => (
                         <div className="b1">
+                            <h5 className="text-light">Graph</h5>
                             <button className="graphButtons">
                                 <Line
-                                    data={{
-                                        labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
-                                        datasets: [{
-                                            label: 'OMX30',
-                                            data: [2389, 2319, 2343, 2412, 2410, 2376, 2342],
-                                            backgroundColor: 'rgba(242, 214, 88, 0.2)',
-                                            borderColor: 'rgba(242, 214, 88, 1)',
-                                            borderWidth: 1,
-                                            tension: 0,
-                                            borderCapStyle: "round",
-                                            fill: true,
-                                            pointRadius: 0,
-                                        }]
-                                        
-                                    }}
+                                    data={graph}
                                     width={144}
                                     height={144}
                                 />
                             </button>
                         </div>
-                        <div className="b2">
-                            <button className="graphButtons">  
-                                <Line
-                                    data={{
-                                        labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
-                                        datasets: [{
-                                            label: 'TSLA',
-                                            data: [530, 580, 550, 540, 510, 580, 620],
-                                            backgroundColor: 'rgba(242, 214, 88, 0.2)',
-                                            borderColor: 'rgba(242, 214, 88, 1)',
-                                            borderWidth: 1,
-                                            tension: 0,
-                                            borderCapStyle: "round",
-                                            fill: true,
-                                            pointRadius: 0,
-                                        }]
-                                        
-                                    }}
-                                    width={144}
-                                    height={144}
-                                />
-                            </button>
-                        </div>
-                        <div className="b3">
-                            <button className="graphButtons">
-                                <Line
-                                    data={{
-                                        labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
-                                        datasets: [{
-                                            label: 'AMZN',
-                                            data: [3230, 3300, 3350, 3400, 3300, 3420, 3500],
-                                            backgroundColor: 'rgba(242, 214, 88, 0.2)',
-                                            borderColor: 'rgba(242, 214, 88, 1)',
-                                            borderWidth: 1,
-                                            tension: 0,
-                                            borderCapStyle: "round",
-                                            fill: true,
-                                            pointRadius: 0,
-                                        }]
-                                        
-                                    }}
-                                    width={144}
-                                    height={144}
-                                />
-                            </button>
-                        </div>
-                        <div className="b4">
-                            <button className="graphButtons">
-                                <Line
-                                    data={{
-                                        labels: ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00'],
-                                        datasets: [{
-                                            label: 'FB',
-                                            data: [324, 300, 295, 280, 270, 245, 220],
-                                            backgroundColor: 'rgba(242, 214, 88, 0.2)',
-                                            borderColor: 'rgba(242, 214, 88, 1)',
-                                            borderWidth: 1,
-                                            tension: 0,
-                                            borderCapStyle: "round",
-                                            fill: true,
-                                            pointRadius: 0,
-                                        }]
-                                        
-                                    }}
-                                    width={144}
-                                    height={144}
-                                />
-                            </button>
-                        </div>
-                 
+                    ))}                                                                          
                 </div>
                
-                    <div className="left-container">
-                        <div className="personalButtons">
-                            <div className="leftButtons">
-                                <button className="leftholdingButton" onClick={pushHoldings}>
-                                    <Holdings onClick={pushHoldings} />
-                                    <h4 className="text" onClick={pushHoldings}>Holdings</h4>
-                                    
+                <div className="d-flex justify-content-around">
+                    <div className="d-flex flex-column justify-content-center">
+                        <button className="actionButton" onClick={pushHoldings}>
+                            <Holdings onClick={pushHoldings} />
+                            <h4 className="text" onClick={pushHoldings}>Holdings</h4>                                
+                        </button>
+                        <button className="actionButton" onClick={pushTransaction} >
+                            <Transaction onClick={pushTransaction} />
+                            <h4 className="text" onClick={pushTransaction} >Transactions</h4>                                
+                        </button>
+                        <button className="actionButton" onClick={pushNewsfeed}>
+                            <News onClick={pushNewsfeed}/>
+                            <h4 className="text" onClick={pushNewsfeed}>Newsfeed</h4>
+                        </button>
+                    </div>
+
+                    <div className="w-50">
+                        <h3 className="t2">Your Holdings</h3>
+                        <div className="d-flex flex-column w-100">                   
+                            {stocks.map((stock) => (                      
+                                <button className="holdingButton w-100 pl-5">                
+                                    <div className="row align-items-center" >                                            
+                                        {logotype(stock.Stock_Shortening)}
+                                        <p className="col-4 yellow">{stock.Stock_Name}</p>
+                                        <p className="col yellow">{stock.Stock_Shortening}</p>   
+                                        <p className="text col-4">Top Performing</p>                                                                             
+                                        <div className="procent col">
+                                            <p className="greenText">+15%</p>
+                                        </div>
+                                    </div>
                                 </button>
-                                <button className="leftholdingButton" onClick={pushTransaction} >
-                                    <Transaction onClick={pushTransaction} />
-                                    <h4 className="text" onClick={pushTransaction} >Transactions</h4>
-                                    
-                                </button>
-                                <button className="leftholdingButton" onClick={pushNewsfeed}>
-                                    <News onClick={pushNewsfeed}/>
-                                    <h4 className="text" onClick={pushNewsfeed}>Newsfeed</h4>
-                                </button>
-                            </div>
+                            ))}     
+                            <p className="allstocks" onClick={pushHoldings}>See all stocks</p>           
                         </div>
                     </div>
-                   
-               
-                
-                    <div className="right-container">
-
-                    <h3 className="t2">Your Holdings</h3>
-
-                    <div className="personalButtons-left">
-                    <button className="holdingButton" id="left1">
-                    <div className="specificButton" >
-                                
-                                
-                                 
-                                {logotype(0)}
-                                <div className="specificDescription">
-                                        {stocks.length > 0 ? (
-                                            <h6 className="text">{stocks[0].Stock_Name}, {stocks[0].Stock_Shortening}</h6>
-                                        ) : (
-                                            <h6 className="text">NO STOCK</h6>
-                                        )}
-                                    <p className="text">Top Performing</p>            
-                                </div>
-                                <div className="procent">
-                                    <p className="greenText">+15%</p>
-                                </div>
-                            </div>
-                        </button>
-                        <button className="holdingButton" id="left2">
-                        <div className="specificButton">
-                                {(function() {
-                                    switch (stocks[1].Stock_Shortening) {
-                                    
-                                    case 'AMZN':
-                                        return <AMZN width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'MSFT':
-                                        return <MSFT width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'NKE':
-                                        return <NKE width="49.438" height="54.637"/>;    
-                                    case 'AAPL':
-                                        return <AAPL width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'FB':
-                                        return <FB width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'NVDA':
-                                        return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'TSLA':
-                                        return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'GOOG':
-                                        return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'NFLX':
-                                        return <NFLX width="49.438" height="54.637" fill="#fff"/>;
-                                    default:
-                                        return null;
-                                    }
-                                })()}
-                                    
-                                <div className="specificDescription">
-                                        {stocks.length > 1 ? (
-                                            <h6 className="text">{stocks[1].Stock_Name}, {stocks[1].Stock_Shortening}</h6>
-                                        ) : (
-                                            <h6 className="text">NO STOCK</h6>
-                                        )}
-                                    
-                                    <p className="text">Top Performing</p>            
-                                </div>
-                                <div className="procent">
-                                    <p className="greenText">+12%</p>
-                                </div>
-                            </div>
-                        </button>
-                        <button className="holdingButton" id="left3">
-                        <div className="specificButton">
-                                {(function() {
-                                    switch (stocks[2].Stock_Shortening) {
-                                    
-                                    case 'AMZN':
-                                        return <AMZN width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'MSFT':
-                                        return <MSFT width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'NKE':
-                                        return <NKE width="49.438" height="54.637"/>;    
-                                    case 'AAPL':
-                                        return <AAPL width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'FB':
-                                        return <FB width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'NVDA':
-                                        return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'TSLA':
-                                        return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'GOOG':
-                                        return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'NFLX':
-                                        return <NFLX width="49.438" height="54.637" fill="#fff"/>;
-                                    default:
-                                        return null;
-                                    }
-                                })()}
-                                    
-                                <div className="specificDescription">
-                                        {stocks.length > 2 ? (
-                                            <h6 className="text">{stocks[2].Stock_Name}, {stocks[2].Stock_Shortening}</h6>
-                                        ) : (
-                                            <h6 className="text">NO STOCK</h6>
-                                        )}
-                                    <p className="text">Moderate Performing</p>            
-                                </div>
-                                <div className="procent">
-                                    <p className="greenText">+8%</p>
-                                </div>
-                            </div>
-                        </button>
-                        </div>
-
-                       
-                    <div className="personalButtons-right">
-                        <button className="holdingButton" id="right1">
-                            <div className="specificButton">
-                                {(function() {
-                                    switch (stocks[3].Stock_Shortening) {
-                                    
-                                    case 'AMZN':
-                                        return <AMZN width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'MSFT':
-                                        return <MSFT width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'NKE':
-                                        return <NKE width="49.438" height="54.637"/>;    
-                                    case 'AAPL':
-                                        return <AAPL width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'FB':
-                                        return <FB width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'NVDA':
-                                        return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'TSLA':
-                                        return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'GOOG':
-                                        return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'NFLX':
-                                        return <NFLX width="49.438" height="54.637" fill="#fff"/>;
-                                    default:
-                                        return null;
-                                    }
-                                })()}
-                                    
-                                <div className="specificDescription">
-                                        {stocks.length > 3 ? (
-                                            <h6 className="text">{stocks[3].Stock_Name}, {stocks[3].Stock_Shortening}</h6>
-                                        ) : (
-                                            <h6 className="text">NO STOCK</h6>
-                                        )}
-                                    <p className="text">Underperforming</p>            
-                                </div>
-                                <div className="procent">
-                                    <p className="redText">-8%</p>
-                                </div>
-                            </div>
-                        </button>
-                        <button className="holdingButton" id="right2">
-                        <div className="specificButton">
-                                {(function() {
-                                    switch (stocks[4].Stock_Shortening) {
-                                    
-                                    case 'AMZN':
-                                        return <AMZN width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'MSFT':
-                                        return <MSFT width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'NKE':
-                                        return <NKE width="49.438" height="54.637"/>;    
-                                    case 'AAPL':
-                                        return <AAPL width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'FB':
-                                        return <FB width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'NVDA':
-                                        return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'TSLA':
-                                        return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'GOOG':
-                                        return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'NFLX':
-                                        return <NFLX width="49.438" height="54.637" fill="#fff"/>;
-                                    default:
-                                        return null;
-                                    }
-                                })()}
-                                    
-                                <div className="specificDescription">
-                                        {stocks.length > 4 ? (
-                                            <h6 className="text">{stocks[4].Stock_Name}, {stocks[4].Stock_Shortening}</h6>
-                                        ) : (
-                                            <h6 className="text">NO STOCK</h6>
-                                        )}
-                                    <p className="text">Underperforming</p>            
-                                </div>
-                                <div className="procent">
-                                    <p className="redText">-5%</p>
-                                </div>
-                            </div>
-                        </button>
-                        <button className="holdingButton" id="right3">
-                        <div className="specificButton">
-                                {(function() {
-                                    switch (stocks[5].Stock_Shortening) {
-                                    
-                                    case 'AMZN':
-                                        return <AMZN width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'MSFT':
-                                        return <MSFT width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'NKE':
-                                        return <NKE width="49.438" height="54.637"/>;    
-                                    case 'AAPL':
-                                        return <AAPL width="49.438" height="54.637" fill="#fff"/>;
-                                    case 'FB':
-                                        return <FB width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'NVDA':
-                                        return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'TSLA':
-                                        return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'GOOG':
-                                        return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
-                                    case 'NFLX':
-                                        return <NFLX width="49.438" height="54.637" fill="#fff"/>;
-                                    default:
-                                        return null;
-                                    }
-                                })()}
-                                    
-                                <div className="specificDescription">
-                                        {stocks.length > 5 ? (
-                                            <h6 className="text">{stocks[5].Stock_Name}, {stocks[5].Stock_Shortening}</h6>
-                                        ) : (
-                                            <h6 className="text">NO STOCK</h6>
-                                        )}
-                                    <p className="text">Underperforming</p>            
-                                </div>
-                                <div className="procent">
-                                    <p className="redText">-3%</p>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                    </div>
+                </div>
             </div>
         )
     
