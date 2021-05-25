@@ -18,6 +18,8 @@ export default function Explore() {
     var [growth, setGrowth] = useState(Number);
     var [timespan, setTimespan] = useState(Number);
     var [period, setPeriod] = useState("/Day");
+    var [buyInput, setBuyInput] = useState(Number);
+    var [buyPrice, setBuyPrice] = useState(Number);
     let days = ["","15:00","", "17:00","","19:00", "","21:00","" ,"23:00"]
     let weeks = ["","","","","Mon","","","","", "Tue","","","","", "Wed","","","","", "Thu","","","","", "Fri"]
     let Months = ["","","","","","","","","","","","","","","","","","","","","","","","","","","","",
@@ -26,10 +28,25 @@ export default function Explore() {
                     "","","","","","","","","","","","","","","","", ""]
     let daysData = [342, 343, 345, 339, 340, 341, 339, 340, 339, 342]                
     var [xAxis, setXAxis] = useState(days);
-    var [stockSymbol, setStockSymbol] = useState("AMZN");
+    var [stockSymbol, setStockSymbol] = useState("");
     var [money, setMoney] = useState(4000);
     var [holdings, setHoldings] = useState(5000);
     var [stocks, setStocks] = useState(10);
+
+    var [cashState, setCashState] = useState({
+        Login_ID: Number,
+        Username: "",
+        Password: "",
+        User_ID: Number,
+        User_Login_ID: Number,
+        Mail: "",
+        Money: Number,
+        Holdings: Number,
+        Goal: Number,
+        GoalItem: Number,
+        SavingMonth: Number,
+        Token: ""
+    });
 
     const getApiData = () => { 
         
@@ -38,7 +55,7 @@ export default function Explore() {
         let label = "";
         const axios = require('axios');
         const params = {
-          access_key: '42afa58ed9a8332cd53fb1a45d75b29b'
+          access_key: '77c171bec68a191781a8e08d026779d7'
         }
         console.log(stockSymbol);
         axios.get(`http://api.marketstack.com/v1/tickers/${stockSymbol}/intraday`, {params})
@@ -51,7 +68,7 @@ export default function Explore() {
                 label = dataAPI.symbol;
                 labels.push(dataAPI.date);
                 data.push(parseInt(dataAPI.open));
-
+                console.log(parseInt(dataAPI.open))
                 count = count +1;
             } 
             console.log(count);
@@ -61,7 +78,12 @@ export default function Explore() {
             setLatest(data[timespan -1]);
             setHigh(Math.max(...data));
             setLow(Math.min(...data));
-
+            /* console.log(data);
+            console.log(low);
+            console.log(high);
+            console.log(growth);
+            console.log(price);
+            console.log(latest); */
                 
             setStockGraph({
                 labels: xAxis,
@@ -118,14 +140,19 @@ export default function Explore() {
       const sellStock = (e) =>{
           e.preventDefault();
           console.log("sale");
-          if(holdings >= (buyState.HS_Price * buyState.HS_Amount))
-          {
-        setMoney(money + (buyState.HS_Price * buyState.HS_Amount));
-        setHoldings(holdings - (buyState.HS_Price * buyState.HS_Amount));
-          }
-          else{
-              console.info("not enough in holdings");
-          }
+          const axios = require('axios');
+            var sell = {
+            method: 'POST',
+            url: 'https://stocknoob.azurewebsites.net/stock/sell',
+            data: buyState,
+            headers: { authorization: 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlwRW5tajh6MkE3MDFESTVJVVMwRiJ9.eyJpc3MiOiJodHRwczovL2Rldi1wcGJvbHh0eS5ldS5hdXRoMC5jb20vIiwic3ViIjoiTXpJWFNqQVpsWGhXbW9XUmM2RmE4N0NtWXdadUxJeTlAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vcXVpY2tzdGFydHMvYXBpIiwiaWF0IjoxNjIxODU2NzU1LCJleHAiOjE2MjE5NDMxNTUsImF6cCI6Ik16SVhTakFabFhoV21vV1JjNkZhODdDbVl3WnVMSXk5IiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.a3U6rp2OeetV2R2aPid4tw9fKCPZv2rwGpQkG_WGM-dMKrhHKtLZ7ejg-UjdO11a8XG-pB9UxiXeEX2gde3POpiDaq-4WCwkQsUIk3EsgDBhpmmOHDPMlgmH0SUlllwUDhcRFRhVkGnLWZ9iYVQH_Z4f01EvZNTb_v_EXypGiP-3wtaChwgC8B88YLYnPfkSqaQ6il6Q6occpmXFOnHtQhviv9-qkxk41BFHUphWpb5N19tw1UvRAAdQIO9NmyVEw5EZNByxRHydWXIavO9sBpUwmTKd_KfarS-CZR8b1u5Pk-joau0l-Sg8941etgWNovLlEC7dnWk_AY4c4u1Xuw'}
+        }
+        
+        axios.request(sell).then(function(response){
+            console.log(response)
+            
+            
+        });
       }
 
       const buyState = {
@@ -136,32 +163,12 @@ export default function Explore() {
           Stock_Name: "",
           Stock_Shortening: ""
       }
-      var cashState = {
-          Login_ID: 4,
-          Username: "malu",
-          Password: "1234",
-          User_ID: 4,
-          User_Login_ID: 4,
-          Mail: "malu@mail.se",
-          Money: 4000,
-          Holdings: 5000,
-          Goal: 10000,
-          GoalItem: 10000,
-          SavingMonth: 100,
-          Token: ""
-      }
+     
       //Funktion för att köpa aktier, ska uppdatera databasen
       const buyStock = (e) =>{
         e.preventDefault();
         console.log("buying");
-        /* if(money >= (buyState.HS_Price * buyState.HS_Amount))
-        {
-        setMoney(money - (buyState.HS_Price * buyState.HS_Amount));
-        setHoldings(holdings + (buyState.HS_Price * buyState.HS_Amount));
-        }
-        else{
-            console.info("not enouch cash");
-        } */
+        
         const axios = require('axios');
         var buy = {
             method: 'POST',
@@ -178,15 +185,52 @@ export default function Explore() {
         });
     }
 
+    const handleBuy = (e) => {
+       setBuyInput(e.target.value);
+       var kostnad = buyState.HS_Price * buyInput
+    //    console.log( buyState.HS_Price + " " + buyInput + " " + kostnad);
+       setBuyPrice(kostnad)
+    //    console.log(buyInput)
+    //    console.log(buyPrice)
+    }
+
        useEffect(() => {
-        getApiData();
+           setStockSymbol("AMZN");
+         setCashState({
+            Login_ID: 4,
+            Username: "malu",
+            Password: "1234",
+            User_ID: 4,
+            User_Login_ID: 4,
+            Mail: "malu@mail.se",
+            Money: 7000,
+            Holdings: 4000,
+            Goal: 10000,
+            GoalItem: 10000,
+            SavingMonth: 100,
+            Token: ""
+         });
+        //getApiData();
       }, []); 
     return (
         <div className="explore">
             <div className="container">
                 <div className="top">
+                <div className="topInfo">
+                        <div>
+                        Username: <span>{cashState.Username}</span>
+                        </div>
+                        <div>
+                        Balance: <span>{cashState.Money}</span>
+                        </div>
+                        
+                        <div>
+                        Owning: <span>You own 8</span>
+                        </div>
+                     
+                    </div>
                     <h1>{stockSymbol}</h1>
-                    User: {cashState.Username} , Current:{money} , Holdings:{holdings}
+                    
                 </div>
                 <div className="mid">
                     <div className="mid-left">
@@ -226,7 +270,7 @@ export default function Explore() {
                                     Growth/D
                                 </div>
                                 <div className="info-right-bottom money">
-                                    {growth.toFixed(2) * 1}%
+                                    {growth.toFixed(2) * 100}%
                                 </div>
                             </div>
 
@@ -326,11 +370,11 @@ export default function Explore() {
                                     <div className="buy-details">
                                         
                                         <div className="input">
-                                            <p>Current cash: {money}</p>
-                                            <p>Price: {buyState.HS_Price * buyState.HS_Amount}</p>
+                                            <p>Current cash: {cashState.Money}</p>
+                                            <p>Price: {buyState.HS_Price * buyInput}</p>
                                             <form onSubmit={buyStock}>
-                                            <label>Ammount</label>
-                                            <input  type="text" required name="Username" placeholder="nr of stocks"></input> 
+                                            <label>Amount</label>
+                                            <input  type="number" required name="Amount" placeholder="nr of stocks" value={buyInput} onChange={handleBuy}></input> 
                                             <button className="btn-purchase" type="submit">Continue</button>  
                                             </form> 
                                         </div>
@@ -360,7 +404,7 @@ export default function Explore() {
                                             <p>Stocks to sell: {stocks}</p>
                                             <p>Price: {buyState.HS_Price * buyState.HS_Amount}</p>
                                             <form onSubmit={sellStock}>
-                                            <label>Ammount</label>
+                                            <label>Amount</label>
                                             <input  type="text" required name="Username" placeholder="nr of stocks"></input>  
                                             <button className="btn-purchase" type="submit">Continue</button>  
                                             </form> 

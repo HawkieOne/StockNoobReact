@@ -7,30 +7,30 @@ import {faFacebookF, faTwitter, faInstagram} from "@fortawesome/free-brands-svg-
 
 export default function Footer() {
     return (
-        <div className="Bottom">
-            <div className="container">
-            <div className="left">
-                CONTACT
-                <hr className="seperator"/>
-                <span>
-                <FontAwesomeIcon className="mail" icon={faAddressBook} />
-                Stocknoob@stocks.com
-                </span>
-            </div>
-            <div className="middle">
-                ABOUT
-                <hr className="seperator"/>
-                <span>
-                Stocknoob is a fictional training 
-                <br/>
-                application designed as a learning tool</span>
-            </div>
-            <div className="right">
-                <FontAwesomeIcon className="icon" icon={faInstagram} />
-                <FontAwesomeIcon className="icon" icon={faTwitter} />
-                <FontAwesomeIcon className="icon" icon={faFacebookF} />
-            </div>
-            </div>
+        <div className="footer row">
+            <div className="col">
+                    <h5>CONTACT</h5>
+                    <hr className="seperator w-75"/>
+                    <span>
+                    <FontAwesomeIcon className="mail fa-lg" icon={faAddressBook} />
+                    stocknoob@stocks.com
+                    </span>
+                </div>
+                <div className="col font-weight-light">                    
+                    <h5>ABOUT</h5>
+                    <hr className="seperator w-75"/>
+                    Stocknoob is a fictional stock training                 
+                    application
+                </div>
+                <div className="col">
+                    <h5>Social</h5>
+                    <hr className="seperator w-75"/>
+                    <div className="d-flex justify-content-center">
+                        <FontAwesomeIcon className="icon mr-5 fa-lg" icon={faInstagram} />
+                        <FontAwesomeIcon className="icon fa-lg" icon={faTwitter} />
+                        <FontAwesomeIcon className="icon ml-5 fa-lg" icon={faFacebookF} />
+                    </div>
+                </div>
         </div>
     )
 }

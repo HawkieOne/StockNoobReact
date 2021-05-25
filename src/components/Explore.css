@@ -7,6 +7,19 @@
     color: #F2D658;
 }
 
+.explore .container .topInfo{
+    background-color: #383D53;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    width: 60%;
+    margin-left: 21%;
+    border-radius: 10px;
+    margin-top: -2%;
+}
+.explore .container  .topInfo span{
+    font-size: 15px;
+}
 
 .explore .container .mid{
     display: flex;
@@ -81,7 +94,7 @@
     width: 20%;
     margin-right: -10%;
     height: 75vh;
-    margin-top: 2%;
+    
 }
 .explore .container .mid .mid-right .info{
     display: flex;
