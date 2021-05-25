@@ -1,9 +1,9 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import history from './History'
 
 export default function Login() {
 
-  var [user, setUser] = useState({});
+  var [user, setUser] = useState(null);
 
   var [Username, setUsername] = useState({
        Username: ""
@@ -22,7 +22,7 @@ export default function Login() {
         }        
       };
 
-      const login = (event) => {
+      const login = async (event) => {
         event.preventDefault(); 
         console.log(Username);
         console.log(Password);       
@@ -37,13 +37,30 @@ export default function Login() {
                 .then(response => {                   
                   const data = response.data;
                   console.log(data);
-                  setUser(data)                               
-                  console.log(user);                    
-                  // toOverview();                            
-                }).catch(error =>
+                  // setUser(data);
+                  setUser({
+                    LoginID : data.Login_ID,
+                    Username : data.Username,
+                    UserID : data.User_ID,
+                    Mail : data.Mail,
+                    Money : data.Money,
+                    Holdings : data.Holdings,
+                    Goal : data.Goal,
+                    GoalItem : data.GoalItem,
+                    SavingMonth : data.SavingMonth,
+                    Token : data.Token.access_token});                                                                       
+                })
+                .catch(error =>
                   console.log(error)
                 )
       };  
+
+      useEffect(() => {
+        if(user !== null) {
+          console.log(user);                    
+          toOverview(); 
+        }     
+      }, [user]);
 
     const toOverview = () => {    
         const path = "/Overview";

@@ -18,19 +18,7 @@ import axios from 'axios';
 
 export default function Overview(prop) {
     
-    const [user, setUser] = useState({
-        LoginID: "",
-        Username: "",
-        UserID: "",
-        Mail: "",
-        Money: "",
-        Holdings: "",
-        Goal: "",
-        GoalItem: "",
-        SavingMonth: "",
-        Token: ",",
-        haveStocks: []
-    });
+    var [userOverview, setUserOverview] = useState(null);
     const [stocks, setStocks] = useState([]);
 
     const apiRequest = (event) => {
@@ -92,6 +80,8 @@ export default function Overview(prop) {
         console.log("OVERVIEW");
         const {user} = prop.location.state;
         console.log(user);
+        setUserOverview(user);    
+        console.log(userOverview);    
         const axios = require('axios');       
         var options = {
           method: 'GET',
