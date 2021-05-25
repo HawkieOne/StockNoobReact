@@ -70,7 +70,7 @@ export default function Header(prop) {
                 </div>
             </div>
             <div className="middle" onClick={toHome}>
-                <span>Noob</span> <FontAwesomeIcon className="icon" icon={faChartLine}/>         
+                S<span>Noob</span> <FontAwesomeIcon className="icon" icon={faChartLine}/>         
             </div>
             <div className="right">
                 {showIcons()}                        

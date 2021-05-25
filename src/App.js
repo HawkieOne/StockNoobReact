@@ -143,7 +143,7 @@ function App() {
         </Switch>            
       </Router>  
 
-      <Footer className="mt-5"/>
+      <Footer className="fixed-bottom"/>
     </div>
   );
 }
