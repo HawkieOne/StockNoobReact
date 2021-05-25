@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useState} from 'react'
 import {  faUser, faClock, faQuestionCircle, faSearch, faBell, faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
@@ -32,12 +32,27 @@ export default function Header(prop) {
         })  
       };
 
+      const [searchVal, setSearchVal] = useState({
+        searchValue: ""  
+      });
+
+      const toSearch = () => {    
+        const path = "/search";      
+        history.push({
+            pathname: path,
+            state: {
+                searchValue: searchVal.searchValue
+            }
+        })  
+      };
+
     return (
         <div className="Header">
             <div className="left">
                 <div className="search">
                     <FontAwesomeIcon className="searchIcon" icon={faSearch}  />
-                    <input className="searcharea" type="text" placeholder="Search..."></input>
+                    <input className="searcharea" type="submit" placeholder="Search..." onChange={(event)=> {setSearchVal(event.target.value)}}
+                    onSubmit={toSearch}></input>
                 </div>
             </div>
             <div className="middle" onClick={toHome}>
