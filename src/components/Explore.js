@@ -48,6 +48,15 @@ export default function Explore() {
         Token: ""
     });
 
+    var [buyState, setBuyState] = useState({
+        HS_User_ID: 4,
+        HS_Stock_ID: 188,
+        HS_Price: 342,
+        HS_Amount: 10,
+        Stock_Name: "",
+        Stock_Shortening: ""
+    });
+
     const getApiData = () => { 
         
         let labels = [];
@@ -155,14 +164,7 @@ export default function Explore() {
         });
       }
 
-      var [buyState, setBuyState] = useEffect({
-          HS_User_ID: 4,
-          HS_Stock_ID: 188,
-          HS_Price: 342,
-          HS_Amount: 10,
-          Stock_Name: "",
-          Stock_Shortening: ""
-      });
+      
      
       //Funktion för att köpa aktier, ska uppdatera databasen
       const buyStock = (e) =>{
