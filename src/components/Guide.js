@@ -10,8 +10,8 @@ function Guide() {
                     <hr className="w-75 hr-tag"></hr>
                     <div className="container">
                         <div className="part">
-                            <h4>Do you want to learn about Stock?</h4>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took.</p>
+                            <h4>Do you want to learn about the stock market?</h4>
+                            <p>Our platform is targeting that group. StockNoob is all about letting new small investors to get a feel for the market before </p>
                         </div>
 
                         <div className="part">
