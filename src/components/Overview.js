@@ -7,6 +7,9 @@ import {ReactComponent as AMZN} from './Logos/AMZN.svg'
 import {ReactComponent as GOOG} from './Logos/GOOG.svg'
 import {ReactComponent as FB} from './Logos/FB.svg'
 import {ReactComponent as MSFT} from './Logos/MSFT.svg'
+import {ReactComponent as NFLX} from './Logos/NFLX.svg'
+import {ReactComponent as NVDA} from './Logos/NVDA.svg'
+import {ReactComponent as NKE} from './Logos/NKE.svg'
 import {ReactComponent as News} from './Logos/News.svg'
 import {ReactComponent as Holdings} from './Logos/Holdings.svg'
 import {ReactComponent as Transaction} from './Logos/Transaction.svg'
@@ -54,27 +57,50 @@ export default function Overview() {
             pathname: path
         })     
     };
+   
+    const logotype = (arrayIndex) => {
+        {(function() {
+            switch (stocks[arrayIndex].Stock_Shortening) {
+            
+            case 'AMZN':
+                return <AMZN width="49.438" height="54.637" fill="#fff"/>;
+            case 'MSFT':
+                return <MSFT width="49.438" height="54.637" fill="#fff"/>;
+            case 'NKE':
+                return <NKE width="49.438" height="54.637"/>;    
+            case 'AAPL':
+                return <AAPL width="49.438" height="54.637" fill="#fff"/>;
+            case 'FB':
+                return <FB width="49.438" height="54.637" fill="#fff"/>; 
+            case 'NVDA':
+                return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
+            case 'TSLA':
+                return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
+            case 'GOOG':
+                return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
+            case 'NFLX':
+                return <NFLX width="49.438" height="54.637" fill="#fff"/>;
+            case 'News':
+                return <News width="49.438" height="54.637" fill="#fff"/>;
+            default:
+                return null;
+            }
+        })()}
+    } 
 
-    const logos = (event) => {
-        const ticker = stocks.haveStocks.valuesOf(0)
-        
-        const path = "/stockList";
-            history.push({
-            pathname: path
-        })     
-    };
     useEffect(() => {
         const axios = require('axios');
         var options = {
           method: 'GET',
           url: 'https://stocknoob.azurewebsites.net/stock/userstock/3',
-          headers: { authorization: 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlwRW5tajh6MkE3MDFESTVJVVMwRiJ9.eyJpc3MiOiJodHRwczovL2Rldi1wcGJvbHh0eS5ldS5hdXRoMC5jb20vIiwic3ViIjoiTXpJWFNqQVpsWGhXbW9XUmM2RmE4N0NtWXdadUxJeTlAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vcXVpY2tzdGFydHMvYXBpIiwiaWF0IjoxNjIxMzUzOTY0LCJleHAiOjE2MjE0NDAzNjQsImF6cCI6Ik16SVhTakFabFhoV21vV1JjNkZhODdDbVl3WnVMSXk5IiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.qZYRFYN5BowYMG_auGRFETmKKVAVBesxxrwt0CQ6wyKWowHLAgTHwlDgclMdWlQTp2ay8Ug-pcWQMmX4E8tfWzZuSBENYQU8wTyzBXgFOQwG91CiksoSVHSanTRvuVbpJTNiHaidSJCBY9mFBBzKh_dLJRc6fgrYr_OsQpxhWO01JhZFPnMxDcSe1ZGOU5ptWv3YlS3FOQusLlh7ltxeXcEGYbj-lUPwLUcf5ZNbMEL4RgVcYvAnKoGyjGlMY3DL43DePV08g_Z1kjHWdAEaMSXgOD9ZJ_v-CIPLBnaOzAsNreq91SC7661hIFGU8PwtDOqXV3tZNJVqH031sRNzNA'}
+          headers: { authorization: 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlwRW5tajh6MkE3MDFESTVJVVMwRiJ9.eyJpc3MiOiJodHRwczovL2Rldi1wcGJvbHh0eS5ldS5hdXRoMC5jb20vIiwic3ViIjoiTXpJWFNqQVpsWGhXbW9XUmM2RmE4N0NtWXdadUxJeTlAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vcXVpY2tzdGFydHMvYXBpIiwiaWF0IjoxNjIxODU2NzU1LCJleHAiOjE2MjE5NDMxNTUsImF6cCI6Ik16SVhTakFabFhoV21vV1JjNkZhODdDbVl3WnVMSXk5IiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.a3U6rp2OeetV2R2aPid4tw9fKCPZv2rwGpQkG_WGM-dMKrhHKtLZ7ejg-UjdO11a8XG-pB9UxiXeEX2gde3POpiDaq-4WCwkQsUIk3EsgDBhpmmOHDPMlgmH0SUlllwUDhcRFRhVkGnLWZ9iYVQH_Z4f01EvZNTb_v_EXypGiP-3wtaChwgC8B88YLYnPfkSqaQ6il6Q6occpmXFOnHtQhviv9-qkxk41BFHUphWpb5N19tw1UvRAAdQIO9NmyVEw5EZNByxRHydWXIavO9sBpUwmTKd_KfarS-CZR8b1u5Pk-joau0l-Sg8941etgWNovLlEC7dnWk_AY4c4u1Xuw'}
         };
         
         let stocksArray = [];
 
          axios.request(options).then(function (response) {
           const apiResponse = response.data;
+          
           apiResponse.map((item, index) => {
             let stock = {
                 HS_User_ID: item.HS_User_ID,
@@ -82,16 +108,19 @@ export default function Overview() {
                 HS_Price: item.HS_Price,
                 HS_Amount: item.HS_Amount,
                 Stock_Name: item.Stock_Name,
-                Stock_Shortening: item.Stock_Shortening
-                }
+                Stock_Shortening: item.Stock_Shortening,
+            }
             console.log(stock);
             stocksArray.push(stock);
+        
           })
+        
+       
           setStocks(stocksArray)
-          console.log(stocksArray)
-          console.log(stocks)
-          console.log(stocks[0].Stock_Name)
+          console.log(stocks[0])
+          console.log(stocks[0].Stock_Shortening)
           
+                
         }).catch(function (error) {
           console.error(error);
           return "MSFT";
@@ -200,9 +229,9 @@ export default function Overview() {
                     <div className="left-container">
                         <div className="personalButtons">
                             <div className="leftButtons">
-                                <button className="leftholdingButton" onClick={apiRequest}>
-                                    <Holdings onClick={apiRequest} />
-                                    <h4 className="text" onClick={apiRequest}>Holdings</h4>
+                                <button className="leftholdingButton" onClick={pushHoldings}>
+                                    <Holdings onClick={pushHoldings} />
+                                    <h4 className="text" onClick={pushHoldings}>Holdings</h4>
                                     
                                 </button>
                                 <button className="leftholdingButton" onClick={pushTransaction} >
@@ -226,12 +255,13 @@ export default function Overview() {
 
                     <div className="personalButtons-left">
                     <button className="holdingButton" id="left1">
-                    <div className="specificButton">
-                        
-                                <AMZN width="49.438" height="54.637" fill="#fff"/>
-      
+                    <div className="specificButton" >
+                                
+                                
+                                 
+                                {logotype(0)}
                                 <div className="specificDescription">
-                                        {stocks.length > 1 ? (
+                                        {stocks.length > 0 ? (
                                             <h6 className="text">{stocks[0].Stock_Name}, {stocks[0].Stock_Shortening}</h6>
                                         ) : (
                                             <h6 className="text">NO STOCK</h6>
@@ -245,7 +275,31 @@ export default function Overview() {
                         </button>
                         <button className="holdingButton" id="left2">
                         <div className="specificButton">
-                                <GOOG width="49.438" height="54.637" fill="#fff"/>
+                                {(function() {
+                                    switch (stocks[1].Stock_Shortening) {
+                                    
+                                    case 'AMZN':
+                                        return <AMZN width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'MSFT':
+                                        return <MSFT width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'NKE':
+                                        return <NKE width="49.438" height="54.637"/>;    
+                                    case 'AAPL':
+                                        return <AAPL width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'FB':
+                                        return <FB width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'NVDA':
+                                        return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'TSLA':
+                                        return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'GOOG':
+                                        return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'NFLX':
+                                        return <NFLX width="49.438" height="54.637" fill="#fff"/>;
+                                    default:
+                                        return null;
+                                    }
+                                })()}
                                     
                                 <div className="specificDescription">
                                         {stocks.length > 1 ? (
@@ -263,10 +317,34 @@ export default function Overview() {
                         </button>
                         <button className="holdingButton" id="left3">
                         <div className="specificButton">
-                                <TSLA/>
+                                {(function() {
+                                    switch (stocks[2].Stock_Shortening) {
+                                    
+                                    case 'AMZN':
+                                        return <AMZN width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'MSFT':
+                                        return <MSFT width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'NKE':
+                                        return <NKE width="49.438" height="54.637"/>;    
+                                    case 'AAPL':
+                                        return <AAPL width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'FB':
+                                        return <FB width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'NVDA':
+                                        return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'TSLA':
+                                        return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'GOOG':
+                                        return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'NFLX':
+                                        return <NFLX width="49.438" height="54.637" fill="#fff"/>;
+                                    default:
+                                        return null;
+                                    }
+                                })()}
                                     
                                 <div className="specificDescription">
-                                        {stocks.length > 1 ? (
+                                        {stocks.length > 2 ? (
                                             <h6 className="text">{stocks[2].Stock_Name}, {stocks[2].Stock_Shortening}</h6>
                                         ) : (
                                             <h6 className="text">NO STOCK</h6>
@@ -284,10 +362,34 @@ export default function Overview() {
                     <div className="personalButtons-right">
                         <button className="holdingButton" id="right1">
                             <div className="specificButton">
-                                <FB width="49.438" height="54.637" fill="#fff"/>
+                                {(function() {
+                                    switch (stocks[3].Stock_Shortening) {
+                                    
+                                    case 'AMZN':
+                                        return <AMZN width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'MSFT':
+                                        return <MSFT width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'NKE':
+                                        return <NKE width="49.438" height="54.637"/>;    
+                                    case 'AAPL':
+                                        return <AAPL width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'FB':
+                                        return <FB width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'NVDA':
+                                        return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'TSLA':
+                                        return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'GOOG':
+                                        return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'NFLX':
+                                        return <NFLX width="49.438" height="54.637" fill="#fff"/>;
+                                    default:
+                                        return null;
+                                    }
+                                })()}
                                     
                                 <div className="specificDescription">
-                                        {stocks.length > 1 ? (
+                                        {stocks.length > 3 ? (
                                             <h6 className="text">{stocks[3].Stock_Name}, {stocks[3].Stock_Shortening}</h6>
                                         ) : (
                                             <h6 className="text">NO STOCK</h6>
@@ -301,10 +403,34 @@ export default function Overview() {
                         </button>
                         <button className="holdingButton" id="right2">
                         <div className="specificButton">
-                                <AAPL width="49.438" height="54.637" fill="#fff"/>
+                                {(function() {
+                                    switch (stocks[4].Stock_Shortening) {
+                                    
+                                    case 'AMZN':
+                                        return <AMZN width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'MSFT':
+                                        return <MSFT width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'NKE':
+                                        return <NKE width="49.438" height="54.637"/>;    
+                                    case 'AAPL':
+                                        return <AAPL width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'FB':
+                                        return <FB width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'NVDA':
+                                        return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'TSLA':
+                                        return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'GOOG':
+                                        return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'NFLX':
+                                        return <NFLX width="49.438" height="54.637" fill="#fff"/>;
+                                    default:
+                                        return null;
+                                    }
+                                })()}
                                     
                                 <div className="specificDescription">
-                                        {stocks.length > 1 ? (
+                                        {stocks.length > 4 ? (
                                             <h6 className="text">{stocks[4].Stock_Name}, {stocks[4].Stock_Shortening}</h6>
                                         ) : (
                                             <h6 className="text">NO STOCK</h6>
@@ -318,10 +444,34 @@ export default function Overview() {
                         </button>
                         <button className="holdingButton" id="right3">
                         <div className="specificButton">
-                                <MSFT width="49.438" height="54.637" fill="#fff"/>
+                                {(function() {
+                                    switch (stocks[5].Stock_Shortening) {
+                                    
+                                    case 'AMZN':
+                                        return <AMZN width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'MSFT':
+                                        return <MSFT width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'NKE':
+                                        return <NKE width="49.438" height="54.637"/>;    
+                                    case 'AAPL':
+                                        return <AAPL width="49.438" height="54.637" fill="#fff"/>;
+                                    case 'FB':
+                                        return <FB width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'NVDA':
+                                        return <NVDA width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'TSLA':
+                                        return <TSLA width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'GOOG':
+                                        return <GOOG width="49.438" height="54.637" fill="#fff"/>; 
+                                    case 'NFLX':
+                                        return <NFLX width="49.438" height="54.637" fill="#fff"/>;
+                                    default:
+                                        return null;
+                                    }
+                                })()}
                                     
                                 <div className="specificDescription">
-                                        {stocks.length > 1 ? (
+                                        {stocks.length > 5 ? (
                                             <h6 className="text">{stocks[5].Stock_Name}, {stocks[5].Stock_Shortening}</h6>
                                         ) : (
                                             <h6 className="text">NO STOCK</h6>
