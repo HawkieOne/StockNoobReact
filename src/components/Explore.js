@@ -7,8 +7,9 @@ import {  faArrowAltCircleUp, faMoneyBill, faMoneyCheck, faClock, faArrowDown, f
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faFacebookF, faTwitter, faInstagram} from "@fortawesome/free-brands-svg-icons";
 import axios from 'axios';
+import history from './History'
 
-export default function Explore() {
+export default function Explore(prop) {
 
     const [stockGraph, setStockGraph] = useState();
     var [price, setPrice] = useState(Number);
@@ -33,7 +34,7 @@ export default function Explore() {
     var [holdings, setHoldings] = useState(5000);
     var [stocks, setStocks] = useState(10);
 
-    var [cashState, setCashState] = useState({
+    var [user, setUser] = useState({
         Login_ID: Number,
         Username: "",
         Password: "",
@@ -87,6 +88,7 @@ export default function Explore() {
             setLatest(data[timespan -1]);
             setHigh(Math.max(...data));
             setLow(Math.min(...data));
+            setPrice(latest);
             /* console.log(data);
             console.log(low);
             console.log(high);
@@ -171,13 +173,15 @@ export default function Explore() {
         e.preventDefault();
         console.log("buying");
         
+        if(user.Money >= buyPrice)
+        {
         const axios = require('axios');
         var buy = {
             method: 'POST',
             //params: buyState,
             url: 'https://stocknoob.azurewebsites.net/stock/buy',
             data: buyState,
-            headers: { authorization: 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlwRW5tajh6MkE3MDFESTVJVVMwRiJ9.eyJpc3MiOiJodHRwczovL2Rldi1wcGJvbHh0eS5ldS5hdXRoMC5jb20vIiwic3ViIjoiTXpJWFNqQVpsWGhXbW9XUmM2RmE4N0NtWXdadUxJeTlAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vcXVpY2tzdGFydHMvYXBpIiwiaWF0IjoxNjIxODU2NzU1LCJleHAiOjE2MjE5NDMxNTUsImF6cCI6Ik16SVhTakFabFhoV21vV1JjNkZhODdDbVl3WnVMSXk5IiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.a3U6rp2OeetV2R2aPid4tw9fKCPZv2rwGpQkG_WGM-dMKrhHKtLZ7ejg-UjdO11a8XG-pB9UxiXeEX2gde3POpiDaq-4WCwkQsUIk3EsgDBhpmmOHDPMlgmH0SUlllwUDhcRFRhVkGnLWZ9iYVQH_Z4f01EvZNTb_v_EXypGiP-3wtaChwgC8B88YLYnPfkSqaQ6il6Q6occpmXFOnHtQhviv9-qkxk41BFHUphWpb5N19tw1UvRAAdQIO9NmyVEw5EZNByxRHydWXIavO9sBpUwmTKd_KfarS-CZR8b1u5Pk-joau0l-Sg8941etgWNovLlEC7dnWk_AY4c4u1Xuw'}
+            headers: { authorization: 'Bearer ' + user.Token}
         }
         
         axios.request(buy).then(function(response){
@@ -185,41 +189,52 @@ export default function Explore() {
             
             
         });
+        }else{
+            alert("Not enough Cash for this")
+        }
     }
 
     const handleBuy = (e) => {
        setBuyInput(e.target.value);
-       var kostnad = buyState.HS_Price * buyInput
+       var kostnad = price * buyInput
     //    console.log( buyState.HS_Price + " " + buyInput + " " + kostnad);
        setBuyPrice(kostnad)
        setBuyState({
-        HS_User_ID: 4,
+        HS_User_ID: user.LoginID,
         HS_Stock_ID: 188,
-        HS_Price: price,
+        HS_Price: buyPrice,
         HS_Amount: buyInput,
         Stock_Name: "",
         Stock_Shortening: stockSymbol
         });
+        console.log("user", buyState.HS_User_ID)
     //    console.log(buyInput)
-    //    console.log(buyPrice)
+        console.log(buyPrice)
     }
 
        useEffect(() => {
+           
+            const {user} = prop.location.state;
+            console.log("explorer");
+            console.log(user);
+            setUser(user)
            setStockSymbol("AMZN");
-         setCashState({
-            Login_ID: 4,
-            Username: "malu",
+           setPrice(100);
+            /*setUser({
+            Login_ID: user.LoginID,
+            Username: user.Username,
             Password: "1234",
-            User_ID: 4,
-            User_Login_ID: 4,
+            User_ID: user.UserID,
+            User_Login_ID: user.LoginID,
             Mail: "malu@mail.se",
-            Money: 7000,
-            Holdings: 4000,
-            Goal: 10000,
-            GoalItem: 10000,
-            SavingMonth: 100,
-            Token: ""
-         });
+            Money: user.Money,
+            Holdings: user.Holdings,
+            Goal: user.Goal,
+            GoalItem: user.GoalItem,
+            SavingMonth: user.SavingMonth,
+            Token: user.Token
+         });*/
+         
         //getApiData();
       }, []); 
     return (
@@ -228,10 +243,10 @@ export default function Explore() {
                 <div className="top">
                 <div className="topInfo">
                         <div>
-                        Username: <span>{cashState.Username}</span>
+                        Username: <span>{user.Username}</span>
                         </div>
                         <div>
-                        Balance: <span>{cashState.Money}</span>
+                        Balance: <span>{user.Money}</span>
                         </div>
                         
                         <div>
@@ -380,7 +395,7 @@ export default function Explore() {
                                     <div className="buy-details">
                                         
                                         <div className="input">
-                                            <p>Current cash: {cashState.Money}</p>
+                                            <p>Current cash: {user.Money}</p>
                                             <p>Price: {buyState.HS_Price * buyInput}</p>
                                             <form onSubmit={buyStock}>
                                             <label>Amount</label>
