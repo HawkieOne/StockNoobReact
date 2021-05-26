@@ -30,7 +30,7 @@ export default function Overview(prop) {
             }
         })     
     };
-    
+
     const pushTransaction = (event) => {
         const path = "/transactionList";
             history.push({
@@ -218,7 +218,7 @@ export default function Overview(prop) {
                                         {logotype(stock.Stock_Shortening)}
                                         <p className="col-4 yellow">{stock.Stock_Name}</p>
                                         <p className="col yellow">{stock.Stock_Shortening}</p>   
-                                        <p className="text col-4">Top Performing</p>                                                                             
+                                        {/* <p className="text col-4">Top Performing</p>                                                                              */}
                                         <div className="procent col">
                                             <p className="greenText">+15%</p>
                                         </div>
