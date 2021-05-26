@@ -3,7 +3,7 @@ import "./Explore.css";
 import Popup from 'reactjs-popup';
 
 import {Line} from 'react-chartjs-2'
-import {  faArrowAltCircleUp, faMoneyBill, faMoneyCheck, faClock, faArrowDown, faArrowUp} from "@fortawesome/free-solid-svg-icons";
+import {  faArrowAltCircleUp, faMoneyBill, faMoneyCheck, faClock, faArrowDown, faArrowUp, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faFacebookF, faTwitter, faInstagram} from "@fortawesome/free-brands-svg-icons";
 import axios from 'axios';
@@ -212,6 +212,16 @@ export default function Explore(prop) {
         console.log(buyPrice)
     }
 
+    const goBack = () => {    
+        const path = "/Overview";
+            history.push({
+            pathname: path,
+            state: { 
+                user: user
+            }
+        })  
+    };
+
        useEffect(() => {
            
             const {user} = prop.location.state;
@@ -254,7 +264,7 @@ export default function Explore(prop) {
                         </div>
                      
                     </div>
-                    <h1>{stockSymbol}</h1>
+                    <h1><FontAwesomeIcon className="back" icon={faArrowLeft} onClick={goBack}/> {stockSymbol}</h1>
                     
                 </div>
                 <div className="mid">
