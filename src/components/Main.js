@@ -222,13 +222,13 @@ export default function Main() {
         <div className="Login">   
 
           <section className="">
-            <h2 className="text-light my-5"><span className="yellow">StockNoob</span> - an application for simulating the stock market</h2>          
+            <h2 className="text-light my-5"><span className="yellow">StockNoob</span> - An Application for Simulating the Stock Market</h2>          
             
             <div className="w-100 d-flex justify-content-center text-light">   
               <div className="d-flex flex-column align-items-center w-25 mx-5">
                 <h5 className="yellow">Learn about stocks</h5>
                 <p className="text-left">
-                  Many people are no familiar with hot the stock market works and is therfore afraid of trying it out.
+                  Many people are not familiar with how the stock market works and is therfore afraid of trying it out.
                   This app is for those people. The aim of this app is to give people the courage to try the real stock market.
                   All of the stock rates in this app are real but none of the money are. So feel free to buy whatever stock you want
                   but remember that the real stock market is not as forgiving as this app.
@@ -291,18 +291,7 @@ export default function Main() {
                 <Line className="line-chart" data={graph}/>
               </div> 
             </div> 
-          </section>
-
-          <div className="d-flex justify-content-center">
-            <hr className="divider my-4"/>
-          </div>          
-
-          <h2 className="text-light">News</h2>        
-          <div className="d-flex">          
-          {/* <Carousel>
-            {showNews()}  
-          </Carousel> */}
-          </div>                       
+          </section>                      
         </div>
     )
 }
