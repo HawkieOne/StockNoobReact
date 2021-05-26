@@ -166,8 +166,6 @@ export default function Explore(prop) {
         });
       }
 
-      
-     
       //Funktion för att köpa aktier, ska uppdatera databasen
       const buyStock = (e) =>{
         e.preventDefault();
@@ -226,11 +224,13 @@ export default function Explore(prop) {
        useEffect(() => {
            
             const {user} = prop.location.state;
+            const {stock} = prop.location.state;
             console.log("explorer");
             console.log(user);
+            console.log(stock);
             setUser(user)
-           setStockSymbol("AMZN");
-           setPrice(100);
+            setStockSymbol(stock.Stock_Name);
+            setPrice(stock.HS_Price);
             /*setUser({
             Login_ID: user.LoginID,
             Username: user.Username,

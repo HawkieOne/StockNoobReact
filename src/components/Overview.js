@@ -49,7 +49,19 @@ export default function Overview(prop) {
                 user: userOverview
             }
         })     
-    };   
+    };  
+    
+    const pushExplore = (user, stock) => { 
+        console.log(stock);
+        const path = "/explore";
+            history.push({
+            pathname: path,
+            state: { 
+                user: userOverview,
+                stock: stock
+            }
+        })     
+    };  
    
     const logotype = (symbol) => {
             // console.log("Logotype")
@@ -213,13 +225,13 @@ export default function Overview(prop) {
                         <h3 className="t2">Your Holdings</h3>
                         <div className="d-flex flex-column w-100">                   
                             {stocks.map((stock) => (                      
-                                <button className="holdingButton w-100 pl-5">                
+                                <button className="holdingButton w-100 pl-5" onClick={() => pushExplore(userOverview, stock)}>                
                                     <div className="row align-items-center" >                                            
                                         {logotype(stock.Stock_Shortening)}
                                         <p className="col-4 yellow">{stock.Stock_Name}</p>
                                         <p className="col yellow">{stock.Stock_Shortening}</p>   
                                         {/* <p className="text col-4">Top Performing</p>                                                                              */}
-                                        <div className="procent col">
+                                        <div className="procent co  l">
                                             <p className="greenText">+15%</p>
                                         </div>
                                     </div>
