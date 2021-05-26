@@ -194,11 +194,12 @@ export default function Explore(prop) {
         }
     }
 
-    const handleBuy = (e) => {
+    var handleBuy = (e) => {
+       e.preventDefault();
        setBuyInput(e.target.value);
        var kostnad = price * buyInput
     //    console.log( buyState.HS_Price + " " + buyInput + " " + kostnad);
-       setBuyPrice(kostnad)
+       setBuyPrice(price * buyInput);
        setBuyState({
         HS_User_ID: user.LoginID,
         HS_Stock_ID: 188,
