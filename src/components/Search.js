@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import './Search.css'
 
 export default function Search(prop) {
@@ -6,13 +6,24 @@ export default function Search(prop) {
     const [searchVal, setSearchVal] = useState(null);     
     const [stocks, setStocks] = useState(null);
     const [loaded, setLoaded] = useState(false); 
-    const {search} = prop.location.state;
-    setSearchVal(search);
+    const isInitialMount = useRef(true);
 
     useEffect(() => {
-        // console.log(prop);        
+        if (isInitialMount.current) {
+           isInitialMount.current = false;
+        } else {
+            console.log(prop);
+            const {search} = prop.location.state;
+            console.log(search);
+            setSearchVal(search);
+        }
+      });
+
+    useEffect(() => {
+        console.log(prop);
+        const {search} = prop.location.state;
         console.log(search);
-        
+        setSearchVal(search);
     }, []);
 
     useEffect(() => {
