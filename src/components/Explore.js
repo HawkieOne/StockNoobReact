@@ -17,7 +17,7 @@ export default function Explore(prop) {
     var [low, setLow] = useState(Number);
     var [high, setHigh] = useState(Number);
     var [growth, setGrowth] = useState(Number);
-    var [timespan, setTimespan] = useState(Number);
+    var [timespan, setTimespan] = useState(10);
     var [period, setPeriod] = useState("/Day");
     var [buyInput, setBuyInput] = useState(Number);
     var [buyPrice, setBuyPrice] = useState(Number);
@@ -50,26 +50,27 @@ export default function Explore(prop) {
     });
 
     var [buyState, setBuyState] = useState({
-        HS_User_ID: 4,
-        HS_Stock_ID: 188,
-        HS_Price: 342,
-        HS_Amount: 10,
+        HS_User_ID: 0,
+        HS_Stock_ID: 0,
+        HS_Price: 0,
+        HS_Amount: 0,
         Stock_Name: "",
         Stock_Shortening: ""
     });
 
     const getApiData = () => { 
-        
+        console.log("körs");
         let labels = [];
         let data = [];   
         let label = "";
         const axios = require('axios');
         const params = {
-          access_key: '77c171bec68a191781a8e08d026779d7'
+            access_key: '77c171bec68a191781a8e08d026779d7'
         }
-        console.log(stockSymbol);
-        axios.get(`http://api.marketstack.com/v1/tickers/${stockSymbol}/intraday`, {params})
+        console.log(buyState.Stock_Shortening);
+        axios.get(`http://api.marketstack.com/v1/tickers/${buyState.Stock_Shortening}/intraday`, {params})
           .then(response => {
+              console.log("KDKDKDKDKDKDKDKDKDKDKKDKDKDKDKDKDKDKDKDKDKDKKDKDKDKDKDKD");
             const apiResponse = response.data;
             console.log(apiResponse);
             var count = 0;         
@@ -88,7 +89,7 @@ export default function Explore(prop) {
             setLatest(data[timespan -1]);
             setHigh(Math.max(...data));
             setLow(Math.min(...data));
-            setPrice(latest);
+            setPrice(data[timespan -1]);
             /* console.log(data);
             console.log(low);
             console.log(high);
@@ -198,14 +199,12 @@ export default function Explore(prop) {
        var kostnad = price * buyInput
     //    console.log( buyState.HS_Price + " " + buyInput + " " + kostnad);
        setBuyPrice(price * buyInput);
-       setBuyState({
-        HS_User_ID: user.LoginID,
-        HS_Stock_ID: 188,
+        setBuyState({
+        
         HS_Price: buyPrice,
         HS_Amount: buyInput,
-        Stock_Name: "",
-        Stock_Shortening: stockSymbol
-        });
+        
+        }); 
         console.log("user", buyState.HS_User_ID)
     //    console.log(buyInput)
         console.log(buyPrice)
@@ -230,7 +229,16 @@ export default function Explore(prop) {
             console.log(stock);
             setUser(user)
             setStockSymbol(stock.Stock_Name);
-            setPrice(stock.HS_Price);
+            setBuyState({
+               
+                HS_Price: 0,
+                HS_Amount: 0,
+                HS_User_ID: user.User_ID,
+                HS_Stock_ID: stock.HS_Stock_ID,
+                Stock_Name: stock.Stock_Name,
+                Stock_Shortening: stock.Stock_Shortening
+                });
+            //setPrice(stock.HS_Price);
             /*setUser({
             Login_ID: user.LoginID,
             Username: user.Username,
@@ -245,8 +253,9 @@ export default function Explore(prop) {
             SavingMonth: user.SavingMonth,
             Token: user.Token
          });*/
-         
-        //getApiData();
+         console.log(user.LoginID)
+         console.log(buyState)
+        getApiData();
       }, []); 
     return (
         <div className="explore">
@@ -306,7 +315,7 @@ export default function Explore(prop) {
                                     Growth/D
                                 </div>
                                 <div className="info-right-bottom money">
-                                    {growth.toFixed(2) * 100}%
+                                    {growth.toFixed(2) * 1}%
                                 </div>
                             </div>
 
