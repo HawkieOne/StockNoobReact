@@ -12,7 +12,7 @@ export default function Search(prop) {
         if (isInitialMount.current) {
            isInitialMount.current = false;
         } else {
-            console.log(prop);
+            // console.log(prop);
             const {search} = prop.location.state;
             console.log(search);
             setSearchVal(search);
@@ -20,7 +20,7 @@ export default function Search(prop) {
       });
 
     useEffect(() => {
-        console.log(prop);
+        // console.log(prop);
         const {search} = prop.location.state;
         console.log(search);
         setSearchVal(search);
