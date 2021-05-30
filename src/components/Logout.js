@@ -7,7 +7,7 @@ export default function Login(prop) {
 
     const logout = () => {  
         prop.setUser(null);  
-        const path = "/main";
+        const path = "/";
             history.push({
             pathname: path,
             state: { 
