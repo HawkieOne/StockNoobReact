@@ -43,7 +43,7 @@ function App() {
       <Router history={history}>
         <Switch>
           <Route path="/" exact component={Main}/>
-          <Route path="/overview" exact component={Overview}/>
+          <Route path="/overview" exact render={() => (<Overview user={user}/>)}/>
           <Route path="/stockList" exact component={StockList}/>
           <Route path="/transactionList" exact component={TransactionList}/>
           <Route path="/explore" exact component={Explore}/>

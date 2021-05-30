@@ -63,23 +63,32 @@ export default function Search(prop) {
         });          
     } 
 
+    const showResults = () => {
+        if (loaded) {
+            console.log(stocks);
+            if(stocks.length > 0) {
+                return stocks.map((stock, index) => (
+                    <div key={index} className="w-75 searched row">
+                        <p className="col-2 text-right">({stock.stockSymbol})</p>  
+                        <p className="yellow col text-left">{stock.stockName}</p>                                     
+                    </div>                     
+                ))
+            } else {
+                return <h1 className="yellow">No results</h1>
+            }
+        } else {
+            return <h1 className="yellow">Loading...</h1>
+        }                     
+    }
+
     return (
         <>
             <div className="mb-5">
                 <div>
-                    <h2 className="mt-5 text-warning">Search found</h2>
+                    <h2 className="mt-5 text-warning">Search results</h2>
                     <hr className="w-75 hr-tag"></hr>          
                     {/* <button className="btn-goTo" onClick={searchStock}>Testing</button>                    */}
-                    {loaded ?
-                     stocks.map((stock, index) => (
-                        <div key={index} className="w-75 searched row">
-                            <p className="col-2 text-right">({stock.stockSymbol})</p>  
-                            <p className="yellow col text-left">{stock.stockName}</p>                                     
-                        </div>                     
-                    ))
-                    :
-                    <h1 className="">Loading...</h1>
-                }
+                    {showResults()}
                 </div>
             </div>
         </>
