@@ -18,7 +18,7 @@ export default function News(prop) {
 
 
     return (
-        <div className="w-75 d-flex shadow rounded my-3 text-light" onClick={showNews}>
+        <div className="w-75 d-flex shadow rounded my-3 text-light article" onClick={showNews}>
             <img src={prop.article.thumbnail} className="w-25"></img>
             <div className="d-flex flex-column w-100">
                 <h5 className="mt-3 mx-3">{prop.article.title}</h5>
