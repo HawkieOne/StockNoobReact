@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from 'react'
 import history from './History'
 
-export default function Login() {
+export default function Login(prop) {
 
   var [user, setUser] = useState(null);
 
@@ -57,7 +57,8 @@ export default function Login() {
 
       useEffect(() => {
         if(user !== null) {
-          console.log(user);                    
+          console.log(user);  
+          prop.setUserHeader();                  
           toOverview(); 
         }     
       }, [user]);
@@ -81,12 +82,7 @@ export default function Login() {
 
     return (
         <div>
-                  
-             
             <div className="box">
-                
-               
-               
                 <div className="d-flex justify-content-end">
                     <h5 className="header">Log in</h5>
                     {/* <button className="close text-danger pr-1 pt-1" onClick={close}>&times;</button> */}
@@ -103,8 +99,6 @@ export default function Login() {
                     <p className="register" onClick={toRegister}>Register</p>
                 </div>          
             </div>
-       
-     
         </div>
     )
 }

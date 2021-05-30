@@ -7,6 +7,10 @@
   border-radius: 40px;
 }
 
+.yellow {
+  color: #f2d658;
+}
+
 .searchedItem {
   display: flex;
   flex-direction: row;

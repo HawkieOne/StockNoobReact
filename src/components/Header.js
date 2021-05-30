@@ -2,8 +2,8 @@ import {React, useState, useEffect} from 'react'
 import {  faUser, faClock, faQuestionCircle, faSearch, faBell, faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
-import LoginPopup from "./LoginPopup"
 import Guide from './Guide';
+import LoginPopup from "./LoginPopup"
 
 import history from './History';
 
@@ -15,16 +15,16 @@ export default function Header(prop) {
     const [search, setSearch] = useState(null);
 
     const showIcons = () => {
-        if (prop.user.loggedIn) {
-            console.log(prop.user.loggedIn)
+        console.log(prop.user);
+        if (prop.user !== null) {
             return <> 
                         <FontAwesomeIcon className="icon" icon={faQuestionCircle} onClick={Guide}/>
                         <FontAwesomeIcon className="icon" icon={faBell}/>
                         <FontAwesomeIcon className="icon" icon={faUser}/>
-                    </>
+                    </>          
         } else {
             return <LoginPopup/>;
-        }        
+        }            
       };
 
       const toHome = () => {    
@@ -34,18 +34,20 @@ export default function Header(prop) {
         })  
       };     
 
-      const toSearch = () => {    
+      const toSearch = (event) => {  
+        event.preventDefault();
         const path = "/search";   
         console.log(search);   
         history.push({
-            pathname: path,
+            pathname: path,    
+            key: Date.now(), 
             state: {
-                searchValue: search
+                search: search
             }
         })  
       };
 
-      const setState = (event) => {    
+      const setState = (event) => {        
         setSearch(event.target.value)
       };
 

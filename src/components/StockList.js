@@ -55,11 +55,23 @@ export default function StockList(prop) {
         })  
     };
 
+    const pushExplore = (user, stock) => { 
+        console.log(stock);
+        const path = "/explore";
+            history.push({
+            pathname: path,
+            state: { 
+                user: user,
+                stock: stock
+            }
+        })     
+    };  
+
     return (
         <>
             <div className="mb-5">                             
                 <div className="position-relative">
-                    <h2 className="mt-2 yellow">Stocks</h2>
+                    <h2 className="mt-2 yellow" onClick={console.log("Hpkan tycker oskar ör bra")}>Stocks</h2>
                     <FontAwesomeIcon className="icon fa-lg yellow backArrow" icon={faArrowLeft} onClick={goBack}/>
                 </div>
                 <hr className="w-75 hrTag"></hr>
@@ -70,7 +82,8 @@ export default function StockList(prop) {
                             amount={stock.HS_Amount} 
                             name={stock.Stock_Name} 
                             symbol={stock.Stock_Shortening} 
-                            price={stock.HS_Price}    
+                            price={stock.HS_Price}   
+                            onClick={() => pushExplore(user, stock)} 
                         />
                     ))
                     :
