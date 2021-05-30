@@ -28,7 +28,7 @@ function App() {
 
 
   return (
-    <div className="App d-flex flex-column justify-items-between bgdark">
+    <div className="app d-flex flex-column bgdark">
       <Helmet>
         <meta charSet="utf-8" />
         <title>StockNoob</title>
@@ -39,25 +39,28 @@ function App() {
       
         Hello
       </header> */}
-     
+     <section className="mainContainer text-center">
       <Router history={history}>
-        <Switch>
-          <Route path="/" exact component={Main}/>
-          <Route path="/overview" exact render={() => (<Overview user={user}/>)}/>
-          <Route path="/stockList" exact render={() => (<StockList user={user}/>)}/>
-          <Route path="/transactionList" exact render={() => (<TransactionList user={user}/>)}/>
-          <Route path="/explore" exact component = {Explore}/>
-          <Route path="/guide" exact component = {Guide}/>
-          <Route path="/news" exact component={News}/>
-          <Route path="/NewsDetails" exact component={NewsDetails}/>
-          <Route path="/search" exact component={Search}/>
-          <Route path="/login" exact render={() => (<Login setUser={setUser}/>)}/>
-          <Route path="/logout" exact render={() => (<Logout setUser={setUser}/>)}/>
-          <Route path="/register" exact component={Register}/>   
-        </Switch>            
-      </Router>  
-
-      <Footer className="fixed-bottom"/>
+          <Switch>
+            <Route path="/" exact component={Main}/>
+            <Route path="/overview" exact render={() => (<Overview user={user}/>)}/>
+            <Route path="/stockList" exact render={() => (<StockList user={user}/>)}/>
+            <Route path="/transactionList" exact render={() => (<TransactionList user={user}/>)}/>
+            <Route path="/explore" exact component = {Explore}/>
+            <Route path="/guide" exact component = {Guide}/>
+            <Route path="/news" exact component={News}/>
+            <Route path="/NewsDetails" exact component={NewsDetails} className="mainContainer"/>
+            <Route path="/search" exact component={Search}/>
+            <Route path="/login" exact render={() => (<Login setUser={setUser}/>)}/>
+            <Route path="/logout" exact render={() => (<Logout setUser={setUser}/>)}/>
+            <Route path="/register" exact component={Register}/>   
+          </Switch>            
+        </Router>  
+     </section>
+    
+    <section className="w-100 mt-3">
+      <Footer className="footer w-100"/>
+    </section>      
     </div>
   );
 }

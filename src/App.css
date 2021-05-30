@@ -1,8 +1,5 @@
-.App {
-  text-align: center;
-  /* margin: 0;
-  padding: 0; */
-  height: 100vh;
+.app { 
+  min-height: 100vh;
 }
 
 .App-link {
@@ -15,4 +12,8 @@
 
 .bgdark {
   background-color: #282B39;
+}
+
+.mainContainer {
+  flex: 2;  
 }

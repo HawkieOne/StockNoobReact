@@ -7,22 +7,22 @@ import {faFacebookF, faTwitter, faInstagram} from "@fortawesome/free-brands-svg-
 
 export default function Footer() {
     return (
-        <div className="footer row">
-            <div className="col">
+        <div className="footer d-flex justify-content-around text-center py-3">
+            <div className="flex-grow-1">
                     <h5>CONTACT</h5>
                     <hr className="seperator w-75"/>
-                    <span>
-                    <FontAwesomeIcon className="mail fa-lg" icon={faAddressBook} />
-                    stocknoob@stocks.com
-                    </span>
+                    <div className="d-flex justify-content-center align-items-center">
+                        <FontAwesomeIcon className="mail fa-lg" icon={faAddressBook} />
+                        stocknoob@stocks.com
+                    </div>              
                 </div>
-                <div className="col font-weight-light">                    
+                <div className="flex-grow-1 font-weight-light">                    
                     <h5>ABOUT</h5>
                     <hr className="seperator w-75"/>
                     Stocknoob is a fictional stock training                 
                     application
                 </div>
-                <div className="col">
+                <div className="flex-grow-1">
                     <h5>Social</h5>
                     <hr className="seperator w-75"/>
                     <div className="d-flex justify-content-center">
