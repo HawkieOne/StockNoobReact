@@ -58,10 +58,20 @@ export default function Header(prop) {
       };
 
       const toHome = () => {    
-        const path = "/";      
-        history.push({
-            pathname: path
-        })  
+        
+ if (prop.user !== null) {
+    const path = "/overview";      
+    history.push({
+    pathname: path,
+    user: prop.user
+})  
+}
+else{  
+const path = "/";      
+history.push({
+    pathname: path
+})  
+}
       };     
 
       const toSearch = (event) => {  
