@@ -225,7 +225,7 @@ export default function Overview(prop) {
                         <h3 className="t2">Your Holdings</h3>
                         <div className="d-flex flex-column w-100">                   
                             {stocks.map((stock) => (                      
-                                <button className="holdingButton w-100 pl-5" onClick={() => pushExplore(userOverview, stock)}>                
+                                <button className="holdingButton w-100 px-5" onClick={() => pushExplore(userOverview, stock)}>                
                                     <div className="row align-items-center" >                                            
                                         {logotype(stock.Stock_Shortening)}
                                         <p className="col-4 yellow">{stock.Stock_Name}</p>
