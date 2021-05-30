@@ -2,8 +2,8 @@ import {React, useState, useEffect} from 'react'
 import {  faUser, faClock, faQuestionCircle, faSearch, faBell, faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
+import "./Login.css";
 import Guide from './Guide';
-import LoginPopup from "./LoginPopup"
 
 import history from './History';
 
@@ -15,16 +15,46 @@ export default function Header(prop) {
     const [search, setSearch] = useState(null);
 
     const showIcons = () => {
-        console.log(prop.user);
+        // console.log(prop.user);
         if (prop.user !== null) {
-            return <> 
-                        <FontAwesomeIcon className="icon" icon={faQuestionCircle} onClick={Guide}/>
-                        <FontAwesomeIcon className="icon" icon={faBell}/>
+            return <div className="d-flex userArea" onClick={toLogout}>
                         <FontAwesomeIcon className="icon" icon={faUser}/>
-                    </>          
+                        <div className="d-flex flex-column m-1">
+                            <h6 className=" m-0 p-0 yellow">Welcome!</h6>
+                            <p className="m-0 p-0 text-white">{prop.user.Username}</p>
+                        </div>
+                    </div>     
         } else {
-            return <LoginPopup/>;
+            return <div className="d-flex userArea" onClick={toLogin}>
+                        <FontAwesomeIcon className="icon" icon={faUser}/>
+                        <div className="d-flex flex-column userArea m-1">
+                            <h6 className=" m-0 p-0 yellow">Welcome!</h6>
+                            <p className="m-0 p-0 text-white">Log in</p>
+                        </div>
+                    </div>
         }            
+      };
+
+      const toLogout = () => {    
+        const path = "/logout";
+            history.push({
+                pathname: path,
+            })  
+      };
+
+      const toLogin = () => {    
+        const path = "/login";
+            history.push({
+            pathname: path,
+            
+        })  
+      };
+
+      const toGuide = () => {    
+        const path = "/guide";      
+        history.push({
+            pathname: path
+        })  
       };
 
       const toHome = () => {    
@@ -47,7 +77,8 @@ export default function Header(prop) {
         })  
       };
 
-      const setState = (event) => {        
+      const setState = (event) => {    
+        //   console.log(event.target.value);    
         setSearch(event.target.value)
       };
 
@@ -74,7 +105,8 @@ export default function Header(prop) {
             <div className="middle" onClick={toHome}>
                 S<span>Noob</span> <FontAwesomeIcon className="icon" icon={faChartLine}/>         
             </div>
-            <div className="right">
+            <div className="right d-flex align-items-start">
+                <FontAwesomeIcon className="icon guide" icon={faQuestionCircle} onClick={toGuide}/>
                 {showIcons()}                        
             </div>
         </div>

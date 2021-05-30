@@ -11,6 +11,20 @@
     /*padding: 0% 10%;*/
 }
 
+.userArea {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.userArea:hover .icon{
+    transform: scale(1.1);
+}
+
+.guide:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 /*        Modal        */
 
 .popup {
@@ -74,8 +88,26 @@ cursor: pointer;
 margin-bottom: 1%;
 }
 
+.logout{
+    margin-top: 4%;
+    color: red;
+    background-color: #383D53;
+    width: 15vh;
+    border: none;
+    border-radius: 16px;
+    height: 4vh;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-bottom: 1%;
+    }
+
 .login:hover{
     border: 1px green solid;
+    /* color: #282B39; */
+}
+
+.logout:hover{
+    border: 1px red solid;
     /* color: #282B39; */
 }
 
