@@ -225,12 +225,12 @@ export default function Explore(prop) {
            
             const {user} = prop.location.state;
             const {stock} = prop.location.state;
-            console.log("explorer");
+            console.log("EXPLORE");
             console.log(user);
             console.log(stock);
             setUser(user)
             setStockSymbol(stock.Stock_Name);
-            setPrice(stock.HS_Price);
+            setPrice(200);
             /*setUser({
             Login_ID: user.LoginID,
             Username: user.Username,

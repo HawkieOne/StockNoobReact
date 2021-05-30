@@ -72,7 +72,8 @@ export default function Header(prop) {
             pathname: path,    
             key: Date.now(), 
             state: {
-                search: search
+                search: search,
+                user: prop.user
             }
         })  
       };
