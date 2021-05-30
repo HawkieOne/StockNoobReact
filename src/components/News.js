@@ -6,10 +6,10 @@ export default function News(prop) {
 
     const showNews = () => {    
         // console.log("PUSH");
+        console.log(prop.article);
         const path = "/NewsDetails";
             history.push({
             pathname: path,
-            // search: '?query=abc',
             state: { 
                 article: prop.article
             }

@@ -4,6 +4,7 @@ import News from './News'
 export default function NewsFeed() {
 
     const [articles, setArticles] = useState([]);
+    const [loaded, setLoaded] = useState(false); 
 
     const getNews = () => {    
         var axios = require("axios").default;
@@ -38,7 +39,8 @@ export default function NewsFeed() {
                 data.push(article);        
               });  
             //   console.log(data);
-              setArticles(data);          
+              setArticles(data); 
+              setLoaded(true);         
               console.log(articles);
           }).catch(function (error) {
               console.error(error);
@@ -50,12 +52,17 @@ export default function NewsFeed() {
       }, []);
 
     return (
-        <div className="d-flex flex-column align-items-center mt-4">
-            <h1 className="text-light">News</h1>
-            <hr className="w-75 border-light"></hr>
-            {articles.map((article, index) => {
-                return <News key={index} article={article}></News>
-            })}            
+        <div className="d-flex flex-column align-items-center mt-4">            
+            {loaded ?
+                <>
+                    <h1 className="text-light">News</h1>
+                    <hr className="w-75 border-light"></hr>
+                    {articles.map((article, index) => {
+                      return <News key={index} article={article}></News>
+                    })}
+                </>
+                    :
+                    <h1 className="yellow">Loading...</h1>}                      
         </div>
     )
 }

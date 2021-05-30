@@ -1,3 +1,7 @@
 .article {
     cursor: pointer;
 }
+
+.arrow {
+    cursor: pointer;
+  } 
