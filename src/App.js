@@ -43,7 +43,6 @@ function App() {
       <Router history={history}>
         <Switch>
           <Route path="/" exact component={Main}/>
-          <Route path="/header" exact component={Header}/>
           <Route path="/overview" exact component={Overview}/>
           <Route path="/stockList" exact component={StockList}/>
           <Route path="/transactionList" exact component={TransactionList}/>
