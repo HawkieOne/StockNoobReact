@@ -74,10 +74,10 @@ export default function Search(prop) {
                     </div>                     
                 ))
             } else {
-                return <h1 className="yellow">No results</h1>
+                return <h3 className="yellow">No stocks were found</h3>
             }
         } else {
-            return <h1 className="yellow">Loading...</h1>
+            return <h3 className="yellow">Loading...</h3>
         }                     
     }
 
