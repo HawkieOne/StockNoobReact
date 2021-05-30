@@ -58,7 +58,7 @@ export default function Login(prop) {
       useEffect(() => {
         if(user !== null) {
           console.log(user);  
-          prop.setUserHeader();                  
+          prop.setUser(user);                  
           toOverview(); 
         }     
       }, [user]);

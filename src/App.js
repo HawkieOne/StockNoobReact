@@ -15,13 +15,15 @@ import Guide from './components/Guide';
 import News from './components/NewsFeed'
 import NewsDetails from './components/NewsDetails'
 import Search from './components/Search';
+import SearchResults from './components/SearchResults';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import Register from './components/Register';
 
 
 
 function App() {
-  const [user, setUserHeader] = useState(null);
+  const [user, setUser] = useState(null);
 
 
 
@@ -50,9 +52,9 @@ function App() {
           <Route path="/news" exact component={News}/>
           <Route path="/NewsDetails" exact component={NewsDetails}/>
           <Route path="/search" exact component={Search}/>
-          <Route path="/login" exact component={Login} setUser={setUserHeader}/>
-          <Route path="/register" exact component={Register}/>
-          
+          <Route path="/login" exact render={() => (<Login setUser={setUser}/>)}/>
+          <Route path="/logout" exact render={() => (<Logout setUser={setUser}/>)}/>
+          <Route path="/register" exact component={Register}/>   
         </Switch>            
       </Router>  
 
