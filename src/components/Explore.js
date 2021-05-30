@@ -229,7 +229,8 @@ export default function Explore(prop) {
             console.log(stock);
             setUser(user)
             setStockSymbol(stock.Stock_Name);
-            setBuyState({               
+            setBuyState({
+               
                 HS_Price: 0,
                 HS_Amount: 0,
                 HS_User_ID: user.User_ID,
@@ -238,7 +239,6 @@ export default function Explore(prop) {
                 Stock_Shortening: stock.Stock_Shortening
                 });
             //setPrice(stock.HS_Price);
-            setPrice(200);
             /*setUser({
             Login_ID: user.LoginID,
             Username: user.Username,
