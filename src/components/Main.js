@@ -130,7 +130,7 @@ export default function Main() {
         var options = {
             method: 'POST',
             url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/news/v2/list',
-            params: {region: 'US', snippetCount: '28'},
+            params: {region: 'US', snippetCount: '3'},
             headers: {
               'content-type': 'text/plain',
               'x-rapidapi-key': '5b6d31f8cfmsh5598169723208c2p1be828jsn0b38fac79ee6',
@@ -164,16 +164,9 @@ export default function Main() {
           });
       };
 
-      const showNews = () => {    
-        for (let i = 0; i < 3; i++) {
-          let article = articles[i];
-          return <News key={i} article={article}></News>
-        }  
-      };
-
-    // useEffect(() => {   
-    //     getNews();
-    //   }, []);
+    useEffect(() => {   
+        getNews();
+      }, []);
 
     const strengths = [
     {
@@ -248,8 +241,8 @@ export default function Main() {
            <h2 className="text-light mb-3">Why to use StockNoob?</h2>
 
             <div className="w-100 row text-light my-4 text-lg p-3">   
-              {strengths.map((strength) => (
-                <div className="col d-flex flex-column align-items-center">        
+              {strengths.map((strength, index) => (
+                <div key={index} className="col d-flex flex-column align-items-center">        
                   <FontAwesomeIcon className="icon fa-5x mb-3 yellow" icon={strength.icon} />
                   <h5>{strength.text}</h5>
                 </div>
@@ -291,7 +284,20 @@ export default function Main() {
                 <Line className="line-chart" data={graph}/>
               </div> 
             </div> 
-          </section>                      
+          </section>     
+
+          <div className="d-flex justify-content-center">
+            <hr className="divider my-4"/>
+          </div>
+
+          <section className="">
+             <h2 className="text-light">News</h2>          
+             <div className="d-flex flex-column align-items-center text-light">
+                {articles.map((article, index) => {
+                      return <News key={index} article={article}></News>
+                    })}
+            </div> 
+          </section>            
         </div>
     )
 }

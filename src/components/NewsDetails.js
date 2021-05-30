@@ -46,11 +46,8 @@ export default function NewsDetails(prop) {
           }        
       }, [article]);
 
-      const goBack = () => {    
-        const path = "/News";
-            history.push({
-            pathname: path
-        })  
+      const goBack = () => {         
+            history.goBack(); 
     };
 
     return (
