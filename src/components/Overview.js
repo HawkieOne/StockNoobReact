@@ -95,7 +95,7 @@ export default function Overview(prop) {
     useEffect(() => {
 
         console.log("OVERVIEW");
-        const {user} = prop.location.state;
+        const user = prop.user;
         console.log(user);
         setUserOverview(user);    
         console.log(userOverview);    

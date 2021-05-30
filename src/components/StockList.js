@@ -12,7 +12,8 @@ export default function StockList(prop) {
     var [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        const {user} = prop.location.state;
+        console.log(prop.user);
+        const user = prop.user;
         console.log("STOCKS");
         console.log(user);
         setUser(user)},[]);
@@ -71,7 +72,7 @@ export default function StockList(prop) {
         <>
             <div className="mb-5">                             
                 <div className="position-relative">
-                    <h2 className="mt-2 yellow" onClick={console.log("Hpkan tycker oskar ör bra")}>Stocks</h2>
+                    <h2 className="mt-2 yellow">Stocks</h2>
                     <FontAwesomeIcon className="icon fa-lg yellow backArrow" icon={faArrowLeft} onClick={goBack}/>
                 </div>
                 <hr className="w-75 hrTag"></hr>

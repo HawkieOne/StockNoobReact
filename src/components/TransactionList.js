@@ -13,7 +13,7 @@ export default function TransactionList(prop) {
     var [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        const {user} = prop.location.state;
+        const user = prop.user;
         console.log("TRANSACTIONS");
         console.log(user);
         setUser(user)},[]);

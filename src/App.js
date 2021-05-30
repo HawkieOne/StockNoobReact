@@ -44,9 +44,9 @@ function App() {
         <Switch>
           <Route path="/" exact component={Main}/>
           <Route path="/overview" exact render={() => (<Overview user={user}/>)}/>
-          <Route path="/stockList" exact component={StockList}/>
-          <Route path="/transactionList" exact component={TransactionList}/>
-          <Route path="/explore" exact component={Explore}/>
+          <Route path="/stockList" exact render={() => (<StockList user={user}/>)}/>
+          <Route path="/transactionList" exact render={() => (<TransactionList user={user}/>)}/>
+          <Route path="/explore" exact component = {Explore}/>
           <Route path="/guide" exact component = {Guide}/>
           <Route path="/news" exact component={News}/>
           <Route path="/NewsDetails" exact component={NewsDetails}/>

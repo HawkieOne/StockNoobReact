@@ -67,9 +67,6 @@ export default function Login(prop) {
         const path = "/Overview";
             history.push({
             pathname: path,
-            state: { 
-                user: user
-            }
         })  
       };
 
