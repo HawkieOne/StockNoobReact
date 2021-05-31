@@ -1,18 +1,13 @@
-import {React, useState, useEffect} from 'react'
+import {React, useState} from 'react'
 import history from './History'
 
 export default function Login(prop) {
-
-  var [user, setUser] = useState(null);
 
     const logout = () => {  
         prop.setUser(null);  
         const path = "/";
             history.push({
-            pathname: path,
-            state: { 
-                user: user
-            }
+            pathname: path
         })  
       };
 

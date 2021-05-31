@@ -53,6 +53,7 @@ export default function Overview(prop) {
     
     const pushExplore = (user, stock) => { 
         console.log(stock);
+        console.log(userOverview);
         const path = "/explore";
             history.push({
             pathname: path,
@@ -93,12 +94,10 @@ export default function Overview(prop) {
         }
 
     useEffect(() => {
-
         console.log("OVERVIEW");
         const user = prop.user;
         console.log(user);
-        setUserOverview(user);    
-        console.log(userOverview);    
+        setUserOverview(user);           
         const axios = require('axios');       
         var options = {
           method: 'GET',

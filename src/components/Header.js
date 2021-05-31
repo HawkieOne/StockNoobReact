@@ -1,9 +1,8 @@
-import {React, useState, useEffect} from 'react'
-import {  faUser, faClock, faQuestionCircle, faSearch, faBell, faChartLine } from "@fortawesome/free-solid-svg-icons";
+import {React, useState} from 'react'
+import {  faUser, faQuestionCircle, faSearch, faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
 import "./Login.css";
-import Guide from './Guide';
 
 import history from './History';
 

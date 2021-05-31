@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import "./Main.css";
 import 'reactjs-popup/dist/index.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
 import {Line} from 'react-chartjs-2'
 import { faChartArea, faNewspaper, faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

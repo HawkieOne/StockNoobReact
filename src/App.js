@@ -15,7 +15,6 @@ import Guide from './components/Guide';
 import News from './components/NewsFeed'
 import NewsDetails from './components/NewsDetails'
 import Search from './components/Search';
-import SearchResults from './components/SearchResults';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Register from './components/Register';

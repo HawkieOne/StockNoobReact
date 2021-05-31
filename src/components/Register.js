@@ -5,10 +5,10 @@ export default function Register() {
 
 
     const handleLogin = (event) => {
-        if ([event.target.name] == "Username") {
+        if ([event.target.name] === "Username") {
             console.log("USERNAME SET");
             setUsername({[event.target.name]: event.target.value})
-        } else if([event.target.name] == "Mail") {
+        } else if([event.target.name] === "Mail") {
             console.log("MAIL SET");
             setMail({[event.target.name]: event.target.value})
         } else{
