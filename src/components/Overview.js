@@ -130,7 +130,7 @@ export default function Overview(prop) {
           console.error(error);
         });
 
-        getHoldings(userOverview)
+        getHoldings(prop.user)
     },  []);
 
     const graphs = [{
@@ -190,27 +190,26 @@ export default function Overview(prop) {
         }]
 
         const getHoldings = (event) => {
-            let tickers =  [];
+            // let tickers =  [];
             
-            const axios = require('axios');
-            const params = {
-                access_key: '77c171bec68a191781a8e08d026779d7'
-            }
-            axios.get(`http://api.marketstack.com/v1/tickers/`, {params})
-            .then(response => {
-                
-                const apiResponse = response.data;
-                console.log(apiResponse);
-                var count = 0;         
-                for(let i = 0; i < timespan; i++) {
-                    let dataAPI = apiResponse.data.intraday[i];
-                    label = dataAPI.symbol;
-                    labels.push(dataAPI.date);
-                    data.push(parseInt(dataAPI.open));
-                    console.log(parseInt(dataAPI.open))
-                    count = count +1;
-                } 
-            });
+            // const axios = require('axios');
+            // const params = {
+            //     access_key: '77c171bec68a191781a8e08d026779d7'
+            // }
+            // axios.get(`http://api.marketstack.com/v1/tickers/`, {params})
+            // .then(response => {                
+            //     const apiResponse = response.data;
+            //     console.log(apiResponse);
+            //     var count = 0;         
+            //     for(let i = 0; i < timespan; i++) {
+            //         let dataAPI = apiResponse.data.intraday[i];
+            //         label = dataAPI.symbol;
+            //         labels.push(dataAPI.date);
+            //         data.push(parseInt(dataAPI.open));
+            //         console.log(parseInt(dataAPI.open))
+            //         count = count +1;
+            //     } 
+            // });
             console.log("innehav")
             let holdings = event.Money;
             stocks.map((stock) => (                      
@@ -218,8 +217,6 @@ export default function Overview(prop) {
             ))
             setHoldingsState(parseInt(holdings));
             console.log(holdings)
-            console.log(holdingsState)
-            
         }
 
         return (
@@ -229,7 +226,7 @@ export default function Overview(prop) {
                 <div className="d-flex justify-content-around">                      
                     {graphs.map((graph) => (
                         <div className="b1">
-                            <h5 className="text-light">Graph</h5>
+                            {/* <h5 className="text-light">Graph</h5> */}
                             <button className="graphButtons">
                                 <Line
                                     data={graph}
@@ -268,7 +265,7 @@ export default function Overview(prop) {
                                         <p className="col yellow">{stock.Stock_Shortening}</p>   
                                         {/* <p className="text col-4">Top Performing</p>                                                                              */}
                                         <div className="procent co  l">
-                                            <p className="greenText">+15%</p>
+                                            <p className="greenText">{(Math.random() * 15).toFixed(1)}%</p>
                                         </div>
                                     </div>
                                 </button>

@@ -65,7 +65,7 @@ export default function TransactionList(prop) {
                         <h2 className="mt-5 text-warning">Transactions</h2>
                         <FontAwesomeIcon className="icon fa-lg yellow backArrow" icon={faArrowLeft} onClick={goBack}/>
                     </div>                    
-                    <div class="form-check form-check-inline">
+                    {/* <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
                         <label class="form-check-label" for="inlineRadio1">Buy</label>
                     </div>
@@ -80,7 +80,7 @@ export default function TransactionList(prop) {
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4"/>
                         <label class="form-check-label" for="inlineRadio4">New</label>
-                    </div>
+                    </div> */}
                 </div>
                 <hr className="w-75 hrTag"></hr>
                 {loaded ?

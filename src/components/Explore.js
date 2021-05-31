@@ -56,7 +56,7 @@ export default function Explore(prop) {
                 latest: data[timespan -1],
                 low: Math.min(...data),
                 high: Math.max(...data),                
-                growth: (((data[timespan -1]) - 400)/data[timespan -1]).toFixed(3),   
+                growth: (((data[timespan -1])/data[0]) - 1).toFixed(3),   
             });
                 
             setStockGraph({
@@ -113,6 +113,7 @@ export default function Explore(prop) {
             ...stock,
             name: stock.name
         })
+        // setBuystate
         getApiData();
         window.scrollTo({top: 0, behavior: 'smooth'});
       }
@@ -210,7 +211,7 @@ export default function Explore(prop) {
             latest: "",
             low: "",
             high: "",
-            growth: "",   
+            growth: Number,   
         })
         setBuyState({            
             HS_Price: 0,
@@ -255,14 +256,6 @@ export default function Explore(prop) {
 
     if (loaded) {
         stockInfo = [{
-            icon: faMoneyBill,
-            text: "Buy",
-            value: stock.latest 
-        }, {
-            icon: faMoneyCheck,
-            text: "Sell",
-            value: stock.latest
-        }, {
             icon: faClock,
             text: "Latest",
             value: stock.latest
@@ -346,9 +339,15 @@ export default function Explore(prop) {
                                         <div className="yellow">
                                             Growth
                                         </div>
-                                        <div className="money">
-                                            {stock.growth}%
-                                        </div>
+                                        {parseInt(stock.growth) >= 0 ?
+                                            <div className="money">
+                                                {stock.growth}%
+                                            </div>
+                                            :
+                                            <div className="red">
+                                                {stock.growth}%
+                                            </div>
+                                        }                                        
                                     </div>
                                 </div>
 
@@ -373,7 +372,7 @@ export default function Explore(prop) {
                                     <Popup
                                     className="popup"
                                     trigger={<button className="buy">Buy</button>}
-                                    position="top"
+                                    position="bottom"
                                     closeOnDocumentClick
                                     contentStyle={{ padding: '0px', border: 'none' }}
                                     arrow={false}
@@ -389,7 +388,7 @@ export default function Explore(prop) {
                                                 
                                                 <div className="input">
                                                     <p>Current cash: {user.Money}</p>
-                                                    <p>Price: {buyState.HS_Price * buyInput}</p>
+                                                    <p>Price: {parseInt(buyState.HS_Price) * parseInt(buyInput)}</p>
                                                     <form onSubmit={buyStock}>
                                                     <label>Amount</label>
                                                     <input  type="number" required name="Amount" placeholder="nr of stocks" value={buyInput} onChange={handleBuy}></input> 

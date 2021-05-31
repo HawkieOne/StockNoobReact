@@ -2,6 +2,10 @@
     cursor: pointer;
 }
 
+.red {
+    color: red;
+}
+
 .topInfo{
     background-color: #383D53;
     display: flex;

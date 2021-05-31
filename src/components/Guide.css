@@ -4,9 +4,9 @@
 
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: auto;
-  margin-top: 2%;
+  margin-top: 2%; 
   cursor: default;
 }
 

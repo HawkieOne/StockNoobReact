@@ -24,10 +24,9 @@ export default function Header(prop) {
                         </div>
                     </div>     
         } else {
-            return <div className="d-flex userArea" onClick={toLogin}>
+            return <div className="d-flex align-items-center userArea" onClick={toLogin}>
                         <FontAwesomeIcon className="icon" icon={faUser}/>
-                        <div className="d-flex flex-column userArea m-1">
-                            <h6 className=" m-0 p-0 yellow">Welcome!</h6>
+                        <div className="d-flex flex-column userArea m-1">                        
                             <p className="m-0 p-0 text-white">Log in</p>
                         </div>
                     </div>

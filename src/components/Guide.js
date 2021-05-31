@@ -14,7 +14,7 @@ function Guide() {
                             <p>Our platform is targeting that group. StockNoob is all about letting new small investors to get a feel for the market before joining the big leagues.</p>
                         </div>
 
-                        <div className="part">
+                        <div className="part ml-4">
                             <h4>About StockNoob</h4>
                             <p>StockNoob is made for beginners in the stock market who wants to simulate the market with fake money before trying it for real. StockNoob is made by a group of students that are interested in stocks.</p>
                         </div>
