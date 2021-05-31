@@ -20,7 +20,7 @@ export default function Overview(prop) {
     
     var [userOverview, setUserOverview] = useState(null);
     const [stocks, setStocks] = useState([]);
-
+    var [holdingsState, setHoldingsState] = useState(null);
     const pushHoldings = (event) => {
         const path = "/stockList";
             history.push({
@@ -96,6 +96,7 @@ export default function Overview(prop) {
 
         console.log("OVERVIEW");
         const user = prop.user;
+        
         console.log(user);
         setUserOverview(user);    
         console.log(userOverview);    
@@ -129,6 +130,8 @@ export default function Overview(prop) {
         }).catch(function (error) {
           console.error(error);
         });
+
+        getHoldings(userOverview)
     },  []);
 
     const graphs = [{
@@ -187,9 +190,43 @@ export default function Overview(prop) {
             
         }]
 
+        const getHoldings = (event) => {
+            let tickers =  [];
+            
+            const axios = require('axios');
+            const params = {
+                access_key: '77c171bec68a191781a8e08d026779d7'
+            }
+            axios.get(`http://api.marketstack.com/v1/tickers/`, {params})
+            .then(response => {
+                
+                const apiResponse = response.data;
+                console.log(apiResponse);
+                var count = 0;         
+                for(let i = 0; i < timespan; i++) {
+                    let dataAPI = apiResponse.data.intraday[i];
+                    label = dataAPI.symbol;
+                    labels.push(dataAPI.date);
+                    data.push(parseInt(dataAPI.open));
+                    console.log(parseInt(dataAPI.open))
+                    count = count +1;
+                } 
+            });
+            console.log("innehav")
+            let holdings = event.Money;
+            stocks.map((stock) => (                      
+                holdings += stock.HS_Amount * stock.HS_Price
+            ))
+            setHoldingsState(parseInt(holdings));
+            console.log(holdings)
+            console.log(holdingsState)
+            
+        }
+
         return (
             <div className="d-flex flex-column mt-4">    
-                <h2 className="text-center yellow">Welcome!</h2>            
+                <h2 className="text-center yellow">Welcome!</h2>
+                <h4 className="text-center yellow" >Holdings: ${holdingsState}</h4>             
                 <div className="d-flex justify-content-around">                      
                     {graphs.map((graph) => (
                         <div className="b1">
