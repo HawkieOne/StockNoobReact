@@ -1,49 +1,20 @@
-.explore .container .top h1{
-    margin-top: 2%;
-    color: #F2D658;
-    margin-bottom: 2%;
+.cursor {
+    cursor: pointer;
 }
 
-.explore .container .top{
-    color: #F2D658;
-}
-
-.explore .container .topInfo{
+.topInfo{
     background-color: #383D53;
     display: flex;
     justify-content: space-evenly;
     font-size: 20px;
     width: 60%;
-    margin-left: 21%;
     border-radius: 10px;
-    margin-top: -2%;
 }
-.explore .container  .topInfo span{
+.topInfo span{
     font-size: 15px;
 }
 
-.explore .container .mid{
-    display: flex;
-    justify-content: space-between;
-    color: #F2D658;
-    height: 85vh;
-}
-
-
-.explore .container .mid .mid-left{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-    width: 55%;
-    margin-left: -14%;
-    
-}
-.explore .container .mid .mid-left .mid-left-bottom{
-    
-    float: right;
-}
-.explore .container .mid .mid-left .mid-left-bottom button{
+.mid-left-bottom button{
     width: 20%;
     border: none;
     background-color: #383D53;
@@ -51,76 +22,26 @@
     color: #F2D658;
     border-radius: 10px;
 }
-.explore .container .mid .mid-mid{
-    
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.explore .container .mid .mid-mid .mid-mid-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.explore .container .mid .mid-mid .mid-mid-container .tips{
-   
-    font-size: 12px;
-    margin-bottom: 2%;
-    width: 70%;
-    
-}
-.explore .container .mid .mid-mid .mid-mid-container .tips p{
-    font-size: 14px;
-    margin-bottom: -0.1%;
-}
-.explore .container .mid .mid-mid .mid-mid-container .tips2{
-    font-size: 12px;
-    margin-bottom: 2%;
-    width: 70%;
-    
-}
-.explore .container .mid .mid-mid .mid-mid-container .tips2 p{
-    margin-bottom: -0.1%;
-    font-size: 14px;
+.tip {
+    font-size: 0.9rem;     
 }
 
-
-
-
-
-.explore .container .mid .mid-right{
+.mid-right{
     background-color: #383d53b4;
     border-radius: 25px;
-    width: 20%;
-    margin-right: -10%;
-    height: 75vh;
-    margin-top: -2%;
-}
-.explore .container .mid .mid-right .info{
-    display: flex;
-    justify-content: space-around;
-    margin-left: -12%;
-    margin-top: 13%;
-    
 }
 
-.explore .container .mid .mid-right .info .info-left{
-    
+.icon{    
     font-size: 1.5rem;
 }
-.explore .container .mid .mid-right .info .info-right{
-    margin-left: -40%;
-    width: 40%;
-}
-.explore .container .mid .mid-right .info .info-right .money{
+.money{
     color: green;
 }
 
-.explore .container .mid .mid-right .actions{
+.actions{
     margin-top: 20%;
 }
-.explore .container .mid .mid-right .actions button{
+.actions button{
     width: 37%;
     border: none;
     background-color: #21242F;
@@ -128,38 +49,27 @@
     color: #F2D658;
     border-radius: 10px;
 }
-
-.explore .container .mid .mid-right .actions .sell{
+.actions .sell{
     color: crimson;
 }
-.explore .container .mid .mid-right .actions .sell:hover{
+.actions .sell:hover{
     background-color: crimson;
     color: #383d53b4;
 }
 
-.explore .container .mid .mid-right .actions .buy{
+.actions .buy{
     color: green;
 }
-.explore .container .mid .mid-right .actions .buy:hover{
+.actions .buy:hover{
     background-color: green;
     color: #383d53b4;
 }
 
-.explore .container .bot .bot-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 35vh;
-}
-.explore .container .bot .bot-container .bot-box{
-    width: 70%;
-    height: 25vh;
+.bottom{
     background-color: #383d53b4;
-    border-radius: 19px;
+    border-radius: 20px;
 }
-.explore .container .bot .bot-container .bot-box .bot-box-container{
+.bot-container .bot-box .bot-box-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -167,31 +77,17 @@
     height: 100%;
     margin-top: 4%;
 }
-.explore .container .bot .bot-container .bot-box .bot-box-container p{
-    margin-top: -10%;
+.bot-container .bot-box .bot-box-container p{
     color: #F2D658;
 }
-.explore .container .bot .bot-container .bot-box .bot-box-container .stocks{
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 1%;
-    color: #F2D658;
-}
-.explore .container .bot .bot-container .bot-box .bot-box-container .stocks .stocks-actions .go{
+
+.stocks-actions .go{
     width: 100px;
     border: none;
     background-color: #21242F;
     color: #F2D658;
     border-radius: 13px;
 }
-
-
-
-
-
-
 
 .buy-details{
     display: flex;
