@@ -403,7 +403,7 @@ export default function Explore(prop) {
                                 <Popup
                                     className="popup"
                                     trigger={<button className="sell">Sell</button>}
-                                    position="top"
+                                    position="bottom"
                                     closeOnDocumentClick
                                     contentStyle={{ padding: '0px', border: 'none' }}
                                     arrow={false}
